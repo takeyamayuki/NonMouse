@@ -41,7 +41,7 @@ with mp_hands.Hands(
                 mp_drawing.draw_landmarks(
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
                 #print('hand_landmarks:', hand_landmarks)
-                
+                '''
                 print(
                     f'人差し指の先端: (',
                     f'{hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x}, '
@@ -67,7 +67,7 @@ with mp_hands.Hands(
                 hand_landmarks[12] = [hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].x *image_width, hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].y * image_height]
                 hand_landmarks[4] = [hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].x *image_width, hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].y * image_height]
                 hand_landmarks[6] = [hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].x *image_width, hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].y * image_height]
-                
+                '''
                 # 人差し指の先端と中指の先端間のユークリッド距離
                 Ugo = (hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x * image_width - hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].x * image_width,
                        hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].y * image_height - hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].y * image_height)

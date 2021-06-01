@@ -12,6 +12,7 @@ https://google.github.io/mediapipe/getting_started/install.html#installing-on-ma
 ```sh:Install
 % pip install pynput  
 ```
+macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティの項目にターミナルorVScodeなど、実行する場所を追加する必要があります。
 
 ## Usage
 ### run

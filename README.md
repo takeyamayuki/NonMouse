@@ -1,5 +1,5 @@
 # NonMouse
-There is no moue, but there is. 
+指で動かす実態のないマウス
 
 Webカメラで自分の手元を写すことで、あたかも実態のないマウスが出来上がっているかのように見えるプログラムです。  
 
@@ -20,26 +20,6 @@ NonMouseフォルダーをダウンロード、解凍する。
 % cd ~/.../NonMouse
 % python3 app.py
 ```
-### argument
-`python app.py --device 1`などというふうに引数を取れる。 
-> * --device  
-カメラデバイス番号の指定  
-デフォルト：0  
->* --width  
-カメラキャプチャ時の横幅  
-デフォルト：960  
->* --height  
-カメラキャプチャ時の縦幅  
-デフォルト：540  
->* --min_detection_confidence  
-検出信頼値の閾値  
-デフォルト：0.7  
->* --min_tracking_confidence  
-トラッキング信頼値の閾値  
-デフォルト：0.5  
->* --use_brect  
-外接矩形を描画するか否か  
-デフォルト：指定なし  
 
 ### hands movement
 * 人差し指の先端がマウスカーソルに対応。

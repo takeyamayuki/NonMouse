@@ -16,9 +16,9 @@ cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
-ran = 6                    #スムージング量
-LiTx = [0, 0, 0, 0, 0]
-LiTy = [0, 0, 0, 0, 0]
+ran = 6  # スムージング量
+LiTx = [0, 0, 0, 0, 0, 0]
+LiTy = [0, 0, 0, 0, 0, 0]
 
 with mp_hands.Hands(
         min_detection_confidence=0.5,
@@ -86,7 +86,7 @@ with mp_hands.Hands(
                 LiTy.append(
                     hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].y * image_height)
                 if len(LiTx) > ran:
-                    #先頭を削除
+                    # 先頭を削除
                     LiTx.pop(0)
                     LiTy.pop(0)
                 # カメラ座標をマウス移動量に変換

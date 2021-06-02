@@ -6,7 +6,7 @@ mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
-kando = 0.8                   # マウス感度
+kando = 2                   # マウス感度
 preX, preY = 0, 0
 preCli = 0
 douCli = 0
@@ -15,6 +15,10 @@ douCli = 0
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+
+ran = 6                    #スムージング量
+LiTx = [0, 0, 0, 0, 0]
+LiTy = [0, 0, 0, 0, 0]
 
 with mp_hands.Hands(
         min_detection_confidence=0.5,
@@ -62,53 +66,60 @@ with mp_hands.Hands(
                     f'{hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].x}, '
                     f'{hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].y})'
                 )
-                
-                hand_landmarks[8] = [hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x *image_width, hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].y * image_height]
-                hand_landmarks[12] = [hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].x *image_width, hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].y * image_height]
-                hand_landmarks[4] = [hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].x *image_width, hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].y * image_height]
-                hand_landmarks[6] = [hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].x *image_width, hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].y * image_height]
                 '''
                 # 人差し指の先端と中指の先端間のユークリッド距離
-                Ugo = (hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x * image_width - hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].x * image_width,
-                       hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].y * image_height - hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].y * image_height)
+                Ugo = (hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x * image_width -
+                       hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].x * image_width,
+                       hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].y * image_height -
+                       hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].y * image_height)
                 absUgo = np.linalg.norm(Ugo)
                 # 人差し指の第２関節と親指の先端間のユークリッド距離
-                Cli = (hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].x * image_width - hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].x * image_width,
-                       hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].y * image_height - hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].y * image_height)
+                Cli = (hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].x * image_width -
+                       hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].x * image_width,
+                       hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].y * image_height -
+                       hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].y * image_height)
                 absCli = np.linalg.norm(Cli)
-                # print('absCli='+str(absCli))
+                # 移動量平均によるスムージング
+                # 末尾に追加
+                LiTx.append(
+                    hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x * image_width)
+                LiTy.append(
+                    hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].y * image_height)
+                if len(LiTx) > ran:
+                    #先頭を削除
+                    LiTx.pop(0)
+                    LiTy.pop(0)
                 # カメラ座標をマウス移動量に変換
-                dx = kando * \
-                    (hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x *
-                     image_width - preX)
-                dy = kando * \
-                    (hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].y *
-                     image_height - preY)
-                if absCli < 70:
+                dx = kando * (sum(LiTx)/len(LiTx) - preX)
+                dy = kando * (sum(LiTy)/len(LiTy) - preY)
+                # click状態
+                if absCli < 80:
                     nowCli = 1
-                if absCli >= 70:
+                if absCli >= 80:
                     nowCli = 0
 
                 # マウス動かす
-                if absUgo >= 70:
+                if absUgo >= 80:
                     mouse.move(dx, -dy)
                     # print('Move')
                 # click
                 if nowCli == 1 and nowCli != preCli:
                     mouse.press(Button.left)
-                    print('Click')
                     douCli += 1
+                    print('Click')
                 # release
                 if nowCli == 0 and nowCli != preCli:
                     mouse.release(Button.left)
-                    print('Release')
                     douCli += 1
+                    print('Release')
                 # ダブルクリック 1s以内に2回click→releaseされたら←←←←←←←←←←←←←←←←←←←←←←←←←←←←
                 # if
-                preX = hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x * image_width
-                preY = hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].y * image_height
+
+                preX = sum(LiTx)/len(LiTx)
+                preY = sum(LiTy)/len(LiTy)
                 preCli = nowCli
-            cv2.imshow('MediaPipe Hands', image)
+
+        cv2.imshow('MediaPipe Hands', image)
         if cv2.waitKey(5) & 0xFF == 27:
             break
 cap.release()

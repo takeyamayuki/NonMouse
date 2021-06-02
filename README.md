@@ -5,13 +5,14 @@ Webカメラで自分の手元を写すことで、あたかも実態のない�
 
 ## Installation
 ### 1. Install Mediapipe　　
-以下の公式ドキュメントに従って、Mediapipeのインストール
+以下の公式ドキュメントに従って、Mediapipeのインストール  
 https://google.github.io/mediapipe/getting_started/install.html#installing-on-macos
 
 ### 2. Install pynput
 ```sh:Install
 % pip install pynput  
 ```
+macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティの項目にターミナルやVScodeなど、実行する場所を追加する必要があります。
 
 ## Usage
 ### run

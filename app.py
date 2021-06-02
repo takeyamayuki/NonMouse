@@ -10,19 +10,20 @@ kando = 2                   # マウス感度
 preX, preY = 0, 0
 preCli = 0
 douCli = 0
+ran = 4                     # スムージング量
+LiTx = [0, 0, 0, 0]
+LiTy = [0, 0, 0, 0]
+dis = 65                    # タッチ距離
 
-# Webカメラ入力の場合：
+# Webカメラ入力
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
-ran = 6  # スムージング量
-LiTx = [0, 0, 0, 0, 0, 0]
-LiTy = [0, 0, 0, 0, 0, 0]
-
 with mp_hands.Hands(
-        min_detection_confidence=0.5,
-        min_tracking_confidence=0.5) as hands:
+        min_detection_confidence=0.7,
+        min_tracking_confidence=0.7,
+        max_num_hands=1) as hands:
     while cap.isOpened():
         success, image = cap.read()
         if not success:
@@ -93,13 +94,13 @@ with mp_hands.Hands(
                 dx = kando * (sum(LiTx)/len(LiTx) - preX)
                 dy = kando * (sum(LiTy)/len(LiTy) - preY)
                 # click状態
-                if absCli < 80:
+                if absCli < dis:
                     nowCli = 1
-                if absCli >= 80:
+                if absCli >= dis:
                     nowCli = 0
 
                 # マウス動かす
-                if absUgo >= 80:
+                if absUgo >= dis:
                     mouse.move(dx, -dy)
                     # print('Move')
                 # click
@@ -112,8 +113,6 @@ with mp_hands.Hands(
                     mouse.release(Button.left)
                     douCli += 1
                     print('Release')
-                # ダブルクリック 1s以内に2回click→releaseされたら←←←←←←←←←←←←←←←←←←←←←←←←←←←←
-                # if
 
                 preX = sum(LiTx)/len(LiTx)
                 preY = sum(LiTy)/len(LiTy)

@@ -3,8 +3,7 @@
 
 Webカメラで自分の手元を写すことで、あたかも実体のないマウスが出来上がっているかのように見えるプログラムです。  
 ver.1 https://github.com/takeyamayuki/NonMouse  
-動作状況はYoutubeにも公開しています。  
-https://youtu.be/ufvOJUTCF8M
+動作状況はYoutubeにも公開しています。https://youtu.be/ufvOJUTCF8M
 
 ## Installation
 ### 1. Install Mediapipe　　

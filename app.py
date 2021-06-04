@@ -6,13 +6,13 @@ mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
-kando = 2                   # マウス感度
+kando = 1.5                   # マウス感度
 preX, preY = 0, 0
 preCli = 0
 douCli = 0
-ran = 4                     # スムージング量
-LiTx = [0, 0, 0, 0]
-LiTy = [0, 0, 0, 0]
+ran = 5                     # スムージング量
+LiTx = [0, 0, 0, 0, 0]
+LiTy = [0, 0, 0, 0, 0]
 dis = 65                    # タッチ距離
 
 # Webカメラ入力

@@ -1,5 +1,7 @@
 # NonMouse2
-指で動かす実体のないマウス
+指で動かす実体のないマウス  
+![nonmouse twi21-アニメーションイメージ（小）](https://user-images.githubusercontent.com/22733958/121179088-3a167080-c89a-11eb-891e-4dcc5f29877d.gif)
+
 
 Webカメラで自分の手元を写すことで、あたかも実体のないマウスがあるかのように見えるPythonスクリプトです。(感度調整なしのver.1は[こちら](https://github.com/takeyamayuki/NonMouse))  
 動作状況は[Youtube](https://youtu.be/ufvOJUTCF8M)にも公開しています。

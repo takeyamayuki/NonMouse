@@ -1,3 +1,4 @@
+import argparse
 import cv2
 import mediapipe as mp
 import numpy as np
@@ -15,8 +16,12 @@ LiTx = [0, 0, 0, 0, 0]
 LiTy = [0, 0, 0, 0, 0]
 dis = 50                    # タッチ距離（遠いほど小さく、近いほど大きい値にする）
 
+parser = argparse.ArgumentParser()
+parser.add_argument("--device", type=int, default=0)
+args = parser.parse_args()
+cap_device = args.device
 # Webカメラ入力
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(cap_device)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
@@ -28,9 +33,8 @@ with mp_hands.Hands(
         success, image = cap.read()
         if not success:
             print("Ignoring empty camera frame.")
-            # ビデオをロードする場合は、「continue」ではなく「break」を使用してください
-            continue
-
+            # ビデオをロードする場合は、「continue」ではなく「break」を使用
+            break
         # 後で自分撮りビューを表示するために画像を水平方向に反転し、BGR画像をRGBに変換
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
         # パフォーマンスを向上させるために、オプションで、参照渡しのためにイメージを書き込み不可としてマーク

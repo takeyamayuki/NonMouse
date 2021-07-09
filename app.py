@@ -122,7 +122,7 @@ with mp_hands.Hands(
                 preY = sum(LiTy)/len(LiTy)
                 preCli = nowCli
 
-        cv2.imshow('MediaPipe Hands', image)
+        cv2.imshow('NonMouse', image)
         if cv2.waitKey(5) & 0xFF == 27:
             break
 cap.release()

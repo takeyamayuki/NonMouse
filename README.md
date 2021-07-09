@@ -25,7 +25,7 @@ macの場合、システム環境設定からセキリュティとプライバ�
 * appFrCam.pyは指を画面に向かわせてマウスを動かします
 ### run
 NonMouseフォルダーをダウンロード、解凍する。
-NonMouse.appを実行するか、以下のスクリプトを実行
+以下のスクリプトを実行。または、launch.scptを実行
 ```sh
 % cd ~/.../NonMouse2-main
 % python3 app.py

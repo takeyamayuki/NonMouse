@@ -60,5 +60,12 @@ webカメラを下に向けて使用する場合：0
 これらの引数をまとめて指定できるようにシェルスクリプトにまとめました。  
 * launch-frcam.shはラップトップのwebカメラを使用するためのスクリプト  
 * launch-ceiling.shは天井に取り付けたwebカメラを使用するためのスクリプト
+```sh
+% cd ~/.../NonMouse2-main
+% chmod 755 launch-frcam.sh
+% chmod 755 launch-ceiling.sh
+% chmod 755 launch.sh
+```
+.shのファイルをターミナルにドラッグしEnter
 ### quit
 Ctrl+CかEscを押してください

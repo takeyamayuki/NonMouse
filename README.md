@@ -6,8 +6,7 @@ Insubstantial mouse moved by finger.
 ![nonmouse twi21 oe-アニメーションイメージ（大）](https://user-images.githubusercontent.com/22733958/121180967-75b23a00-c89c-11eb-82fa-4f5d9abda320.gif)  
 
 
-This is a Python script that uses a web camera to capture your hand, making it appear as if there is a mouse without any substance. (Ver.1 without sensitivity adjustment is [here](https://github.com/takeyamayuki/NonMouse))
-(Ver. 1 without sensitivity adjustment is available here.
+This is a Python script that uses a web camera to capture your hand, making it appear as if there is a mouse without any substance. (Ver.1 without sensitivity adjustment is [here](https://github.com/takeyamayuki/NonMouse))  
 The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M)
 
 # Installation
@@ -34,33 +33,33 @@ Download the NonMouse folder, unzip it, and run the following script
 * Scrolling and right-clicking are not implemented yet.
 
 ### Args
-* If you have more than one camera installed, you can use `--device X` to select a camera (default 0, 0,1,2...). can be selected)   
-```sh
-% python3 app.py --device 0
-```
-* Use `--direciton X` to specify the direction the mouse cursor moves in relation to the direction your finger moves (default 0, 0,1 can be selected).  
+* If you have more than one camera installed, you can use `--device X` to select a camera (default 0,  0,1,2... can be selected)   
+    ```sh
+    % python3 app.py --device 0
+    ```
+* Use `--direciton X` to specify the direction the mouse cursor moves in relation to the direction your finger moves (default 0,  0,1 can be selected).  
     * When using a web camera facing down: 0     
     * When using the camera that comes with the laptop: 1
-```sh
-% python3 app.py --direction 0
-```
+    ```sh
+    % python3 app.py --direction 0
+    ```
 * Define the touch distance with `--distance X` (the further the distance, the smaller the value, the closer the distance, the larger the value) (default 65, can be selected as an integer)   
 [Approximate].
     * When the distance between the web camera and your hand is 50cm, 65
     * When the distance between the webcam and your hand is 110cm, 50
-```sh
-% python3 app.py --distance 50
-```
-* Define the mouse sensitivity with `--kando X` (don't make it too large because it will shake in small increments if you make it too large) (default 1.5, selectable in decimal)  
+    ```sh
+    % python3 app.py --distance 50
+    ```
+* Define the mouse sensitivity with `--kando X` (don't make it too large because it will shake in small increments if you make it too large) (default 1.5, selectable in decimal fraction)  
 [Approximate].
     * 1.5 when the distance between the web camera and your hand is 50cm.
     * When the distance between the webcam and your hand is 110cm, 5
-```sh
-% python3 app.py --kando 5
-```
+    ```sh
+    % python3 app.py --kando 5
+    ```
 We have put these arguments into a shell script so that they can be specified together.  
-* launch-frcam.sh is a script to use a laptop web camera  
-* launch-ceiling.sh is a script to use a ceiling-mounted webcam.
+* [launch-frcam.sh](launch-frcam.sh) is a script to use a laptop web camera  
+* [launch-ceiling.sh](launch-ceiling.sh) is a script to use a ceiling-mounted webcam.
 ```sh
 % cd ~/.../NonMouse2-main
 % chmod 755 launch-frcam.sh

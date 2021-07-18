@@ -7,19 +7,23 @@ mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
-kando = 1.5                   # マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくしてください）
+# マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくしてください）
+kando = 1.5
+# スムージング量（小さいとカーソルが小刻みに動きやすくなるが、大きいと遅延が大きくなる）
+ran = 5 
+# タッチ距離（遠いほど小さく、近いほど大きい値にする）
+dis = 65 
 preX, preY = 0, 0
 preCli = 0
 douCli = 0
-ran = 5                     # スムージング量（小さいとカーソルが小刻みに動きやすくなるが、大きいと遅延が大きくなる）
 LiTx = [0, 0, 0, 0, 0]
 LiTy = [0, 0, 0, 0, 0]
-dis = 65                    # タッチ距離（遠いほど小さく、近いほど大きい値にする）
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--device", type=int, default=0)
 args = parser.parse_args()
 cap_device = args.device
+
 # Webカメラ入力
 cap = cv2.VideoCapture(cap_device)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)

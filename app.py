@@ -7,19 +7,28 @@ mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
-kando = 1.5                   # マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくしてください）
+# マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくする）
+kando = 1.5
+# スムージング量（小さいとカーソルが小刻みに動きやすくなるが、大きいと遅延が大きくなる）
+ran = 5
+# タッチ距離（遠いほど小さく、近いほど大きい値にする）
+dis = 65
 preX, preY = 0, 0
 preCli = 0
 douCli = 0
-ran = 5                     # スムージング量（小さいとカーソルが小刻みに動きやすくなるが、大きいと遅延が大きくなる）
 LiTx = [0, 0, 0, 0, 0]
 LiTy = [0, 0, 0, 0, 0]
-dis = 65                    # タッチ距離（遠いほど小さく、近いほど大きい値にする）
 
+# 引数
 parser = argparse.ArgumentParser()
 parser.add_argument("--device", type=int, default=0)
+parser.add_argument("--direction", type=int, default=0)
+parser.add_argument("--distance", type=int, default=65)
+parser.add_argument("--kando", type=float, default=1.5)
 args = parser.parse_args()
 cap_device = args.device
+dis = args.distance
+kando = args.kando
 # Webカメラ入力
 cap = cv2.VideoCapture(cap_device)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
@@ -50,28 +59,7 @@ with mp_hands.Hands(
                 mp_drawing.draw_landmarks(
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
                 #print('hand_landmarks:', hand_landmarks)
-                '''
-                print(
-                    f'人差し指の先端: (',
-                    f'{hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x}, '
-                    f'{hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].y})'
-                )
-                print(
-                    f'中指の先端: (',
-                    f'{hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].x}, '
-                    f'{hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].y})'
-                )
-                print(
-                    f'親指の先端: (',
-                    f'{hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].x}, '
-                    f'{hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].y})'
-                )
-                print(
-                    f'人差し指の第２関節: (',
-                    f'{hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].x}, '
-                    f'{hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_PIP].y})'
-                )
-                '''
+
                 # 人差し指の先端と中指の先端間のユークリッド距離
                 Ugo = (hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x * image_width -
                        hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].x * image_width,
@@ -105,7 +93,10 @@ with mp_hands.Hands(
 
                 # マウス動かす
                 if absUgo >= dis:
-                    mouse.move(dx, -dy)
+                    if args.direction == 0:
+                        mouse.move(dx, -dy)
+                    if args.direction == 1:
+                        mouse.move(dx, dy)
                     # print('Move')
                 # click
                 if nowCli == 1 and nowCli != preCli:

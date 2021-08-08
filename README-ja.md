@@ -9,12 +9,23 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 動作状況は[Youtube](https://youtu.be/ufvOJUTCF8M)にも公開しています。
 
 # インストール
-### インストール Mediapipe  
-[公式ドキュメント](https://google.github.io/mediapipe/getting_started/install.html#installing-on-macos)に従って、Mediapipeのインストール
-
-
-### インストール pynput
+Linux
 ```sh:Install
+% sudo apt install -y nodejs npm
+% npm install -g @bazel/bazelisk
+% pip install pynput 
+% pip install numpy
+% pip install opencv-python
+% pip install mediapipe
+% pip install pynput  
+```
+
+Mac
+```sh:Install
+% pip install pynput
+% pip install numpy
+% pip install opencv-python
+% pip install mediapipe
 % pip install pynput  
 ```
 macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティの項目にターミナルやVScodeなど、実行する場所を追加する必要があります。

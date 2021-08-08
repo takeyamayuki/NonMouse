@@ -10,11 +10,24 @@ This is a Python script that uses a web camera to capture your hand, making it a
 The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M)
 
 # Installation
-### Install Mediapipe  
-Follow the [official documentation](https://google.github.io/mediapipe/getting_started/install.html#installing-on-macos) to install Mediapipe.
 
-### Install pynput
+Linux
 ```sh:Install
+% sudo apt install -y nodejs npm
+% npm install -g @bazel/bazelisk
+% pip install pynput 
+% pip install numpy
+% pip install opencv-python
+% pip install mediapipe
+% pip install pynput  
+```
+
+Mac
+```sh:Install
+% pip install pynput
+% pip install numpy
+% pip install opencv-python
+% pip install mediapipe
 % pip install pynput  
 ```
 For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility section in System Preferences.

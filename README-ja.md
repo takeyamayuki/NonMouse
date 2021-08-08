@@ -13,20 +13,14 @@ Linux
 ```sh:Install
 % sudo apt install -y nodejs npm
 % npm install -g @bazel/bazelisk
-% pip install pynput 
-% pip install numpy
-% pip install opencv-python
-% pip install mediapipe
-% pip install pynput  
+% cd ~/.../NonMouse2-main
+% pip install -r requirments.txt
 ```
 
 Mac
 ```sh:Install
-% pip install pynput
-% pip install numpy
-% pip install opencv-python
-% pip install mediapipe
-% pip install pynput  
+% cd ~/.../NonMouse2-main
+% pip install -r requirments.txt 
 ```
 macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティの項目にターミナルやVScodeなど、実行する場所を追加する必要があります。
 

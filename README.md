@@ -12,12 +12,12 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 # Installation
 
 * Install as usual
-    ```sh:Install
+    ```sh
     $ cd ~/.../NonMouse2-main
     $ pip install -r requirments.txt    # Install packages from requirements.txt   
     ```
 * If you don't want to pollute your local environment
-    ```sh:venv
+    ```sh
     $ cd ~/.../NonMouse2-main
     $ . NonMouse/bin/activate           # Enter the virtual environment. 
     ```

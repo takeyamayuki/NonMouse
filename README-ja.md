@@ -13,11 +13,11 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 * 普通にインストール
    ```sh:Install
    $ cd ~/.../NonMouse2-main
-   $ pip install -r requirments.txt 
+   $ pip install -r requirments.txt    # requirements.txtからパッケージインストール
    ```
 
 * ローカル環境を汚したくない場合
-   ```sh:Install
+   ```sh:venv
    $ cd ~/.../NonMouse2-main
    $ . NonMouse/bin/activate           # 仮想環境に入る
    ```
@@ -64,17 +64,14 @@ $ python3 app.py
    $ python3 app.py --kando 5
    ```
 これらの引数をまとめて指定できるようにシェルスクリプトにまとめました。  
-* launch-frcam.shはラップトップのwebカメラを使用するためのスクリプト  
-* launch-ceiling.shは天井に取り付けたwebカメラを使用するためのスクリプト
 ```sh
 $ cd ~/.../NonMouse2-main
-$ chmod 755 launch-frcam.sh
-$ chmod 755 launch-ceiling.sh
-$ chmod 755 launch.sh
-$ ./launch.sh 
-$ ./launch-frcam.sh
-$ ./launch-ceiling.sh
+$ chmod 755 launch-frcam.sh         # 実行権限を与える
+$ ./launch.sh                       # シェルスクリプトの実行
 ```
+launch-ceiling.sh, launch-frcam.sh も同様に実行できます。
+* launch-frcam.shはラップトップのwebカメラを使用するためのスクリプト  
+* launch-ceiling.shは天井に取り付けたwebカメラを使用するためのスクリプト
 ### プログラムの止め方
 ターミナルウィンドウがアクティブのとき、Ctrl+C  
 アプリケーションウィンドウがアクティブのときは、Escを押してください  

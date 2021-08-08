@@ -13,13 +13,13 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 
 * Install as usual
     ```sh:Install
-    % cd ~/.../NonMouse2-main
-    % pip install -r requirments.txt
+    $ cd ~/.../NonMouse2-main
+    $ pip install -r requirments.txt    # Install packages from requirements.txt   
     ```
 * If you don't want to pollute your local environment
     ```sh:venv
-    % cd ~/.../NonMouse2-main
-    % . NonMouse/bin/activate           # Enter the virtual environment. 
+    $ cd ~/.../NonMouse2-main
+    $ . NonMouse/bin/activate           # Enter the virtual environment. 
     ```
     Exit the virtual environment with `$ deactivate`.  
 
@@ -29,8 +29,8 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 ### Run
 Download the NonMouse folder, unzip it, and run the following script
 ```sh
-% cd ~/.../NonMouse2-main
-% python3 app.py
+$ cd ~/.../NonMouse2-main
+$ python3 app.py
 ```
 ### Hand Movements
 * The tip of the index finger corresponds to the mouse cursor.  
@@ -38,41 +38,40 @@ Download the NonMouse folder, unzip it, and run the following script
 * Attaching the fingertip of the thumb to the second joint of the index finger releases the left click, releasing it releases the left click  
 * Scrolling and right-clicking are not implemented yet.
 
-### Args
+### Arguments
 * If you have more than one camera installed, you can use `--device X` to select a camera (default 0,  0,1,2... can be selected)   
     ```sh
-    % python3 app.py --device 0
+    $ python3 app.py --device 0
     ```
 * Use `--direciton X` to specify the direction the mouse cursor moves in relation to the direction your finger moves (default 0,  0,1 can be selected).  
     * When using a web camera facing down: 0     
     * When using the camera that comes with the laptop: 1
     ```sh
-    % python3 app.py --direction 0
+    $ python3 app.py --direction 0
     ```
 * Define the touch distance with `--distance X` (the further the distance, the smaller the value, the closer the distance, the larger the value) (default 65, can be selected as an integer)   
 [Approximate].
     * When the distance between the web camera and your hand is 50cm, 65
     * When the distance between the webcam and your hand is 110cm, 50
     ```sh
-    % python3 app.py --distance 50
+    $ python3 app.py --distance 50
     ```
 * Define the mouse sensitivity with `--kando X` (don't make it too large because it will shake in small increments if you make it too large) (default 1.5, selectable in decimal fraction)  
 [Approximate].
     * 1.5 when the distance between the web camera and your hand is 50cm.
     * When the distance between the webcam and your hand is 110cm, 5
     ```sh
-    % python3 app.py --kando 5
+    $ python3 app.py --kando 5
     ```
 We have put these arguments into a shell script so that they can be specified together.  
+```sh
+$ cd ~/.../NonMouse2-main
+$ chmod 755 launch.sh               # Authorize Execution
+$ ./launch.sh                       # Run a shell script
+```
+You can also run launch-ceiling.sh and launch-frcam.sh in the same way.
 * [launch-frcam.sh](launch-frcam.sh) is a script to use a laptop web camera  
 * [launch-ceiling.sh](launch-ceiling.sh) is a script to use a ceiling-mounted webcam.
-```sh
-% cd ~/.../NonMouse2-main
-% chmod 755 launch-frcam.sh
-% chmod 755 launch-ceiling.sh
-% chmod 755 launch.sh
-```
-Drag the .sh file to the terminal and enter    
 ### Stop a program
-When a terminal window is active, press Ctrl+C    
-When an application window is active, press Esc    
+Press Ctrl+C, when a terminal window is active.     
+Press Esc, when an application window is active.    

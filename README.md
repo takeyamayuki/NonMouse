@@ -15,11 +15,11 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
     ```sh:Install
     % cd ~/.../NonMouse2-main
     % pip install -r requirments.txt
-    ```*
+    ```
 * If you don't want to pollute your local environment
     ```sh:venv
     % cd ~/.../NonMouse2-main
-    % . NonMouse/bin/activate #Enter the virtual environment. 
+    % . NonMouse/bin/activate           # Enter the virtual environment. 
     ```
     Exit the virtual environment with `$ deactivate`.  
 

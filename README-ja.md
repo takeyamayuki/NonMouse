@@ -19,7 +19,7 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 * ローカル環境を汚したくない場合
    ```sh:Install
    $ cd ~/.../NonMouse2-main
-   $ . NonMouse/bin/activate #仮想環境に入る
+   $ . NonMouse/bin/activate           # 仮想環境に入る
    ```
    `$ deactivate`で仮想環境から抜ける  
 

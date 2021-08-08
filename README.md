@@ -11,20 +11,19 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 
 # Installation
 
-Linux
-```sh:Install
-% sudo apt install -y nodejs npm
-% npm install -g @bazel/bazelisk
-% cd ~/.../NonMouse2-main
-% pip install -r requirments.txt
-```
+* Install as usual
+    ```sh:Install
+    % cd ~/.../NonMouse2-main
+    % pip install -r requirments.txt
+    ```*
+* If you don't want to pollute your local environment
+    ```sh:venv
+    % cd ~/.../NonMouse2-main
+    % . NonMouse/bin/activate #Enter the virtual environment. 
+    ```
+    Exit the virtual environment with `$ deactivate`.  
 
-Mac
-```sh:Install
-% cd ~/.../NonMouse2-main
-% pip install -r requirments.txt
-```
-For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility section in System Preferences.
+※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility section in System Preferences.
 
 # Usage
 ### Run

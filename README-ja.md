@@ -9,27 +9,28 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 動作状況は[Youtube](https://youtu.be/ufvOJUTCF8M)にも公開しています。
 
 # インストール
-Linux
-```sh:Install
-% sudo apt install -y nodejs npm
-% npm install -g @bazel/bazelisk
-% cd ~/.../NonMouse2-main
-% pip install -r requirments.txt
-```
 
-Mac
-```sh:Install
-% cd ~/.../NonMouse2-main
-% pip install -r requirments.txt 
-```
-macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティの項目にターミナルやVScodeなど、実行する場所を追加する必要があります。
+* 普通にインストール
+   ```sh:Install
+   $ cd ~/.../NonMouse2-main
+   $ pip install -r requirments.txt 
+   ```
+
+* ローカル環境を汚したくない場合
+   ```sh:Install
+   $ cd ~/.../NonMouse2-main
+   $ . NonMouse/bin/activate #仮想環境に入る
+   ```
+   `$ deactivate`で仮想環境から抜ける  
+
+※ macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティの項目にターミナルやVScodeなど、実行する場所を追加する必要があります。
 
 # 使い方
 ### 実行
 NonMouseフォルダーをダウンロード、解凍し、以下のスクリプトを実行
 ```sh
-% cd ~/.../NonMouse2-main
-% python3 app.py
+$ cd ~/.../NonMouse2-main
+$ python3 app.py
 ```
 ### 手の動き
 * 人差し指の先端がマウスカーソルに対応  
@@ -40,38 +41,40 @@ NonMouseフォルダーをダウンロード、解凍し、以下のスクリプ
 ### 引数
 * `--device X`でカメラを複数搭載している場合、引数でカメラを選択できます(デフォルト0で0,1,2...が選択可能)  
    ```sh
-   % python3 app.py --device 0
+   $ python3 app.py --device 0
    ```
 * `--direciton X`で指の動かす向きに対するマウスカーソルの動く向きを指定できます(デフォルト0で0,1が選択可能)  
     * webカメラを下に向けて使用する場合：0     
     * ラップトップ付属のカメラを使用する場合：１    
    ```sh
-   % python3 app.py --direction 0
+   $ python3 app.py --direction 0
    ```
 * `--distance X`でタッチ距離を定義（遠いほど小さく、近いほど大きい値にする）(デフォルト65で、整数で選択可能)  
 [目安]
     * webカメラと手の距離が50cmのとき、65
     * webカメラと手の距離が110cmのとき、50
    ```sh
-   % python3 app.py --distance 50
+   $ python3 app.py --distance 50
    ```
 * `--kando X`でマウス感度を定義（大きくしすぎると小刻みに震えるので大きくしすぎないこと）(デフォルト1.5で、小数で選択可能)  
 [目安]
     * webカメラと手の距離が50cmのとき、1.5
     * webカメラと手の距離が110cmのとき、5
    ```sh
-   % python3 app.py --kando 5
+   $ python3 app.py --kando 5
    ```
 これらの引数をまとめて指定できるようにシェルスクリプトにまとめました。  
 * launch-frcam.shはラップトップのwebカメラを使用するためのスクリプト  
 * launch-ceiling.shは天井に取り付けたwebカメラを使用するためのスクリプト
 ```sh
-% cd ~/.../NonMouse2-main
-% chmod 755 launch-frcam.sh
-% chmod 755 launch-ceiling.sh
-% chmod 755 launch.sh
+$ cd ~/.../NonMouse2-main
+$ chmod 755 launch-frcam.sh
+$ chmod 755 launch-ceiling.sh
+$ chmod 755 launch.sh
+$ ./launch.sh 
+$ ./launch-frcam.sh
+$ ./launch-ceiling.sh
 ```
-.shのファイルをターミナルにドラッグしEnter  
 ### プログラムの止め方
 ターミナルウィンドウがアクティブのとき、Ctrl+C  
 アプリケーションウィンドウがアクティブのときは、Escを押してください  

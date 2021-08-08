@@ -7,19 +7,18 @@ mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
-# マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくする）
-kando = 1.5
-# スムージング量（小さいとカーソルが小刻みに動きやすくなるが、大きいと遅延が大きくなる）
-ran = 5
-# タッチ距離（遠いほど小さく、近いほど大きい値にする）
-dis = 65
-preX, preY = 0, 0
-preCli = 0
-douCli = 0
-LiTx = [0, 0, 0, 0, 0]
-LiTy = [0, 0, 0, 0, 0]
-
 def main(): 
+    # マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくする）
+    kando = 1.5
+    # スムージング量（小さいとカーソルが小刻みに動きやすくなるが、大きいと遅延が大きくなる）
+    ran = 5
+    # タッチ距離（遠いほど小さく、近いほど大きい値にする）
+    dis = 65
+    preX, preY = 0, 0
+    preCli = 0
+    douCli = 0
+    LiTx = [0, 0, 0, 0, 0]
+    LiTy = [0, 0, 0, 0, 0]
     # 引数
     parser = argparse.ArgumentParser()
     parser.add_argument("--device", type=int, default=0)

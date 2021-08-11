@@ -1,12 +1,13 @@
 # NonMouse2
-指で動かす実体のないマウス    
+
+Webカメラで自分の手元を写すことで、あたかも実体のないマウスがあるかのように見えるPythonスクリプトです。  
+使用用途は主に絵を書く際、液タブなどに対する安価な代替として使うことを想定しています。    
+動作状況は[Youtube](https://youtu.be/ufvOJUTCF8M)にも公開しています。  
+(感度調整なしのver.1は[こちら](https://github.com/takeyamayuki/NonMouse))   
+
 ![nonmouse twi drug-アニメーションイメージ（大）](https://user-images.githubusercontent.com/22733958/121180947-7054ef80-c89c-11eb-9c7a-42a9e1f3f02a.gif)  
 ![nonmouse twi21 oe-アニメーションイメージ（大）](https://user-images.githubusercontent.com/22733958/121180967-75b23a00-c89c-11eb-82fa-4f5d9abda320.gif)  
 
-
-
-Webカメラで自分の手元を写すことで、あたかも実体のないマウスがあるかのように見えるPythonスクリプトです。(感度調整なしのver.1は[こちら](https://github.com/takeyamayuki/NonMouse))  
-動作状況は[Youtube](https://youtu.be/ufvOJUTCF8M)にも公開しています。
 
 # インストール
 
@@ -33,9 +34,10 @@ $ cd ~/.../NonMouse2-main
 $ python3 app.py
 ```
 ### 手の動き
-* 人差し指の先端がマウスカーソルに対応  
-* 人指し指の指先と中指の指先をつけると、マウスカーソルの動きが止まる  
-* 親指の指先と人差し指の第２関節をくっつけると左クリック、離すと左クリックのリリース  
+* マウスカーソル: 人差し指の先端  
+* マウスカーソルの動きを止める: 人指し指の指先と中指の指先をくっつける   
+* 左クリック: 親指の指先と人差し指の第２関節をくっつける
+* 左クリックのリリース: 親指の指先と人差し指の第２関節を離す  
 * スクロールと右クリックについては未実装です
 
 ### 引数

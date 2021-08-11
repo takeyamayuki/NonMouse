@@ -1,13 +1,13 @@
 # NonMouse2
 日本語のREADMEは[こちら](README-ja.md)  
 
-Insubstantial mouse moved by finger.      
+This is a Python script that uses a web camera to capture your hand, making it appear as if there is a mouse without any substance.   
+It is mainly intended to be used as a cheap alternative to liquid tabs and board tabs when drawing.    
+The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M)  
+(Ver.1 without sensitivity adjustment is [here](https://github.com/takeyamayuki/NonMouse))  
+
 ![nonmouse twi drug-アニメーションイメージ（大）](https://user-images.githubusercontent.com/22733958/121180947-7054ef80-c89c-11eb-9c7a-42a9e1f3f02a.gif)  
 ![nonmouse twi21 oe-アニメーションイメージ（大）](https://user-images.githubusercontent.com/22733958/121180967-75b23a00-c89c-11eb-82fa-4f5d9abda320.gif)  
-
-
-This is a Python script that uses a web camera to capture your hand, making it appear as if there is a mouse without any substance. (Ver.1 without sensitivity adjustment is [here](https://github.com/takeyamayuki/NonMouse))  
-The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M)
 
 # Installation
 
@@ -33,10 +33,11 @@ $ cd ~/.../NonMouse2-main
 $ python3 app.py
 ```
 ### Hand Movements
-* The tip of the index finger corresponds to the mouse cursor.  
-* Attaching the fingertips of the index finger and the middle finger stops the mouse cursor from moving.  
-* Attaching the fingertip of the thumb to the second joint of the index finger releases the left click, releasing it releases the left click  
-* Scrolling and right-clicking are not implemented yet.
+* Mouse cursor: tip of index finger  
+* Stop mouse cursor: Attach the tip of your index finger to the tip of your middle finger      
+* Left click: Attach the fingertips of your thumb to the second joint of your index finger
+* Left click release: Release the thumb fingertip and the second joint of the index finger  
+* Not yet implemented for scrolling and right-clicking
 
 ### Arguments
 * If you have more than one camera installed, you can use `--device X` to select a camera (default 0,  0,1,2... can be selected)   

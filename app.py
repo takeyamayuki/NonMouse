@@ -41,7 +41,6 @@ def main():
         success, image = cap.read()
         if not success:
             print("Ignoring empty camera frame.")
-            # ビデオをロードする場合は、「continue」ではなく「break」を使用
             break
         # 後で自分撮りビューを表示するために画像を水平方向に反転し、BGR画像をRGBに変換
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)

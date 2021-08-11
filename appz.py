@@ -71,6 +71,11 @@ if cap.isOpened():
                 # - テキスト出力
                 for cnt, text in enumerate(hand_texts):
                     cv2.putText(img, text, (lm_x, lm_y + 10 * cnt), font, 0.3, lm_c, 1)
+                
+                print(
+                    f'{results.multi_hand_landmarks[0].landmark[8].x:.3f}', 
+                    f'{results.multi_hand_landmarks[0].landmark[8].y:.3f}',
+                    f'{results.multi_hand_landmarks[0].landmark[8].z:.3f}')
 
         # 画像の表示
         cv2.imshow("MediaPipe Hands", img)

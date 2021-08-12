@@ -11,25 +11,25 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 
 # Installation
 
-* Install as usual
-    ```sh
-    $ git clone https://github.com/takeyamayuki/NonMouse2
-    $ cd NonMouse2
-    $ pip install -r requirments.txt    # Install packages from requirements.txt   
-    ```
-* If you don't want to pollute your local environment
-    ```sh
-    $ git clone https://github.com/takeyamayuki/NonMouse2
-    $ cd NonMouse2
-    $ . NonMouse/bin/activate           # Enter the virtual environment. 
-    ```
-    Exit the virtual environment with `$ deactivate`.  
+### Install as usual
+```sh
+$ git clone https://github.com/takeyamayuki/NonMouse2
+$ cd NonMouse2
+$ pip install -r requirments.txt    # Install packages from requirements.txt   
+```
+### If you don't want to pollute your local environment
+```sh
+$ git clone https://github.com/takeyamayuki/NonMouse2
+$ cd NonMouse2
+$ . NonMouse/bin/activate           # Enter the virtual environment. 
+```
+Exit the virtual environment with `$ deactivate`.  
 
 ※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility section in System Preferences.
 
 # Usage
 ### Run
-Continue with the installation.
+From the continuation of the installation, run the following script.
 ```sh
 $ python3 app.py
 ```

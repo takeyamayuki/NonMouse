@@ -13,12 +13,14 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 
 * Install as usual
     ```sh
-    $ cd ~/.../NonMouse2-main
+    $ git clone https://github.com/takeyamayuki/NonMouse2
+    $ cd NonMouse2
     $ pip install -r requirments.txt    # Install packages from requirements.txt   
     ```
 * If you don't want to pollute your local environment
     ```sh
-    $ cd ~/.../NonMouse2-main
+    $ git clone https://github.com/takeyamayuki/NonMouse2
+    $ cd NonMouse2
     $ . NonMouse/bin/activate           # Enter the virtual environment. 
     ```
     Exit the virtual environment with `$ deactivate`.  
@@ -27,9 +29,8 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 
 # Usage
 ### Run
-Download the NonMouse folder, unzip it, and run the following script
+Continue with the installation.
 ```sh
-$ cd ~/.../NonMouse2-main
 $ python3 app.py
 ```
 ### Hand Movements
@@ -66,7 +67,6 @@ $ python3 app.py
     ```
 We have put these arguments into a shell script so that they can be specified together.  
 ```sh
-$ cd ~/.../NonMouse2-main
 $ chmod 755 launch.sh               # Authorize Execution
 $ ./launch.sh                       # Run a shell script
 ```

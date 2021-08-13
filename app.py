@@ -23,8 +23,8 @@ def main():
     douCli = 0
     LiTx = []
     LiTy = []
-    i, k, h = 0, 0, 0
-    start , c_start = float('inf'), float('inf')
+    i, k= 0, 0
+    start, c_start = float('inf'), float('inf')
     # 引数
     parser = argparse.ArgumentParser()
     parser.add_argument("--device", type=int, default=0)
@@ -92,7 +92,7 @@ def main():
                 LiTx.append(hand_landmarks.landmark[8].x * image_width)
                 LiTy.append(hand_landmarks.landmark[8].y * image_height)
                 if len(LiTx) > ran:
-                    LiTx.pop(0)     # 先頭を削除
+                    LiTx.pop(0)         # 先頭を削除
                     LiTy.pop(0)
                 # カメラ座標をマウス移動量に変換
                 dx = kando * (sum(LiTx)/ran - preX)
@@ -101,19 +101,14 @@ def main():
                 # フラグ
                 # click状態
                 if absCli < dis:
-                    nowCli = 1                                  # nowCli:左クリック状態(1:click  0:non click)
+                    nowCli = 1          # nowCli:左クリック状態(1:click  0:non click)
                 if absCli >= dis:
                     nowCli = 0
-                # # スクロール状態
-                if absScr < dis:
-                    nowScr = 1                                  # norCli:右クリック状態(1:click  0:non click)
-                if absScr >= dis:
-                    nowScr = 0
                 if np.abs(dx) > 5 and np.abs(dy) > 5:
                     k = 0
                 # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
                 if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
-                    if k == 0:                                  # k:クリック状態&&カーソルを動かしてない。113, 140行目でk=0にする
+                    if k == 0:          # k:クリック状態&&カーソルを動かしてない。113, 140行目でk=0にする
                         start = time.perf_counter()
                         k += 1
                     end = time.perf_counter()
@@ -121,7 +116,7 @@ def main():
                         norCli = 1
                 else:
                     norCli = 0
-                
+
                 # 動かす
                 # cursor
                 if absUgo >= dis:
@@ -139,7 +134,7 @@ def main():
                     mouse.release(Button.left)
                     k = 0
                     print('Release')
-                    if douCli == 0:                             # 一回目のクリックが終わったら、時間測る
+                    if douCli == 0:                             # 1回目のクリックが終わったら、時間測る
                         c_start = time.perf_counter()
                         douCli += 1
                     c_end = time.perf_counter()
@@ -153,7 +148,7 @@ def main():
                     mouse.release(Button.right)
                     print("right click")
                 # scroll
-                if nowScr == 1:
+                if absScr < dis:
                     mouse.scroll(0, dy/1.5)
                     print("scroll")
 

@@ -157,8 +157,8 @@ def main():
             prrCli = norCli
         p_e = time.perf_counter()
         fps = str(int(1/(float(p_e)-float(p_s))))
-        #print(p_e)
-        cv2.putText(image, "FPS:"+fps, (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 5)
+        cv2.putText(image, "camFPS:"+str(int(cap.get(cv2.CAP_PROP_FPS))), (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
+        cv2.putText(image, "FPS:"+fps, (20, 80), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         cv2.imshow('NonMouse', image)
         if cv2.waitKey(5) & 0xFF == 27:
             break

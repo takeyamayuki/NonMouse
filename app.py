@@ -113,7 +113,7 @@ def main():
                     k = 0
                 # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
                 if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
-                    if k == 0:                                  # k:クリック状態&&カーソルを動かしてない
+                    if k == 0:                                  # k:クリック状態&&カーソルを動かしてない。113, 140行目でk=0にする
                         start = time.perf_counter()
                         k += 1
                     end = time.perf_counter()
@@ -133,8 +133,6 @@ def main():
                 # left click
                 if nowCli == 1 and nowCli != preCli:
                     mouse.press(Button.left)
-                    douCli += 1
-                    cstart = time.perf_counter
                     print('Click')
                 # left click release
                 if nowCli == 0 and nowCli != preCli:
@@ -145,12 +143,9 @@ def main():
                         c_start = time.perf_counter()
                         douCli += 1
                     c_end = time.perf_counter()
-                    if 10*(c_end-c_start) > 5 and douCli == 1:  # 0.5秒以内にもう一回クリックしたらdouCli=2にする
-                        douCli = 2
-                # double click
-                if douCli == 2:
-                    mouse.click(Button.left, 2)
-                    douCli = 0
+                    if 10*(c_end-c_start) > 5 and douCli == 1:  # 0.5秒以内にもう一回クリックしたらダブルクリック
+                        mouse.click(Button.left, 2)             # double click
+                        douCli = 0
                 # right click
                 if norCli == 1 and norCli != prrCli:
                     mouse.release(Button.left)

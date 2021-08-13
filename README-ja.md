@@ -1,4 +1,4 @@
-# NonMouse2
+# NonMouse
 
 Webカメラで自分の手元を写すことで、あたかも実体のないマウスがあるかのように見えるPythonスクリプトです。  
 使用用途は主に絵を書く際、液タブなどに対する安価な代替として使うことを想定しています。    
@@ -13,15 +13,15 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 
 ### 普通にインストール
 ```sh
-$ git clone https://github.com/takeyamayuki/NonMouse2
-$ cd NonMouse2
+$ git clone https://github.com/takeyamayuki/NonMouse
+$ cd NonMouse
 $ pip install -r requirments.txt    # requirements.txtからパッケージインストール
 ```
 
 ### ローカル環境を汚したくない場合
 ```sh
-$ git clone https://github.com/takeyamayuki/NonMouse2
-$ cd NonMouse2
+$ git clone https://github.com/takeyamayuki/NonMouse
+$ cd NonMouse
 $ . NonMouse/bin/activate           # 仮想環境に入る
 ```
 `$ deactivate`で仮想環境から抜ける  

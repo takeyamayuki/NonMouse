@@ -1,4 +1,4 @@
-# NonMouse2
+# NonMouse
 日本語のREADMEは[こちら](README-ja.md)  
 
 This is a Python script that uses a web camera to capture your hand, making it appear as if there is a mouse without any substance.   
@@ -13,14 +13,14 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 
 ### Install as usual
 ```sh
-$ git clone https://github.com/takeyamayuki/NonMouse2
-$ cd NonMouse2
+$ git clone https://github.com/takeyamayuki/NonMouse
+$ cd NonMouse
 $ pip install -r requirments.txt    # Install packages from requirements.txt   
 ```
 ### If you don't want to pollute your local environment
 ```sh
-$ git clone https://github.com/takeyamayuki/NonMouse2
-$ cd NonMouse2
+$ git clone https://github.com/takeyamayuki/NonMouse
+$ cd NonMouse
 $ . NonMouse/bin/activate           # Enter the virtual environment. 
 ```
 Exit the virtual environment with `$ deactivate`.  

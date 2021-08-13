@@ -121,19 +121,7 @@ def main():
                         norCli = 1
                 else:
                     norCli = 0
-                # ダブルクリック状態
-                # cend=time.perf_counter
-                # ctime=cend-cstart
-                # if nowCli==1 and ctime <0.5:
-                #     douCli=2
-                # if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
-                #     if h == 0:      # h:クリック状態&&カーソルを動かしてない
-                #         cstart = time.perf_counter()
-                #         h += 1
-                #     cend = time.perf_counter()
-                #     if cend-cstart > 1:
-                #         douCli = 2
-
+                
                 # 動かす
                 # cursor
                 if absUgo >= dis:

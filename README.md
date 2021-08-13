@@ -67,7 +67,7 @@ $ python3 app.py
     ```sh
     $ python3 app.py --kando 5
     ```
-We have put these arguments into a shell script so that they can be specified together.  
+I have put these arguments into a shell script so that they can be specified together.  
 ```sh
 $ chmod 755 launch.sh               # Authorize Execution
 $ ./launch.sh                       # Run a shell script

@@ -23,7 +23,7 @@ def main():
     douCli = 0
     LiTx = []
     LiTy = []
-    i, k= 0, 0
+    i, k = 0, 0
     start, c_start = float('inf'), float('inf')
     # 引数
     parser = argparse.ArgumentParser()
@@ -45,6 +45,7 @@ def main():
     )
 
     while cap.isOpened():
+        p_s = time.perf_counter()
         success, image = cap.read()
         if not success:
             continue
@@ -57,106 +58,107 @@ def main():
         image.flags.writeable = True
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         image_height, image_width, _ = image.shape
-
         if results.multi_hand_landmarks:
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-                # preX, preY, LiTx, LiTyの初期値に現在のマウス位置を代入 1回だけ実行
-                if i == 0:
-                    preX = hand_landmarks.landmark[8].x * image_width
-                    preY = hand_landmarks.landmark[8].y * image_height
-                    for j in range(ran):
-                        LiTx.append(hand_landmarks.landmark[8].x * image_width)
-                        LiTy.append(
-                            hand_landmarks.landmark[8].y * image_height)
-                    i = +1
+            # preX, preY, LiTx, LiTyの初期値に現在のマウス位置を代入 1回だけ実行
+            if i == 0:
+                preX = hand_landmarks.landmark[8].x * image_width
+                preY = hand_landmarks.landmark[8].y * image_height
+                for j in range(ran):
+                    LiTx.append(hand_landmarks.landmark[8].x * image_width)
+                    LiTy.append(hand_landmarks.landmark[8].y * image_height)
+                i = +1
 
-                # print('hand_landmarks:', hand_landmarks.landmark[8].x)
-                # 人差し指の先端と中指の先端間のユークリッド距離
-                Ugo = (hand_landmarks.landmark[8].x * image_width - hand_landmarks.landmark[12].x * image_width,
-                       hand_landmarks.landmark[8].y * image_height - hand_landmarks.landmark[12].y * image_height)
-                absUgo = np.linalg.norm(Ugo)
-                # 人差し指の第２関節と親指の先端間のユークリッド距離
-                Cli = (hand_landmarks.landmark[6].x * image_width - hand_landmarks.landmark[4].x * image_width,
-                       hand_landmarks.landmark[6].y * image_height - hand_landmarks.landmark[4].y * image_height)
-                absCli = np.linalg.norm(Cli)
-                # 中指の先端と薬指の先端間のユークリッド距離
-                Scr = (hand_landmarks.landmark[12].x * image_width - hand_landmarks.landmark[16].x * image_width,
-                       hand_landmarks.landmark[12].y * image_height - hand_landmarks.landmark[16].y * image_height)
-                absScr = np.linalg.norm(Scr)
+            # print('hand_landmarks:', hand_landmarks.landmark[8].x)
+            # 人差し指の先端と中指の先端間のユークリッド距離
+            Ugo = (hand_landmarks.landmark[8].x * image_width - hand_landmarks.landmark[12].x * image_width,
+                   hand_landmarks.landmark[8].y * image_height - hand_landmarks.landmark[12].y * image_height)
+            absUgo = np.linalg.norm(Ugo)
+            # 人差し指の第２関節と親指の先端間のユークリッド距離
+            Cli = (hand_landmarks.landmark[6].x * image_width - hand_landmarks.landmark[4].x * image_width,
+                   hand_landmarks.landmark[6].y * image_height - hand_landmarks.landmark[4].y * image_height)
+            absCli = np.linalg.norm(Cli)
+            # 中指の先端と薬指の先端間のユークリッド距離
+            Scr = (hand_landmarks.landmark[12].x * image_width - hand_landmarks.landmark[16].x * image_width,
+                   hand_landmarks.landmark[12].y * image_height - hand_landmarks.landmark[16].y * image_height)
+            absScr = np.linalg.norm(Scr)
 
-                # 移動量平均によるスムージング
-                # 末尾に追加
-                LiTx.append(hand_landmarks.landmark[8].x * image_width)
-                LiTy.append(hand_landmarks.landmark[8].y * image_height)
-                if len(LiTx) > ran:
-                    LiTx.pop(0)         # 先頭を削除
-                    LiTy.pop(0)
-                # カメラ座標をマウス移動量に変換
-                dx = kando * (sum(LiTx)/ran - preX)
-                dy = kando * (sum(LiTy)/ran - preY)
+            # 移動量平均によるスムージング
+            # 末尾に追加
+            LiTx.append(hand_landmarks.landmark[8].x * image_width)
+            LiTy.append(hand_landmarks.landmark[8].y * image_height)
+            if len(LiTx) > ran:
+                LiTx.pop(0)         # 先頭を削除
+                LiTy.pop(0)
+            # カメラ座標をマウス移動量に変換
+            dx = kando * (sum(LiTx)/ran - preX)
+            dy = kando * (sum(LiTy)/ran - preY)
 
-                # フラグ
-                # click状態
-                if absCli < dis:
-                    nowCli = 1          # nowCli:左クリック状態(1:click  0:non click)
-                if absCli >= dis:
-                    nowCli = 0
-                if np.abs(dx) > 5 and np.abs(dy) > 5:
-                    k = 0
-                # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
-                if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
-                    if k == 0:          # k:クリック状態&&カーソルを動かしてない。113, 140行目でk=0にする
-                        start = time.perf_counter()
-                        k += 1
-                    end = time.perf_counter()
-                    if end-start > 1:
-                        norCli = 1
-                else:
-                    norCli = 0
+            # フラグ
+            # click状態
+            if absCli < dis:
+                nowCli = 1          # nowCli:左クリック状態(1:click  0:non click)
+            if absCli >= dis:
+                nowCli = 0
+            if np.abs(dx) > 5 and np.abs(dy) > 5:
+                k = 0
+            # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
+            if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
+                if k == 0:          # k:クリック状態&&カーソルを動かしてない。113, 140行目でk=0にする
+                    start = time.perf_counter()
+                    k += 1
+                end = time.perf_counter()
+                if end-start > 1:
+                    norCli = 1
+            else:
+                norCli = 0
 
-                # 動かす
-                # cursor
-                if absUgo >= dis:
-                    if args.direction == 0:
-                        mouse.move(dx, -dy)
-                        # print(dx, -dy)
-                    if args.direction == 1:
-                        mouse.move(dx, dy)
-                # left click
-                if nowCli == 1 and nowCli != preCli:
-                    mouse.press(Button.left)
-                    print('Click')
-                # left click release
-                if nowCli == 0 and nowCli != preCli:
-                    mouse.release(Button.left)
-                    k = 0
-                    print('Release')
-                    if douCli == 0:                             # 1回目のクリックが終わったら、時間測る
-                        c_start = time.perf_counter()
-                        douCli += 1
-                    c_end = time.perf_counter()
-                    if 10*(c_end-c_start) > 5 and douCli == 1:  # 0.5秒以内にもう一回クリックしたらダブルクリック
-                        mouse.click(Button.left, 2)             # double click
-                        douCli = 0
-                # right click
-                if norCli == 1 and norCli != prrCli:
-                    mouse.release(Button.left)
-                    mouse.press(Button.right)
-                    mouse.release(Button.right)
-                    print("right click")
-                # scroll
-                if absScr < dis:
-                    mouse.scroll(0, dy/1.5)
-                    print("scroll")
+            # 動かす
+            # cursor
+            if absUgo >= dis:
+                if args.direction == 0:
+                    mouse.move(dx, -dy)
+                    # print(dx, -dy)
+                if args.direction == 1:
+                    mouse.move(dx, dy)
+            # left click
+            if nowCli == 1 and nowCli != preCli:
+                mouse.press(Button.left)
+                print('Click')
+            # left click release
+            if nowCli == 0 and nowCli != preCli:
+                mouse.release(Button.left)
+                k = 0
+                print('Release')
+                if douCli == 0:                             # 1回目のクリックが終わったら、時間測る
+                    c_start = time.perf_counter()
+                    douCli += 1
+                c_end = time.perf_counter()
+                if 10*(c_end-c_start) > 5 and douCli == 1:  # 0.5秒以内にもう一回クリックしたらダブルクリック
+                    mouse.click(Button.left, 2)             # double click
+                    douCli = 0
+            # right click
+            if norCli == 1 and norCli != prrCli:
+                mouse.release(Button.left)
+                mouse.press(Button.right)
+                mouse.release(Button.right)
+                print("right click")
+            # scroll
+            if absScr < dis:
+                mouse.scroll(0, dy/1.5)
+                print("scroll")
 
-                preX = sum(LiTx)/ran
-                preY = sum(LiTy)/ran
-                preCli = nowCli
-                prrCli = norCli
-
+            preX = sum(LiTx)/ran
+            preY = sum(LiTy)/ran
+            preCli = nowCli
+            prrCli = norCli
+        p_e = time.perf_counter()
+        fps = str(int(1/(float(p_e)-float(p_s))))
+        #print(p_e)
+        cv2.putText(image, "FPS:"+fps, (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 5)
         cv2.imshow('NonMouse', image)
         if cv2.waitKey(5) & 0xFF == 27:
             break

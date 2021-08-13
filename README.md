@@ -37,7 +37,8 @@ $ python3 app.py
 * Stop mouse cursor: Attach the tip of your index finger to the tip of your middle finger      
 * Left click: Attach the fingertips of your thumb to the second joint of your index finger
 * Left click release: Release the thumb fingertip and the second joint of the index finger  
-* Not yet implemented for scrolling and right-clicking
+* Right click: Hold the click state for 1 second without moving the cursor
+* Not yet implemented for scrolling
 
 ### Arguments
 * If you have more than one camera installed, you can use `--device X` to select a camera (default 0,  0,1,2... can be selected)   

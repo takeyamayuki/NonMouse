@@ -2,11 +2,13 @@ import argparse
 import cv2
 import mediapipe as mp
 import numpy as np
+import time
 from numpy.testing._private.utils import jiffies
 from pynput.mouse import Button, Controller
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
+
 
 def main():
     # マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくする）
@@ -16,11 +18,13 @@ def main():
     # タッチ距離（遠いほど小さく、近いほど大きい値にする）
     dis = 65
     preX, preY = 0, 0
-    preCli = 0
+    preCli = 0      # 前回の左クリック状態
     douCli = 0
+    prrCli = 0      # 前回の右クリック状態
     LiTx = []
     LiTy = []
-    i=0
+    i, k = 0, 0
+    start = float('inf')
     # 引数
     parser = argparse.ArgumentParser()
     parser.add_argument("--device", type=int, default=0)
@@ -58,15 +62,16 @@ def main():
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-                
+
                 # preX, preY, LiTx, LiTyの初期値に現在のマウス位置を代入 1回だけ実行
-                if i==0:
-                    preX=hand_landmarks.landmark[8].x * image_width
-                    preY=hand_landmarks.landmark[8].y * image_height
+                if i == 0:
+                    preX = hand_landmarks.landmark[8].x * image_width
+                    preY = hand_landmarks.landmark[8].y * image_height
                     for j in range(ran):
                         LiTx.append(hand_landmarks.landmark[8].x * image_width)
-                        LiTy.append(hand_landmarks.landmark[8].y * image_height)
-                    i=+1
+                        LiTy.append(
+                            hand_landmarks.landmark[8].y * image_height)
+                    i = +1
 
                 # print('hand_landmarks:', hand_landmarks.landmark[8].x)
                 # 人差し指の先端と中指の先端間のユークリッド距離
@@ -81,7 +86,6 @@ def main():
                 Scr = (hand_landmarks.landmark[12].x * image_width - hand_landmarks.landmark[16].x * image_width,
                        hand_landmarks.landmark[12].y * image_height - hand_landmarks.landmark[16].y * image_height)
                 absScr = np.linalg.norm(Scr)
-
                 # 移動量平均によるスムージング
                 # 末尾に追加
                 LiTx.append(hand_landmarks.landmark[8].x * image_width)
@@ -93,38 +97,67 @@ def main():
                 dx = kando * (sum(LiTx)/ran - preX)
                 dy = kando * (sum(LiTy)/ran - preY)
 
+                # フラグ
                 # click状態
                 if absCli < dis:
-                    nowCli = 1
+                    nowCli = 1  # nowCli:左クリック状態(1:click  0:non click)
                 if absCli >= dis:
                     nowCli = 0
+                # # スクロール状態
+                # if absScr < dis:
+                #     nowScr = 1  # norCli:右クリック状態(1:click  0:non click)
+                # if absScr >= dis:
+                #     nowScr = 0
+                # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
+                if np.abs(dx) > 5 and np.abs(dy) > 5:
+                    k = 0
+                if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
+                    if k == 0:      # k:クリック状態&&カーソルを動かさないの回数
+                        start = time.perf_counter()
+                        k += 1
+                    end = time.perf_counter()
+                    if end-start > 1:
+                        norCli = 1
+                else:
+                    norCli = 0
 
                 # マウス動かす
                 if absUgo >= dis:
                     if args.direction == 0:
                         mouse.move(dx, -dy)
+                        # print(dx, -dy)
                     if args.direction == 1:
                         mouse.move(dx, dy)
-                # click
+                # left click
                 if nowCli == 1 and nowCli != preCli:
                     mouse.press(Button.left)
                     douCli += 1
                     print('Click')
-                # release
+                # left click release
                 if nowCli == 0 and nowCli != preCli:
                     mouse.release(Button.left)
                     douCli += 1
+                    k = 0
                     print('Release')
+                # right click
+                if norCli == 1 and norCli != prrCli:
+                    mouse.release(Button.left)
+                    mouse.press(Button.right)
+                    mouse.release(Button.right)
+                    print("right click")
+                # scroll
+                # if nowScr == 1:
+                #    mouse.scroll(0, dy)
 
                 preX = sum(LiTx)/ran
                 preY = sum(LiTy)/ran
                 preCli = nowCli
+                prrCli = norCli
 
         cv2.imshow('NonMouse', image)
         if cv2.waitKey(5) & 0xFF == 27:
             break
     cap.release()
-
 
 if __name__ == "__main__":
     main()

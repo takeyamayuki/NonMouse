@@ -11,26 +11,27 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 
 # インストール
 
-* 普通にインストール
-   ```sh
-   $ cd ~/.../NonMouse2-main
-   $ pip install -r requirments.txt    # requirements.txtからパッケージインストール
-   ```
+### 普通にインストール
+```sh
+$ git clone https://github.com/takeyamayuki/NonMouse2
+$ cd NonMouse2
+$ pip install -r requirments.txt    # requirements.txtからパッケージインストール
+```
 
-* ローカル環境を汚したくない場合
-   ```sh
-   $ cd ~/.../NonMouse2-main
-   $ . NonMouse/bin/activate           # 仮想環境に入る
-   ```
-   `$ deactivate`で仮想環境から抜ける  
+### ローカル環境を汚したくない場合
+```sh
+$ git clone https://github.com/takeyamayuki/NonMouse2
+$ cd NonMouse2
+$ . NonMouse/bin/activate           # 仮想環境に入る
+```
+`$ deactivate`で仮想環境から抜ける  
 
 ※ macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティの項目にターミナルやVScodeなど、実行する場所を追加する必要があります。
 
 # 使い方
 ### 実行
-NonMouseフォルダーをダウンロード、解凍し、以下のスクリプトを実行
+インストールの続きから、以下のスクリプトを実行
 ```sh
-$ cd ~/.../NonMouse2-main
 $ python3 app.py
 ```
 ### 手の動き
@@ -68,7 +69,6 @@ $ python3 app.py
    ```
 これらの引数をまとめて指定できるようにシェルスクリプトにまとめました。  
 ```sh
-$ cd ~/.../NonMouse2-main
 $ chmod 755 launch-frcam.sh         # 実行権限を与える
 $ ./launch.sh                       # シェルスクリプトの実行
 ```

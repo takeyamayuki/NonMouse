@@ -23,8 +23,8 @@ def main():
     douCli = 0
     LiTx = []
     LiTy = []
-    i, k = 0, 0
-    start = float('inf')
+    i, k, h = 0, 0, 0
+    start , c_start = float('inf'), float('inf')
     # 引数
     parser = argparse.ArgumentParser()
     parser.add_argument("--device", type=int, default=0)
@@ -101,19 +101,19 @@ def main():
                 # フラグ
                 # click状態
                 if absCli < dis:
-                    nowCli = 1  # nowCli:左クリック状態(1:click  0:non click)
+                    nowCli = 1                                  # nowCli:左クリック状態(1:click  0:non click)
                 if absCli >= dis:
                     nowCli = 0
                 # # スクロール状態
                 if absScr < dis:
-                    nowScr = 1  # norCli:右クリック状態(1:click  0:non click)
+                    nowScr = 1                                  # norCli:右クリック状態(1:click  0:non click)
                 if absScr >= dis:
                     nowScr = 0
                 if np.abs(dx) > 5 and np.abs(dy) > 5:
                     k = 0
                 # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
                 if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
-                    if k == 0:      # k:クリック状態&&カーソルを動かしてない
+                    if k == 0:                                  # k:クリック状態&&カーソルを動かしてない
                         start = time.perf_counter()
                         k += 1
                     end = time.perf_counter()
@@ -121,6 +121,18 @@ def main():
                         norCli = 1
                 else:
                     norCli = 0
+                # ダブルクリック状態
+                # cend=time.perf_counter
+                # ctime=cend-cstart
+                # if nowCli==1 and ctime <0.5:
+                #     douCli=2
+                # if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
+                #     if h == 0:      # h:クリック状態&&カーソルを動かしてない
+                #         cstart = time.perf_counter()
+                #         h += 1
+                #     cend = time.perf_counter()
+                #     if cend-cstart > 1:
+                #         douCli = 2
 
                 # 動かす
                 # cursor
@@ -134,13 +146,23 @@ def main():
                 if nowCli == 1 and nowCli != preCli:
                     mouse.press(Button.left)
                     douCli += 1
+                    cstart = time.perf_counter
                     print('Click')
                 # left click release
                 if nowCli == 0 and nowCli != preCli:
                     mouse.release(Button.left)
-                    douCli += 1
                     k = 0
                     print('Release')
+                    if douCli == 0:                             # 一回目のクリックが終わったら、時間測る
+                        c_start = time.perf_counter()
+                        douCli += 1
+                    c_end = time.perf_counter()
+                    if 10*(c_end-c_start) > 5 and douCli == 1:  # 0.5秒以内にもう一回クリックしたらdouCli=2にする
+                        douCli = 2
+                # double click
+                if douCli == 2:
+                    mouse.click(Button.left, 2)
+                    douCli = 0
                 # right click
                 if norCli == 1 and norCli != prrCli:
                     mouse.release(Button.left)

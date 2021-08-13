@@ -18,9 +18,9 @@ def main():
     # タッチ距離（遠いほど小さく、近いほど大きい値にする）
     dis = 65
     preX, preY = 0, 0
-    preCli = 0      # 前回の左クリック状態
+    nowCli, preCli = 0, 0      # 現在、前回の左クリック状態
+    norCli, prrCli = 0, 0      # 現在、前回の右クリック状態
     douCli = 0
-    prrCli = 0      # 前回の右クリック状態
     LiTx = []
     LiTy = []
     i, k = 0, 0
@@ -86,6 +86,7 @@ def main():
                 Scr = (hand_landmarks.landmark[12].x * image_width - hand_landmarks.landmark[16].x * image_width,
                        hand_landmarks.landmark[12].y * image_height - hand_landmarks.landmark[16].y * image_height)
                 absScr = np.linalg.norm(Scr)
+
                 # 移動量平均によるスムージング
                 # 末尾に追加
                 LiTx.append(hand_landmarks.landmark[8].x * image_width)
@@ -104,15 +105,15 @@ def main():
                 if absCli >= dis:
                     nowCli = 0
                 # # スクロール状態
-                # if absScr < dis:
-                #     nowScr = 1  # norCli:右クリック状態(1:click  0:non click)
-                # if absScr >= dis:
-                #     nowScr = 0
-                # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
+                if absScr < dis:
+                    nowScr = 1  # norCli:右クリック状態(1:click  0:non click)
+                if absScr >= dis:
+                    nowScr = 0
                 if np.abs(dx) > 5 and np.abs(dy) > 5:
                     k = 0
+                # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
                 if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
-                    if k == 0:      # k:クリック状態&&カーソルを動かさないの回数
+                    if k == 0:      # k:クリック状態&&カーソルを動かしてない
                         start = time.perf_counter()
                         k += 1
                     end = time.perf_counter()
@@ -121,7 +122,8 @@ def main():
                 else:
                     norCli = 0
 
-                # マウス動かす
+                # 動かす
+                # cursor
                 if absUgo >= dis:
                     if args.direction == 0:
                         mouse.move(dx, -dy)
@@ -146,8 +148,9 @@ def main():
                     mouse.release(Button.right)
                     print("right click")
                 # scroll
-                # if nowScr == 1:
-                #    mouse.scroll(0, dy)
+                if nowScr == 1:
+                    mouse.scroll(0, dy/1.5)
+                    print("scroll")
 
                 preX = sum(LiTx)/ran
                 preY = sum(LiTy)/ran
@@ -158,6 +161,7 @@ def main():
         if cv2.waitKey(5) & 0xFF == 27:
             break
     cap.release()
+
 
 if __name__ == "__main__":
     main()

@@ -70,7 +70,7 @@ $ python3 app.py
    ```
 これらの引数をまとめて指定できるようにシェルスクリプトにまとめました。  
 ```sh
-$ chmod 755 launch-frcam.sh         # 実行権限を与える
+$ chmod 755 *.sh                    # .shファイルに実行権限を与える
 $ ./launch.sh                       # シェルスクリプトの実行
 ```
 launch-ceiling.sh, launch-frcam.sh も同様に実行できます。

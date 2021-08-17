@@ -69,7 +69,7 @@ $ python3 app.py
     ```
 I have put these arguments into a shell script so that they can be specified together.  
 ```sh
-$ chmod 755 launch.sh               # Authorize Execution
+$ chmod 755 *.sh                    # Authorize Execution of .sh file
 $ ./launch.sh                       # Run a shell script
 ```
 You can also run launch-ceiling.sh and launch-frcam.sh in the same way.

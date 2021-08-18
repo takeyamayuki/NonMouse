@@ -5,8 +5,9 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 動作状況は[Youtube](https://youtu.be/ufvOJUTCF8M)にも公開しています。  
 (感度調整なしのver.1は[こちら](https://github.com/takeyamayuki/NonMouse))   
 
-![nonmouse twi drug-アニメーションイメージ（大）](https://user-images.githubusercontent.com/22733958/121180947-7054ef80-c89c-11eb-9c7a-42a9e1f3f02a.gif)  
-![nonmouse twi21 oe-アニメーションイメージ（大）](https://user-images.githubusercontent.com/22733958/121180967-75b23a00-c89c-11eb-82fa-4f5d9abda320.gif)  
+![github_drug](https://user-images.githubusercontent.com/22733958/129838994-f1499648-a179-4e0d-a62f-a4d983ba380a.gif)  
+
+![github_e](https://user-images.githubusercontent.com/22733958/129839012-82915bcf-10a5-49d1-8e03-e4f0def7b778.gif)  
 
 
 # インストール

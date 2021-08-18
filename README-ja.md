@@ -16,7 +16,7 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 ```sh
 $ git clone https://github.com/takeyamayuki/NonMouse
 $ cd NonMouse
-$ pip install -r requirments.txt    # requirements.txtからパッケージインストール
+$ pip install -r requirements.txt    # requirements.txtからパッケージインストール
 ```
 
 ### ローカル環境を汚したくない場合

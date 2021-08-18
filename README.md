@@ -18,7 +18,7 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 ```sh
 $ git clone https://github.com/takeyamayuki/NonMouse
 $ cd NonMouse
-$ pip install -r requirments.txt    # Install packages from requirements.txt   
+$ pip install -r requirements.txt    # Install packages from requirements.txt   
 ```
 ### If you don't want to pollute your local environment
 ```sh

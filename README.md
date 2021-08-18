@@ -6,8 +6,11 @@ It is mainly intended to be used as a cheap alternative to liquid tabs and board
 The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M)  
 (Ver.1 without sensitivity adjustment is [here](https://github.com/takeyamayuki/NonMouse))  
 
-![nonmouse twi drug-アニメーションイメージ（大）](https://user-images.githubusercontent.com/22733958/121180947-7054ef80-c89c-11eb-9c7a-42a9e1f3f02a.gif)  
-![nonmouse twi21 oe-アニメーションイメージ（大）](https://user-images.githubusercontent.com/22733958/121180967-75b23a00-c89c-11eb-82fa-4f5d9abda320.gif)  
+
+![github_drug](https://user-images.githubusercontent.com/22733958/129838867-e5b28dfc-3e7c-4064-9d17-93e24e7f7064.gif)
+
+![github_e](https://user-images.githubusercontent.com/22733958/129838897-86da6861-b3a5-4e14-98fe-400a27c894d7.gif)
+
 
 # Installation
 

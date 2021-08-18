@@ -36,6 +36,11 @@ From the continuation of the installation, run the following script.
 ```sh
 $ python3 app.py
 ```
+or
+```sh
+$ chmod 755 *.sh                    # Authorize Execution of .sh file
+$ ./launch.sh                       # Run a shell script
+```
 ### Hand Movements
 * Mouse cursor: tip of index finger  
 * Stop mouse cursor: Attach the tip of your index finger to the tip of your middle finger      

@@ -35,6 +35,11 @@ $ . NonMouse/bin/activate           # 仮想環境に入る
 ```sh
 $ python3 app.py
 ```
+もしくは、
+```sh
+$ chmod 755 *.sh                    # .shファイルに実行権限を与える
+$ ./launch.sh                       # シェルスクリプトの実行(launch.shの中身は[$ python3 app.py]です)
+```
 ### 手の動き
 * マウスカーソル: 人差し指の先端  
 * マウスカーソルの動きを止める: 人指し指の指先と中指の指先をくっつける   

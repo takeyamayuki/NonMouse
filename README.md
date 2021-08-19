@@ -42,11 +42,14 @@ $ chmod 755 *.sh                    # Authorize Execution of .sh file
 $ ./launch.sh                       # Run a shell script
 ```
 ### Hand Movements
+#### cursor
 * Mouse cursor: tip of index finger  
-* Stop mouse cursor: Attach the tip of your index finger to the tip of your middle finger      
+* Stop mouse cursor: Attach the tip of your index finger to the tip of your middle finger  
+#### left click
 * Left click: Attach the fingertips of your thumb to the second joint of your index finger
 * Left click release: Release the thumb fingertip and the second joint of the index finger  
 * Double click: Left click twice within 0.5 seconds
+#### etc
 * Right click: Hold the click state for 1 second without moving the cursor
 * Scrolling: If you put your middle and ring fingers together, you can use your index finger to scroll like on a smartphone.
 

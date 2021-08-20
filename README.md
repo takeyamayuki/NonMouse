@@ -1,42 +1,56 @@
-# NonMouse2
+# NonMouse
 日本語のREADMEは[こちら](README-ja.md)  
 
-Insubstantial mouse moved by finger.      
-![nonmouse twi drug-アニメーションイメージ（大）](https://user-images.githubusercontent.com/22733958/121180947-7054ef80-c89c-11eb-9c7a-42a9e1f3f02a.gif)  
-![nonmouse twi21 oe-アニメーションイメージ（大）](https://user-images.githubusercontent.com/22733958/121180967-75b23a00-c89c-11eb-82fa-4f5d9abda320.gif)  
+This is a Python script that uses a web camera to capture your hand, making it appear as if there is a mouse without any substance.     
+The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M)  
+(Ver.1 without sensitivity adjustment is [here](https://github.com/takeyamayuki/NonMouse))  
 
 
-This is a Python script that uses a web camera to capture your hand, making it appear as if there is a mouse without any substance. (Ver.1 without sensitivity adjustment is [here](https://github.com/takeyamayuki/NonMouse))  
-The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M)
+![github_drug](https://user-images.githubusercontent.com/22733958/129838867-e5b28dfc-3e7c-4064-9d17-93e24e7f7064.gif)
+
+![github_e](https://user-images.githubusercontent.com/22733958/129838897-86da6861-b3a5-4e14-98fe-400a27c894d7.gif)
+
 
 # Installation
 
-* Install as usual
-    ```sh
-    $ cd ~/.../NonMouse2-main
-    $ pip install -r requirments.txt    # Install packages from requirements.txt   
-    ```
-* If you don't want to pollute your local environment
-    ```sh
-    $ cd ~/.../NonMouse2-main
-    $ . NonMouse/bin/activate           # Enter the virtual environment. 
-    ```
-    Exit the virtual environment with `$ deactivate`.  
+### Install as usual
+```sh
+$ git clone https://github.com/takeyamayuki/NonMouse
+$ cd NonMouse
+$ pip install -r requirements.txt    # Install packages from requirements.txt   
+```
+### If you don't want to pollute your local environment
+```sh
+$ git clone https://github.com/takeyamayuki/NonMouse
+$ cd NonMouse
+$ . NonMouse/bin/activate           # Enter the virtual environment. 
+```
+Exit the virtual environment with `$ deactivate`.  
 
 ※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility section in System Preferences.
 
 # Usage
 ### Run
-Download the NonMouse folder, unzip it, and run the following script
+From the continuation of the installation, run the following script.
 ```sh
-$ cd ~/.../NonMouse2-main
 $ python3 app.py
 ```
+or
+```sh
+$ chmod 755 *.sh                    # Authorize Execution of .sh file
+$ ./launch.sh                       # Run a shell script
+```
 ### Hand Movements
-* The tip of the index finger corresponds to the mouse cursor.  
-* Attaching the fingertips of the index finger and the middle finger stops the mouse cursor from moving.  
-* Attaching the fingertip of the thumb to the second joint of the index finger releases the left click, releasing it releases the left click  
-* Scrolling and right-clicking are not implemented yet.
+- cursor
+    * Mouse cursor: tip of index finger  
+    * Stop mouse cursor: Attach the tip of your index finger to the tip of your middle finger  
+- left click
+    * Left click: Attach the fingertips of your thumb to the second joint of your index finger
+    * Left click release: Release the thumb fingertip and the second joint of the index finger  
+    * Double click: Left click twice within 0.5 seconds
+- etc
+    * Right click: Hold the click state for 1 second without moving the cursor
+    * Scrolling: If you put your middle and ring fingers together, you can use your index finger to scroll like on a smartphone.
 
 ### Arguments
 * If you have more than one camera installed, you can use `--device X` to select a camera (default 0,  0,1,2... can be selected)   
@@ -63,10 +77,9 @@ $ python3 app.py
     ```sh
     $ python3 app.py --kando 5
     ```
-We have put these arguments into a shell script so that they can be specified together.  
+I have put these arguments into a shell script so that they can be specified together.  
 ```sh
-$ cd ~/.../NonMouse2-main
-$ chmod 755 launch.sh               # Authorize Execution
+$ chmod 755 *.sh                    # Authorize Execution of .sh file
 $ ./launch.sh                       # Run a shell script
 ```
 You can also run launch-ceiling.sh and launch-frcam.sh in the same way.

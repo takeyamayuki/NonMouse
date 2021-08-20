@@ -41,7 +41,7 @@ $ sudo apt-get install -y \
     libopencv-imgproc-dev \ 
     libopencv-video-dev 
 ```
-共通部分+実行
+Common part + run
 ```sh
 # install other packages 
 $ git clone https://github.com/takeyamayuki/NonMouse

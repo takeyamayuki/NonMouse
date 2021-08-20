@@ -12,22 +12,50 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 
 
 # Installation
+Run the following script.
+Only the installation of mediapipe is different for each OS. If you have trouble, see the [official site](https://google.github.io/mediapipe/getting_started/install.html). The mac and linux instructions are shown below.   
 
-### Install as usual
+mac
 ```sh
+# install mediapipe
+$ brew install bazelisk 
+$ git clone https://github.com/google/mediapipe.git 
+$ cd mediapipe 
+$ brew install opencv@3 
+$ brew uninstall --ignore-dependencies glog 
+```
+linux
+```sh
+# install mediapipe
+$ sudo apt install nodejs 
+$ sudo apt install npm 
+$ sudo npm install -g @bazel/bazelisk 
+$ cd $HOME
+$ git clone https://github.com/google/mediapipe.git 
+$ cd mediapipe 
+$ sudo apt-get install -y \ 
+    libopencv-core-dev \ 
+    libopencv-highgui-dev \ 
+    libopencv-calib3d-dev \ 
+    libopencv-features2d-dev \ 
+    libopencv-imgproc-dev \ 
+    libopencv-video-dev 
+```
+共通部分+実行
+```sh
+# install other packages 
 $ git clone https://github.com/takeyamayuki/NonMouse
 $ cd NonMouse
-$ pip install -r requirements.txt    # Install packages from requirements.txt   
+$ pip install -r requirements.txt
+$ chmod 755 *.sh
+# run
+$ ./launch.sh
 ```
-### If you don't want to pollute your local environment
-```sh
-$ git clone https://github.com/takeyamayuki/NonMouse
-$ cd NonMouse
-$ . NonMouse/bin/activate           # Enter the virtual environment. 
-```
-Exit the virtual environment with `$ deactivate`.  
+
 
 ※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility section in System Preferences.
+
+
 
 # Usage
 ### Run

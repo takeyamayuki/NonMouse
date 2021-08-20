@@ -1,8 +1,7 @@
 # NonMouse
 日本語のREADMEは[こちら](README-ja.md)  
 
-This is a Python script that uses a web camera to capture your hand, making it appear as if there is a mouse without any substance.   
-It is mainly intended to be used as a cheap alternative to liquid tabs and board tabs when drawing.    
+This is a Python script that uses a web camera to capture your hand, making it appear as if there is a mouse without any substance.     
 The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M)  
 (Ver.1 without sensitivity adjustment is [here](https://github.com/takeyamayuki/NonMouse))  
 

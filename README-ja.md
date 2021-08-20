@@ -1,7 +1,6 @@
 # NonMouse
 
-Webカメラで自分の手元を写すことで、あたかも実体のないマウスがあるかのように見えるPythonスクリプトです。  
-使用用途は主に絵を書く際、液タブなどに対する安価な代替として使うことを想定しています。    
+Webカメラで自分の手元を写すことで、あたかも実体のないマウスがあるかのように見えるPythonスクリプトです。     
 動作状況は[Youtube](https://youtu.be/ufvOJUTCF8M)にも公開しています。  
 (感度調整なしのver.1は[こちら](https://github.com/takeyamayuki/NonMouse))   
 

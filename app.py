@@ -9,7 +9,6 @@ mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
-
 def main():
     # マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくする）
     kando = 1.5
@@ -39,7 +38,6 @@ def main():
     cap = cv2.VideoCapture(cap_device)
 
     hands = mp_hands.Hands(
-
         min_detection_confidence=0.7,   # 検出信頼度
         min_tracking_confidence=0.7,    # 追跡信頼度
         max_num_hands=1                 # 最大検出数

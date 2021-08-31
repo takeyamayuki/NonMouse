@@ -102,7 +102,7 @@ def main():
             # click状態
             if absCli < dis:
                 nowCli = 1          # nowCli:左クリック状態(1:click  0:non click)
-            if absCli >= dis:
+            elif absCli >= dis:
                 nowCli = 0
             if np.abs(dx) > 5 and np.abs(dy) > 5:
                 k = 0
@@ -114,7 +114,7 @@ def main():
                 end = time.perf_counter()
                 if end-start > 1:
                     norCli = 1
-            else:
+            else:           #一個上じゃないときなのに、これだと、そのもう一個上じゃないときも含めてしまう。
                 norCli = 0
 
             # 動かす
@@ -123,7 +123,7 @@ def main():
                 if args.direction == 0:
                     mouse.move(dx, -dy)
                     # print(dx, -dy)
-                if args.direction == 1:
+                elif args.direction == 1:
                     mouse.move(dx, dy)
             # left click
             if nowCli == 1 and nowCli != preCli:
@@ -143,7 +143,7 @@ def main():
                     douCli = 0
             # right click
             if norCli == 1 and norCli != prrCli:
-                mouse.release(Button.left)
+                mouse.release(Button.left)                  # 何故か必要
                 mouse.press(Button.right)
                 mouse.release(Button.right)
                 print("right click")
@@ -156,6 +156,7 @@ def main():
             preY = sum(LiTy)/ran
             preCli = nowCli
             prrCli = norCli
+
         p_e = time.perf_counter()
         fps = str(int(1/(float(p_e)-float(p_s))))
         cv2.putText(image, "camFPS:"+str(int(cap.get(cv2.CAP_PROP_FPS))), (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)

@@ -4,6 +4,7 @@ import mediapipe as mp
 import numpy as np
 import time
 import pyautogui
+import tkinter
 from pynput.mouse import Button, Controller
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
@@ -37,12 +38,28 @@ def main():
     mode = args.mode
     # Webカメラ入力
     cap = cv2.VideoCapture(cap_device)
-
+    root = tkinter.Tk()
+    root.title(u"Software Title")
+    root.geometry("400x300")
     hands = mp_hands.Hands(
         min_detection_confidence=0.7,   # 検出信頼度
         min_tracking_confidence=0.7,    # 追跡信頼度
         max_num_hands=1                 # 最大検出数
     )
+    Val1 = tkinter.BooleanVar()
+    Val2 = tkinter.BooleanVar()
+    Val3 = tkinter.BooleanVar()
+    Val1.set(False)
+    Val2.set(True)
+    Val3.set(False)
+    CheckBox1 = tkinter.Checkbutton(text=u"項目1", variable=Val1)
+    CheckBox1.pack()
+    CheckBox2 = tkinter.Checkbutton(text=u"項目2", variable=Val2)
+    CheckBox2.pack()
+    CheckBox3 = tkinter.Checkbutton(text=u"項目3", variable=Val3)
+    CheckBox3.pack()
+
+    root.mainloop()
 
     while cap.isOpened():
         p_s = time.perf_counter()

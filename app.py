@@ -9,13 +9,12 @@ mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
+
 def main():
     # マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくする）
     kando = 1.5
     # スムージング量（小さいとカーソルが小刻みに動きやすくなるが、大きいと遅延が大きくなる）
     ran = 3
-    # タッチ距離（遠いほど小さく、近いほど大きい値にする）
-    dis = 65
     preX, preY = 0, 0
     nowCli, preCli = 0, 0      # 現在、前回の左クリック状態
     norCli, prrCli = 0, 0      # 現在、前回の右クリック状態
@@ -28,11 +27,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--device", type=int, default=0)
     parser.add_argument("--direction", type=int, default=0)
-    parser.add_argument("--distance", type=int, default=65)
     parser.add_argument("--kando", type=float, default=1.5)
     args = parser.parse_args()
     cap_device = args.device
-    dis = args.distance
     kando = args.kando
     # Webカメラ入力
     cap = cv2.VideoCapture(cap_device)
@@ -51,7 +48,6 @@ def main():
         # 画像を水平方向に反転し、BGR画像をRGBに変換
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
         # 参照渡しのためにイメージを書き込み不可としてマーク
-
         image.flags.writeable = False
         results = hands.process(image)
         # 画像に手のアノテーションを描画
@@ -72,20 +68,22 @@ def main():
                     LiTx.append(hand_landmarks.landmark[8].x * image_width)
                     LiTy.append(hand_landmarks.landmark[8].y * image_height)
                 i = +1
-
+            
+            # 指相対座標の基準距離、以後mediapipeから得られた距離をこの値で割る
+            Kij = (hand_landmarks.landmark[0].x - hand_landmarks.landmark[1].x,
+                   hand_landmarks.landmark[0].y - hand_landmarks.landmark[1].y)
+            absKij = np.linalg.norm(Kij)
             # print('hand_landmarks:', hand_landmarks.landmark[8].x)
             # 人差し指の先端と中指の先端間のユークリッド距離
-            Ugo = (hand_landmarks.landmark[8].x * image_width - hand_landmarks.landmark[12].x * image_width,
-                   hand_landmarks.landmark[8].y * image_height - hand_landmarks.landmark[12].y * image_height)
-            absUgo = np.linalg.norm(Ugo)
+            Ugo = (hand_landmarks.landmark[8].x - hand_landmarks.landmark[12].x,
+                   hand_landmarks.landmark[8].y - hand_landmarks.landmark[12].y)
+            absUgo = np.linalg.norm(Ugo)/absKij
+            # print("absUgo:",absUgo)
             # 人差し指の第２関節と親指の先端間のユークリッド距離
-            Cli = (hand_landmarks.landmark[6].x * image_width - hand_landmarks.landmark[4].x * image_width,
-                   hand_landmarks.landmark[6].y * image_height - hand_landmarks.landmark[4].y * image_height)
-            absCli = np.linalg.norm(Cli)
-            # 中指の先端と薬指の先端間のユークリッド距離
-            Scr = (hand_landmarks.landmark[12].x * image_width - hand_landmarks.landmark[16].x * image_width,
-                   hand_landmarks.landmark[12].y * image_height - hand_landmarks.landmark[16].y * image_height)
-            absScr = np.linalg.norm(Scr)
+            Cli = (hand_landmarks.landmark[6].x- hand_landmarks.landmark[4].x,
+                   hand_landmarks.landmark[6].y- hand_landmarks.landmark[4].y)
+            absCli = np.linalg.norm(Cli)/absKij
+            # print("absCli:",absCli)
 
             # 移動量平均によるスムージング
             # 末尾に追加
@@ -100,13 +98,14 @@ def main():
 
             # フラグ
             # click状態
-            if absCli < dis:
+            if absCli < 0.7:
                 nowCli = 1          # nowCli:左クリック状態(1:click  0:non click)
-            elif absCli >= dis:
+            elif absCli >= 0.7:
                 nowCli = 0
             if np.abs(dx) > 5 and np.abs(dy) > 5:
-                k = 0
+                k = 0                           # 「動いている」ときk=0
             # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
+            # 「動いていない」ときでクリックされたとき
             if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
                 if k == 0:          # k:クリック状態&&カーソルを動かしてない。113, 140行目でk=0にする
                     start = time.perf_counter()
@@ -114,12 +113,13 @@ def main():
                 end = time.perf_counter()
                 if end-start > 1:
                     norCli = 1
-            else:           #一個上じゃないときなのに、これだと、そのもう一個上じゃないときも含めてしまう。
+            else:  # 一個上じゃないときなのに、これだと、そのもう一個上じゃないときも含めてしまう。
                 norCli = 0
+            # print("np.abs(dx)", np.abs(dx))
 
             # 動かす
             # cursor
-            if absUgo >= dis:
+            if absUgo >= 0.7:
                 if args.direction == 0:
                     mouse.move(dx, -dy)
                     # print(dx, -dy)
@@ -148,10 +148,10 @@ def main():
                 mouse.release(Button.right)
                 print("right click")
             # scroll
-            if absScr < dis:
-                mouse.scroll(0, dy/1.5)
-                print("scroll")
-
+            if hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y > -0.06:
+                mouse.scroll(0, -dy/3)     # 3で割る
+                print(hand_landmarks.landmark[8].y -
+                      hand_landmarks.landmark[5].y)
             preX = sum(LiTx)/ran
             preY = sum(LiTy)/ran
             preCli = nowCli
@@ -159,8 +159,10 @@ def main():
 
         p_e = time.perf_counter()
         fps = str(int(1/(float(p_e)-float(p_s))))
-        cv2.putText(image, "camFPS:"+str(int(cap.get(cv2.CAP_PROP_FPS))), (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-        cv2.putText(image, "FPS:"+fps, (20, 80), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
+        cv2.putText(image, "camFPS:"+str(int(cap.get(cv2.CAP_PROP_FPS))),
+                    (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
+        cv2.putText(image, "FPS:"+fps, (20, 80),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
 
         cv2.imshow('NonMouse', image)
         if cv2.waitKey(5) & 0xFF == 27:

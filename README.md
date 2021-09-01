@@ -78,30 +78,24 @@ $ ./launch.sh                       # Run a shell script
     * Double click: Left click twice within 0.5 seconds
 - etc
     * Right click: Hold the click state for 1 second without moving the cursor
-    * Scrolling: If you put your middle and ring fingers together, you can use your index finger to scroll like on a smartphone.
+    * Scrolling: Scroll with your index finger while rotating your index finger 90° to the side.
 
 ### Arguments
-* If you have more than one camera installed, you can use `--device X` to select a camera (default 0,  0,1,2... can be selected)   
+* `--device X` : If multiple cameras are installed, you can specify the camera (default 0 / 0,1,2... can be selected)   
     ```sh
     $ python3 app.py --device 0
     ```
-* Use `--direciton X` to specify the direction the mouse cursor moves in relation to the direction your finger moves (default 0,  0,1 can be selected).  
+* `--direciton X` : Specifies the direction in which the mouse cursor moves in response to finger movements. (default 0 / 0,1 can be selected).  
     * When using a web camera facing down: 0     
     * When using the camera that comes with the laptop: 1
     ```sh
     $ python3 app.py --direction 0
     ```
-* Define the touch distance with `--distance X` (the further the distance, the smaller the value, the closer the distance, the larger the value) (default 65, can be selected as an integer)   
-[Approximate].
-    * When the distance between the web camera and your hand is 50cm, 65
-    * When the distance between the webcam and your hand is 110cm, 50
-    ```sh
-    $ python3 app.py --distance 50
-    ```
-* Define the mouse sensitivity with `--kando X` (don't make it too large because it will shake in small increments if you make it too large) (default 1.5, selectable in decimal fraction)  
+
+* `--kando X` : You can specify the mouse sensitivity  (don't make it too large because it will shake in small increments) (default 1.5 / selectable in decimal fraction)  
 [Approximate].
     * 1.5 when the distance between the web camera and your hand is 50cm.
-    * When the distance between the webcam and your hand is 110cm, 5
+    * 5 when the distance between the webcam and your hand is 110cm 
     ```sh
     $ python3 app.py --kando 5
     ```

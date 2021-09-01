@@ -3,7 +3,7 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import time
-from numpy.testing._private.utils import jiffies
+import pyautogui
 from pynput.mouse import Button, Controller
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
@@ -26,11 +26,14 @@ def main():
     # 引数
     parser = argparse.ArgumentParser()
     parser.add_argument("--device", type=int, default=0)
+    # 0:指の移動量がマウス移動量に, 1:指の座標がディスプレイ座標に
+    parser.add_argument("--mode", type=int, default=0)
     parser.add_argument("--direction", type=int, default=0)
     parser.add_argument("--kando", type=float, default=1.5)
     args = parser.parse_args()
     cap_device = args.device
     kando = args.kando
+    mode = args.mode
     # Webカメラ入力
     cap = cv2.VideoCapture(cap_device)
 
@@ -68,7 +71,7 @@ def main():
                     LiTx.append(hand_landmarks.landmark[8].x * image_width)
                     LiTy.append(hand_landmarks.landmark[8].y * image_height)
                 i = +1
-            
+
             # 指相対座標の基準距離、以後mediapipeから得られた距離をこの値で割る
             Kij = (hand_landmarks.landmark[0].x - hand_landmarks.landmark[1].x,
                    hand_landmarks.landmark[0].y - hand_landmarks.landmark[1].y)
@@ -80,8 +83,8 @@ def main():
             absUgo = np.linalg.norm(Ugo)/absKij
             # print("absUgo:",absUgo)
             # 人差し指の第２関節と親指の先端間のユークリッド距離
-            Cli = (hand_landmarks.landmark[6].x- hand_landmarks.landmark[4].x,
-                   hand_landmarks.landmark[6].y- hand_landmarks.landmark[4].y)
+            Cli = (hand_landmarks.landmark[6].x - hand_landmarks.landmark[4].x,
+                   hand_landmarks.landmark[6].y - hand_landmarks.landmark[4].y)
             absCli = np.linalg.norm(Cli)/absKij
             # print("absCli:",absCli)
 
@@ -120,11 +123,14 @@ def main():
             # 動かす
             # cursor
             if absUgo >= 0.7:
-                if args.direction == 0:
-                    mouse.move(dx, -dy)
-                    # print(dx, -dy)
-                elif args.direction == 1:
-                    mouse.move(dx, dy)
+                if mode == 0:                   # mode0
+                    if args.direction == 0:
+                        mouse.move(dx, -dy)
+                        # print(dx, -dy)
+                    elif args.direction == 1:
+                        mouse.move(dx, dy)
+                elif mode == 1:                 # mode1
+                    pyautogui.moveTo(sum(LiTx)/ran,sum(LiTy)/ran)   # 指の座標に移動
             # left click
             if nowCli == 1 and nowCli != preCli:
                 mouse.press(Button.left)

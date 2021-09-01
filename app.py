@@ -15,6 +15,7 @@ def main():
     kando = 1.5
     # スムージング量（小さいとカーソルが小刻みに動きやすくなるが、大きいと遅延が大きくなる）
     ran = 3
+    dis = 0.7
     preX, preY = 0, 0
     nowCli, preCli = 0, 0      # 現在、前回の左クリック状態
     norCli, prrCli = 0, 0      # 現在、前回の右クリック状態
@@ -88,7 +89,7 @@ def main():
             absCli = np.linalg.norm(Cli)/absKij
             # print("absCli:",absCli)
 
-            # 移動量平均によるスムージング
+            # 人差し指の先端をカーソルに対応 && ３つ平均でスムージング
             # 末尾に追加
             LiTx.append(hand_landmarks.landmark[8].x * image_width)
             LiTy.append(hand_landmarks.landmark[8].y * image_height)
@@ -101,9 +102,9 @@ def main():
 
             # フラグ
             # click状態
-            if absCli < 0.7:
+            if absCli < dis:
                 nowCli = 1          # nowCli:左クリック状態(1:click  0:non click)
-            elif absCli >= 0.7:
+            elif absCli >= dis:
                 nowCli = 0
             if np.abs(dx) > 5 and np.abs(dy) > 5:
                 k = 0                           # 「動いている」ときk=0
@@ -122,7 +123,7 @@ def main():
 
             # 動かす
             # cursor
-            if absUgo >= 0.7:
+            if absUgo >= dis:
                 if mode == 0:                   # mode0
                     if args.direction == 0:
                         mouse.move(dx, -dy)
@@ -130,7 +131,7 @@ def main():
                     elif args.direction == 1:
                         mouse.move(dx, dy)
                 elif mode == 1:                 # mode1
-                    pyautogui.moveTo(sum(LiTx)/ran,sum(LiTy)/ran)   # 指の座標に移動
+                    pyautogui.moveTo(sum(LiTx)/ran, sum(LiTy)/ran)   # 指の座標に移動
             # left click
             if nowCli == 1 and nowCli != preCli:
                 mouse.press(Button.left)
@@ -155,7 +156,7 @@ def main():
                 print("right click")
             # scroll
             if hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y > -0.06:
-                mouse.scroll(0, -dy/3)     # 3で割る
+                mouse.scroll(0, -dy/6)     # スクロール感度:1/6にする
                 print(hand_landmarks.landmark[8].y -
                       hand_landmarks.landmark[5].y)
             preX = sum(LiTx)/ran

@@ -38,14 +38,15 @@ def main():
     mode = args.mode
     # Webカメラ入力
     cap = cv2.VideoCapture(cap_device)
-    root = tkinter.Tk()
-    root.title(u"Software Title")
-    root.geometry("400x300")
     hands = mp_hands.Hands(
         min_detection_confidence=0.7,   # 検出信頼度
         min_tracking_confidence=0.7,    # 追跡信頼度
         max_num_hands=1                 # 最大検出数
     )
+    # tkinterで引数をgui化
+    root = tkinter.Tk()
+    root.title(u"Software Title")
+    root.geometry("400x300")
     Val1 = tkinter.BooleanVar()
     Val2 = tkinter.BooleanVar()
     Val3 = tkinter.BooleanVar()
@@ -61,6 +62,7 @@ def main():
 
     root.mainloop()
 
+    # メインループ
     while cap.isOpened():
         p_s = time.perf_counter()
         success, image = cap.read()

@@ -45,11 +45,9 @@ $ sudo apt-get install -y \
 $ git clone https://github.com/takeyamayuki/NonMouse
 $ cd NonMouse
 $ pip install -r requirements.txt
-$ chmod 755 *.sh
 # 実行
-$ ./launch.sh
+$ python3 app.py
 ```
-
 ※ macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティの項目にターミナルやVScodeなど、実行する場所を追加する必要があります。
 
 # 使い方
@@ -58,6 +56,22 @@ $ ./launch.sh
 ```sh
 $ python3 app.py
 ```
+実行すると、以下の画面が出ます。
+
+<img width="412" alt="スクリーンショット 2021-09-04 午後7 03 24" src="https://user-images.githubusercontent.com/22733958/132090867-c705311a-e078-4114-be52-4991cf478da0.png">
+
+- Camera：カメラデバイスを選択してください。複数カメラが接続されている場合は、小さい番号から、順番に試してみてください。  
+
+- Mode：Normalモードと、Touchモードがあります。Touchモードは開発中です。Normalモードを使用してください。  
+
+- Direction：webカメラの上下方向が逆になる場合、Invertを選択してください。たとえば、webカメラを下に向けて、webカメラの下と自分の手の下が逆になる場合はInvertを選択します。ノートパソコンのフロントカメラを使用する場合は、Normalです。
+
+- Sensitivity：感度を設定します。あまり大きくしすぎると、マウスカーソルが小刻みに揺れるので、デフォルトの状態が最良です。
+
+設定が終わったら、continueをクリックしてください。すると、選択した設定でNonMouseが使えるようになります。
+
+<img width="1392" alt="スクリーンショット 2021-09-04 午後7 28 46" src="https://user-images.githubusercontent.com/22733958/132091539-c897226a-9d60-4344-88a1-cb87d7ab64b4.png">
+
 
 ### 手の動き
 * カーソル
@@ -71,32 +85,6 @@ $ python3 app.py
    * 右クリック: カーソルを動かさずに、クリック状態を１秒続ける
    * スクロール: 人差し指を90°回転させて横にした状態で人差し指でスクロール
 
-### 引数
-* `--device X`：カメラを複数搭載している場合、引数でカメラを選択できます(デフォルト0で0,1,2...が選択可能)  
-   ```sh
-   $ python3 app.py --device 0
-   ```
-* `--direciton X`：指の動かす向きに対するマウスカーソルの動く向きを指定できます(デフォルト0で0,1が選択可能)  
-    * webカメラを下に向けて使用する場合：0     
-    * ラップトップ付属のカメラを使用する場合：１    
-   ```sh
-   $ python3 app.py --direction 0
-   ```
-* `--kando X`：マウス感度を指定（大きくしすぎると小刻みに震えるので大きくしすぎないこと）(デフォルト1.5で、小数で選択可能)  
-[目安]
-    * webカメラと手の距離が50cmのとき、1.5
-    * webカメラと手の距離が110cmのとき、5
-   ```sh
-   $ python3 app.py --kando 5
-   ```
-これらの引数をまとめて指定できるようにシェルスクリプトにまとめました。  
-```sh
-$ chmod 755 *.sh                    # .shファイルに実行権限を与える
-$ ./launch.sh                       # シェルスクリプトの実行
-```
-launch-ceiling.sh, launch-frcam.sh も同様に実行できます。
-* launch-frcam.shはラップトップのwebカメラを使用するためのスクリプト  
-* launch-ceiling.shは天井に取り付けたwebカメラを使用するためのスクリプト
 ### プログラムの止め方
 ターミナルウィンドウがアクティブのとき、Ctrl+C  
 アプリケーションウィンドウがアクティブのときは、Escを押してください  

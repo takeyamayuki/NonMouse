@@ -1,10 +1,15 @@
 import cv2
 import mediapipe as mp
+import argparse
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
-# Webカメラ入力の場合：
-cap = cv2.VideoCapture(0)
+parser = argparse.ArgumentParser()
+parser.add_argument("--device", type=int, default=0)
+args = parser.parse_args()
+cap_device = args.device
+cap = cv2.VideoCapture(cap_device)
+
 with mp_hands.Hands(
     min_detection_confidence=0.5,
     min_tracking_confidence=0.5) as hands:

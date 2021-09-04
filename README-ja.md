@@ -58,11 +58,7 @@ $ ./launch.sh
 ```sh
 $ python3 app.py
 ```
-もしくは、
-```sh
-$ chmod 755 *.sh                    # .shファイルに実行権限を与える
-$ ./launch.sh                       # シェルスクリプトの実行(launch.shの中身は[$ python3 app.py]です)
-```
+
 ### 手の動き
 * カーソル
    * マウスカーソル: 人差し指の先端  

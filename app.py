@@ -4,16 +4,70 @@ import mediapipe as mp
 import numpy as np
 import time
 import pyautogui
-import tkinter
+import tkinter as tk
+import sys
 from pynput.mouse import Button, Controller
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
+root = tk.Tk()
+root.title(u"First Setup")
+root.geometry("300x350")
+Val1 = tk.IntVar()
+Val2 = tk.IntVar()
+Val3 = tk.IntVar()
+Val4 = tk.IntVar()
+Val4.set(15)
 
+def tk_arg():
+    global Val1, Val2, Val3, kando
+    Mode = ['Normal', 'Touch']
+    Direction = ['Normal', 'Invert']
+    # ボタンの背景色を変更
+    # def change_color( n ):
+    #     print(kando.get())
+    # Camera
+    Static1 = tk.Label(text=u'Camera').grid(row=1)
+    for i in range(3):
+        tk.Radiobutton(root,
+                       value=i,
+                       variable=Val1,
+                       text='Device{}'.format(i)
+                       ).grid(row=2, column=i*2)
+    St1 = tk.Label(text=u'     ').grid(row=3)
+    # Mode
+    Static2 = tk.Label(text=u'Mode').grid(row=4)
+    for j in range(2):
+        tk.Radiobutton(root,
+                       value=j,
+                       variable=Val2,
+                       text=Mode[j]
+                       ).grid(row=5, column=j*2)
+    St2 = tk.Label(text=u'     ').grid(row=6)
+    # Direction
+    Static3 = tk.Label(text=u'Direction').grid(row=7)
+    for k in range(2):
+        tk.Radiobutton(root,
+                       value=k,
+                       variable=Val3,
+                       text=Direction[k]
+                       ).grid(row=8, column=k*2)
+    St3 = tk.Label(text=u'     ').grid(row=9)
+    # Sensitivity
+    Static4 = tk.Label(text=u'Sensitivity').grid(row=10)
+    s1 = tk.Scale(root, orient='h',
+                  from_=1, to=100, variable=Val4
+                  ).grid(row=11, column=2)
+    St4 = tk.Label(text=u'     ').grid(row=12)
+    # continue
+    Button = tk.Button(text="continue", command=root.quit).grid(
+        row=13, column=2)
+    # 待機
+    root.mainloop()
 
 def main():
     # マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくする）
-    kando = 1.5
+    # kando = 1.5
     # スムージング量（小さいとカーソルが小刻みに動きやすくなるが、大きいと遅延が大きくなる）
     ran = 3
     dis = 0.7
@@ -26,16 +80,22 @@ def main():
     i, k = 0, 0
     start, c_start = float('inf'), float('inf')
     # 引数
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--device", type=int, default=0)
-    # 0:指の移動量がマウス移動量に, 1:指の座標がディスプレイ座標に
-    parser.add_argument("--mode", type=int, default=0)
-    parser.add_argument("--direction", type=int, default=0)
-    parser.add_argument("--kando", type=float, default=1.5)
-    args = parser.parse_args()
-    cap_device = args.device
-    kando = args.kando
-    mode = args.mode
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("--device", type=int, default=0)
+    # parser.add_argument("--mode", type=int, default=0)
+    # parser.add_argument("--direction", type=int, default=0)
+    # parser.add_argument("--kando", type=float, default=1.5)
+    # args = parser.parse_args()
+    # cap_device = args.device
+    # mode = args.mode
+    # direction =args.direction
+    # kando = args.kando
+    # tkinterで引数をgui化
+    tk_arg()
+    cap_device=Val1.get()       # 0,1,2
+    mode=Val2.get()             # 0:Normal 1:Touch
+    direction=Val3.get()        # 0:Normal 1:Invert
+    kando=Val4.get()/10         # 1~10
     # Webカメラ入力
     cap = cv2.VideoCapture(cap_device)
     hands = mp_hands.Hands(
@@ -43,25 +103,6 @@ def main():
         min_tracking_confidence=0.7,    # 追跡信頼度
         max_num_hands=1                 # 最大検出数
     )
-    # tkinterで引数をgui化
-    root = tkinter.Tk()
-    root.title(u"Software Title")
-    root.geometry("400x300")
-    Val1 = tkinter.BooleanVar()
-    Val2 = tkinter.BooleanVar()
-    Val3 = tkinter.BooleanVar()
-    Val1.set(False)
-    Val2.set(True)
-    Val3.set(False)
-    CheckBox1 = tkinter.Checkbutton(text=u"項目1", variable=Val1)
-    CheckBox1.pack()
-    CheckBox2 = tkinter.Checkbutton(text=u"項目2", variable=Val2)
-    CheckBox2.pack()
-    CheckBox3 = tkinter.Checkbutton(text=u"項目3", variable=Val3)
-    CheckBox3.pack()
-
-    root.mainloop()
-
     # メインループ
     while cap.isOpened():
         p_s = time.perf_counter()
@@ -144,10 +185,10 @@ def main():
             # cursor
             if absUgo >= dis:
                 if mode == 0:                   # mode0
-                    if args.direction == 0:
+                    if direction == 0:
                         mouse.move(dx, -dy)
                         # print(dx, -dy)
-                    elif args.direction == 1:
+                    elif direction == 1:
                         mouse.move(dx, dy)
                 elif mode == 1:                 # mode1
                     pyautogui.moveTo(sum(LiTx)/ran, sum(LiTy)/ran)   # 指の座標に移動

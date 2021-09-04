@@ -47,15 +47,11 @@ Common part + run
 $ git clone https://github.com/takeyamayuki/NonMouse
 $ cd NonMouse
 $ pip install -r requirements.txt
-$ chmod 755 *.sh
 # run
-$ ./launch.sh
+$ python3 app.py
 ```
 
-
 ※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility section in System Preferences.
-
-
 
 # Usage
 ### Run
@@ -63,11 +59,22 @@ From the continuation of the installation, run the following script.
 ```sh
 $ python3 app.py
 ```
-or
-```sh
-$ chmod 755 *.sh                    # Authorize Execution of .sh file
-$ ./launch.sh                       # Run a shell script
-```
+When you run it, you will see the following screen.
+
+<img width="412" alt="スクリーンショット 2021-09-04 午後7 03 24" src="https://user-images.githubusercontent.com/22733958/132090867-c705311a-e078-4114-be52-4991cf478da0.png">
+
+- Camera: Select your camera device. If you have multiple cameras connected, try them in order, starting with the smallest number.  
+
+- Mode: There are two modes; Normal mode and Touch mode, Touch mode is under development.  
+
+- Direction: If you want to reverse the vertical direction of the webcam, select Invert. For example, if you point the webcam down and the bottom of your hand is opposite to the bottom of the webcam, select Invert. If you are using the front camera of your laptop, select Normal.
+
+- Sensitivity: Set the sensitivity. If you set it too high, the mouse cursor will wiggle, so the default setting is best.
+
+When you are done with the settings, click continue. Then you can use NonMouse with the settings you selected.
+
+<img width="1392" alt="スクリーンショット 2021-09-04 午後7 28 46" src="https://user-images.githubusercontent.com/22733958/132091539-c897226a-9d60-4344-88a1-cb87d7ab64b4.png">
+
 ### Hand Movements
 - cursor
     * Mouse cursor: tip of index finger  
@@ -80,33 +87,6 @@ $ ./launch.sh                       # Run a shell script
     * Right click: Hold the click state for 1 second without moving the cursor
     * Scrolling: Scroll with your index finger while rotating your index finger 90° to the side.
 
-### Arguments
-* `--device X` : If multiple cameras are installed, you can specify the camera (default 0 / 0,1,2... can be selected)   
-    ```sh
-    $ python3 app.py --device 0
-    ```
-* `--direciton X` : Specifies the direction in which the mouse cursor moves in response to finger movements. (default 0 / 0,1 can be selected).  
-    * When using a web camera facing down: 0     
-    * When using the camera that comes with the laptop: 1
-    ```sh
-    $ python3 app.py --direction 0
-    ```
-
-* `--kando X` : You can specify the mouse sensitivity  (don't make it too large because it will shake in small increments) (default 1.5 / selectable in decimal fraction)  
-[Approximate].
-    * 1.5 when the distance between the web camera and your hand is 50cm.
-    * 5 when the distance between the webcam and your hand is 110cm 
-    ```sh
-    $ python3 app.py --kando 5
-    ```
-I have put these arguments into a shell script so that they can be specified together.  
-```sh
-$ chmod 755 *.sh                    # Authorize Execution of .sh file
-$ ./launch.sh                       # Run a shell script
-```
-You can also run launch-ceiling.sh and launch-frcam.sh in the same way.
-* [launch-frcam.sh](launch-frcam.sh) is a script to use a laptop web camera  
-* [launch-ceiling.sh](launch-ceiling.sh) is a script to use a ceiling-mounted webcam.
 ### Stop a program
 Press Ctrl+C, when a terminal window is active.     
 Press Esc, when an application window is active.    

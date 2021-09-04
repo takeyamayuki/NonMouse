@@ -170,13 +170,13 @@ def main():
             # 動かす
             # cursor
             if absUgo >= dis:
-                if mode == 0:                   # mode0
-                    if direction == 0:
-                        mouse.move(dx, -dy)
-                        # print(dx, -dy)
-                    elif direction == 1:
+                if mode == 0:                   # Normal Mode
+                    if direction == 0:          # Normal
                         mouse.move(dx, dy)
-                elif mode == 1:                 # mode1
+                        # print(dx, -dy)
+                    elif direction == 1:        # Invert
+                        mouse.move(dx, -dy)
+                elif mode == 1:                 # Touch Mode
                     pyautogui.moveTo(sum(LiTx)/ran, sum(LiTy)/ran)   # 指の座標に移動
             # left click
             if nowCli == 1 and nowCli != preCli:

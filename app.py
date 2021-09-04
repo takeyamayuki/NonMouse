@@ -1,31 +1,25 @@
-import argparse
 import cv2
 import mediapipe as mp
 import numpy as np
 import time
 import pyautogui
 import tkinter as tk
-import sys
 from pynput.mouse import Button, Controller
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
-root = tk.Tk()
-root.title(u"First Setup")
-root.geometry("300x350")
-Val1 = tk.IntVar()
-Val2 = tk.IntVar()
-Val3 = tk.IntVar()
-Val4 = tk.IntVar()
-Val4.set(15)
 
 def tk_arg():
-    global Val1, Val2, Val3, kando
+    root = tk.Tk()
+    root.title(u"First Setup")
+    root.geometry("300x350")
+    Val1 = tk.IntVar()
+    Val2 = tk.IntVar()
+    Val3 = tk.IntVar()
+    Val4 = tk.IntVar()
+    Val4.set(15)
     Mode = ['Normal', 'Touch']
     Direction = ['Normal', 'Invert']
-    # ボタンの背景色を変更
-    # def change_color( n ):
-    #     print(kando.get())
     # Camera
     Static1 = tk.Label(text=u'Camera').grid(row=1)
     for i in range(3):
@@ -64,6 +58,13 @@ def tk_arg():
         row=13, column=2)
     # 待機
     root.mainloop()
+    # 出力
+    cap_device = Val1.get()       # 0,1,2
+    mode = Val2.get()             # 0:Normal 1:Touch
+    direction = Val3.get()        # 0:Normal 1:Invert
+    kando = Val4.get()/10         # 1~10
+    return cap_device, mode, direction, kando
+
 
 def main():
     # マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくする）
@@ -79,23 +80,8 @@ def main():
     LiTy = []
     i, k = 0, 0
     start, c_start = float('inf'), float('inf')
-    # 引数
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("--device", type=int, default=0)
-    # parser.add_argument("--mode", type=int, default=0)
-    # parser.add_argument("--direction", type=int, default=0)
-    # parser.add_argument("--kando", type=float, default=1.5)
-    # args = parser.parse_args()
-    # cap_device = args.device
-    # mode = args.mode
-    # direction =args.direction
-    # kando = args.kando
     # tkinterで引数をgui化
-    tk_arg()
-    cap_device=Val1.get()       # 0,1,2
-    mode=Val2.get()             # 0:Normal 1:Touch
-    direction=Val3.get()        # 0:Normal 1:Invert
-    kando=Val4.get()/10         # 1~10
+    cap_device, mode, direction, kando = tk_arg()
     # Webカメラ入力
     cap = cv2.VideoCapture(cap_device)
     hands = mp_hands.Hands(

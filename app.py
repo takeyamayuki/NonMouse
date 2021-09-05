@@ -181,12 +181,12 @@ def main():
             # left click
             if nowCli == 1 and nowCli != preCli:
                 mouse.press(Button.left)
-                print('Click')
+                # print('Click')
             # left click release
             if nowCli == 0 and nowCli != preCli:
                 mouse.release(Button.left)
                 k = 0
-                print('Release')
+                # print('Release')
                 if douCli == 0:                             # 1回目のクリックが終わったら、時間測る
                     c_start = time.perf_counter()
                     douCli += 1
@@ -199,12 +199,12 @@ def main():
                 mouse.release(Button.left)                  # 何故か必要
                 mouse.press(Button.right)
                 mouse.release(Button.right)
-                print("right click")
+                # print("right click")
             # scroll
             if hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y > -0.06:
                 mouse.scroll(0, -dy/6)     # スクロール感度:1/6にする
-                print(hand_landmarks.landmark[8].y -
-                      hand_landmarks.landmark[5].y)
+                # print(hand_landmarks.landmark[8].y -
+                #       hand_landmarks.landmark[5].y)
             preX = sum(LiTx)/ran
             preY = sum(LiTy)/ran
             preCli = nowCli

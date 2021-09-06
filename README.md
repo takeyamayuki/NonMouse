@@ -63,13 +63,17 @@ When you run it, you will see the following screen.
 
 <img width="412" alt="スクリーンショット 2021-09-04 午後7 03 24" src="https://user-images.githubusercontent.com/22733958/132090867-c705311a-e078-4114-be52-4991cf478da0.png">
 
-- Camera: Select your camera device. If you have multiple cameras connected, try them in order, starting with the smallest number.  
+- Camera  
+Select your camera device. If you have multiple cameras connected, try them in order, starting with the smallest number.  
 
-- Mode: There are two modes; Normal mode and Touch mode, Touch mode is under development.  
+- Mode  
+There are two modes; Normal mode and Touch mode, Touch mode is under development.  
 
-- Direction: If you want to reverse the vertical direction of the webcam, select Invert. For example, if you point the webcam down and the bottom of your hand is opposite to the bottom of the webcam, select Invert. If you are using the front camera of your laptop, select Normal.
+- Direction  
+If you want to reverse the vertical direction of the webcam, select Invert. For example, if you point the webcam down and the bottom of your hand is opposite to the bottom of the webcam, select Invert. If you are using the front camera of your laptop, select Normal.
 
-- Sensitivity: Set the sensitivity. If you set it too high, the mouse cursor will wiggle, so the default setting is best.
+- Sensitivity  
+Set the sensitivity. If you set it too high, the mouse cursor will wiggle.
 
 When you are done with the settings, click continue. Then you can use NonMouse with the settings you selected.
 

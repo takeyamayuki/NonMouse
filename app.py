@@ -207,7 +207,7 @@ def main():
             elif direction == 1:        # Invert
                 if hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y < 0.1:
                     mouse.scroll(0, -dy/6)     # スクロール感度:1/6にする
-                    print(hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y)
+                    # print(hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y)
                     
             preX = sum(LiTx)/ran
             preY = sum(LiTy)/ran

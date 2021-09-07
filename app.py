@@ -167,7 +167,7 @@ def main():
                 end = time.perf_counter()
                 if end-start > 1:
                     norCli = 1
-            else:  # 一個上じゃないときなのに、これだと、そのもう一個上じゃないときも含めてしまう。
+            else:
                 norCli = 0
             # print("np.abs(dx)", np.abs(dx))
 

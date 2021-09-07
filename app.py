@@ -2,7 +2,6 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import time
-import pyautogui
 import tkinter as tk
 from pynput.mouse import Button, Controller
 mouse = Controller()
@@ -62,7 +61,6 @@ def tk_arg():
     # 出力
     cap_device = Val1.get()       # 0,1,2
     mode = Val2.get()             # 0:Normal 1:Touch
-    direction = Val3.get()        # 0:Normal 1:Invert
     kando = Val4.get()/10         # 1~10
     return cap_device, mode, kando
 
@@ -92,15 +90,15 @@ def main():
     # メインループ
     while cap.isOpened():
         p_s = time.perf_counter()
-        success, img = cap.read()
+        success, image = cap.read()
         if not success:
             continue
         if mode == 0:
-            image = img
+            image = image
         if mode == 1:                      # Mouse
-            image = cv2.flip(img, 0)       # 上下反転
+            image = cv2.flip(image, 0)       # 上下反転
         if mode == 2:                      # Touch
-            image = cv2.flip(img, 1)       # 左右反転
+            image = cv2.flip(image, 1)       # 左右反転
         # 画像を水平方向に反転し、BGR画像をRGBに変換
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
         # 参照渡しのためにイメージを書き込み不可としてマーク

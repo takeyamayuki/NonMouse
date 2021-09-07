@@ -9,6 +9,7 @@ mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
+
 def tk_arg():
     root = tk.Tk()
     root.title(u"First Setup")
@@ -17,9 +18,9 @@ def tk_arg():
     Val2 = tk.IntVar()
     Val3 = tk.IntVar()
     Val4 = tk.IntVar()
-    Val4.set(15)
-    Mode = ['Normal', 'Touch']
-    Direction = ['Normal', 'Invert']
+    Val4.set(15)                            # デフォルトマウス感度
+    Mode = ['Gesture', 'Mouse', 'Touch']
+    # Direction = ['Normal', 'Invert']
     # Camera
     Static1 = tk.Label(text=u'Camera').grid(row=1)
     for i in range(3):
@@ -31,22 +32,22 @@ def tk_arg():
     St1 = tk.Label(text=u'     ').grid(row=3)
     # Mode
     Static2 = tk.Label(text=u'Mode').grid(row=4)
-    for j in range(2):
+    for j in range(3):
         tk.Radiobutton(root,
                        value=j,
                        variable=Val2,
                        text=Mode[j]
                        ).grid(row=5, column=j*2)
     St2 = tk.Label(text=u'     ').grid(row=6)
-    # Direction
-    Static3 = tk.Label(text=u'Direction').grid(row=7)
-    for k in range(2):
-        tk.Radiobutton(root,
-                       value=k,
-                       variable=Val3,
-                       text=Direction[k]
-                       ).grid(row=8, column=k*2)
-    St3 = tk.Label(text=u'     ').grid(row=9)
+    # # Direction
+    # Static3 = tk.Label(text=u'Direction').grid(row=7)
+    # for k in range(2):
+    #     tk.Radiobutton(root,
+    #                    value=k,
+    #                    variable=Val3,
+    #                    text=Direction[k]
+    #                    ).grid(row=8, column=k*2)
+    # St3 = tk.Label(text=u'     ').grid(row=9)
     # Sensitivity
     Static4 = tk.Label(text=u'Sensitivity').grid(row=10)
     s1 = tk.Scale(root, orient='h',
@@ -63,14 +64,13 @@ def tk_arg():
     mode = Val2.get()             # 0:Normal 1:Touch
     direction = Val3.get()        # 0:Normal 1:Invert
     kando = Val4.get()/10         # 1~10
-    return cap_device, mode, direction, kando
+    return cap_device, mode, kando
 
 
 def main():
-    # マウス感度（大きくすると、小刻みに動きやすくなるので、同時にranも大きくする）
-    # kando = 1.5
     # スムージング量（小さいとカーソルが小刻みに動きやすくなるが、大きいと遅延が大きくなる）
     ran = 3
+    # くっつける距離の定義
     dis = 0.7
     preX, preY = 0, 0
     nowCli, preCli = 0, 0      # 現在、前回の左クリック状態
@@ -81,7 +81,7 @@ def main():
     i, k = 0, 0
     start, c_start = float('inf'), float('inf')
     # tkinterで引数をgui化
-    cap_device, mode, direction, kando = tk_arg()
+    cap_device, mode, kando = tk_arg()
     # Webカメラ入力
     cap = cv2.VideoCapture(cap_device)
     hands = mp_hands.Hands(
@@ -92,9 +92,15 @@ def main():
     # メインループ
     while cap.isOpened():
         p_s = time.perf_counter()
-        success, image = cap.read()
+        success, img = cap.read()
         if not success:
             continue
+        if mode == 0:
+            image = img
+        if mode == 1:                      # Mouse
+            image = cv2.flip(img, 0)       # 上下反転
+        if mode == 2:                      # Touch
+            image = cv2.flip(img, 1)       # 左右反転
         # 画像を水平方向に反転し、BGR画像をRGBに変換
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
         # 参照渡しのためにイメージを書き込み不可としてマーク
@@ -170,14 +176,8 @@ def main():
             # 動かす
             # cursor
             if absUgo >= dis:
-                if mode == 0:                   # Normal Mode
-                    if direction == 0:          # Normal
-                        mouse.move(dx, dy)
-                        # print(dx, -dy)
-                    elif direction == 1:        # Invert
-                        mouse.move(dx, -dy)
-                elif mode == 1:                 # Touch Mode
-                    pyautogui.moveTo(sum(LiTx)/ran, sum(LiTy)/ran)   # 指の座標に移動
+                mouse.move(dx, dy)
+                # print(dx, -dy)
             # left click
             if nowCli == 1 and nowCli != preCli:
                 mouse.press(Button.left)
@@ -201,14 +201,9 @@ def main():
                 mouse.release(Button.right)
                 # print("right click")
             # scroll
-            if direction == 0:          # Normal
-                if hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y > -0.06:
-                    mouse.scroll(0, -dy/6)     # スクロール感度:1/6にする
-            elif direction == 1:        # Invert
-                if hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y < 0.1:
-                    mouse.scroll(0, -dy/6)     # スクロール感度:1/6にする
-                    # print(hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y)
-                    
+            if hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y > -0.06:
+                mouse.scroll(0, -dy/6)     # スクロール感度:1/6にする
+
             preX = sum(LiTx)/ran
             preY = sum(LiTy)/ran
             preCli = nowCli

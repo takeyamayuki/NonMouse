@@ -60,7 +60,7 @@ def tk_arg():
     root.mainloop()
     # 出力
     cap_device = Val1.get()       # 0,1,2
-    mode = Val2.get()             # 0:Normal 1:Touch
+    mode = Val2.get()             # 0:Gesture 1:Mouse 2:Touch
     kando = Val4.get()/10         # 1~10
     return cap_device, mode, kando
 
@@ -93,11 +93,9 @@ def main():
         success, image = cap.read()
         if not success:
             continue
-        if mode == 0:
-            image = image
         if mode == 1:                      # Mouse
             image = cv2.flip(image, 0)       # 上下反転
-        if mode == 2:                      # Touch
+        elif mode == 2:                    # Touch
             image = cv2.flip(image, 1)       # 左右反転
         # 画像を水平方向に反転し、BGR画像をRGBに変換
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)

@@ -72,12 +72,12 @@ $ python3 app.py
 Gesture, Mouse, Touchモードがあります。
    - Gesture  
       - webカメラを自分に向ける or ノートパソコンの内蔵カメラを使用する。
-      - カメラに向かって、ジェスチャーのようにNonMouseの手の動きをする。
+      - カメラに向かって、ジェスチャーのようにNonMouseの[手の動き](#手の動き)をする。
       <img width="1392" alt="スクリーンショット 2021-09-04 午後7 28 46" src="https://user-images.githubusercontent.com/22733958/132091539-c897226a-9d60-4344-88a1-cb87d7ab64b4.png">
       
    - Mouse  
       - webカメラを自分の手元に向ける。
-      - 手元でNonMouseの手の動きをする。
+      - 手元でNonMouseの[手の動き](#手の動き)をする。
       <img width="1392" alt="スクリーンショット 2021-09-08 午後8 12 39" src="https://user-images.githubusercontent.com/22733958/132499605-17ec6cfb-6638-43bc-a3a7-6fb19f7b2428.png">
 
    - Touch:開発中  

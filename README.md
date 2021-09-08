@@ -79,7 +79,7 @@ There are Gesture, Mouse, and Touch modes.
 
     - Mouse    
         Point the web camera at your hand.  
-        Make a NonMouse hand motion with your hand.  
+        Make NonMouse hand movements with your hand.  
         <img width="1392" alt="スクリーンショット 2021-09-08 午後8 12 39" src="https://user-images.githubusercontent.com/22733958/132499605-17ec6cfb-6638-43bc-a3a7-6fb19f7b2428.png">
     - Touch: under development  
         Point the web camera at the display.  

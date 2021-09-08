@@ -19,7 +19,6 @@ def tk_arg():
     Val4 = tk.IntVar()
     Val4.set(15)                            # デフォルトマウス感度
     Mode = ['Gesture', 'Mouse', 'Touch']
-    # Direction = ['Normal', 'Invert']
     # Camera
     Static1 = tk.Label(text=u'Camera').grid(row=1)
     for i in range(3):
@@ -38,24 +37,15 @@ def tk_arg():
                        text=Mode[j]
                        ).grid(row=5, column=j*2)
     St2 = tk.Label(text=u'     ').grid(row=6)
-    # # Direction
-    # Static3 = tk.Label(text=u'Direction').grid(row=7)
-    # for k in range(2):
-    #     tk.Radiobutton(root,
-    #                    value=k,
-    #                    variable=Val3,
-    #                    text=Direction[k]
-    #                    ).grid(row=8, column=k*2)
-    # St3 = tk.Label(text=u'     ').grid(row=9)
     # Sensitivity
-    Static4 = tk.Label(text=u'Sensitivity').grid(row=10)
+    Static4 = tk.Label(text=u'Sensitivity').grid(row=7)
     s1 = tk.Scale(root, orient='h',
                   from_=1, to=100, variable=Val4
-                  ).grid(row=11, column=2)
-    St4 = tk.Label(text=u'     ').grid(row=12)
+                  ).grid(row=8, column=2)
+    St4 = tk.Label(text=u'     ').grid(row=9)
     # continue
     Button = tk.Button(text="continue", command=root.quit).grid(
-        row=13, column=2)
+        row=10, column=2)
     # 待機
     root.mainloop()
     # 出力
@@ -66,22 +56,18 @@ def tk_arg():
 
 
 def main():
-    # スムージング量（小さいとカーソルが小刻みに動きやすくなるが、大きいと遅延が大きくなる）
-    ran = 3
-    # くっつける距離の定義
-    dis = 0.7
+    ran = 3                 # スムージング量（小さい:カーソルが動く 大きい:遅延が大きく）
+    dis = 0.7               # くっつける距離の定義
     preX, preY = 0, 0
-    nowCli, preCli = 0, 0      # 現在、前回の左クリック状態
-    norCli, prrCli = 0, 0      # 現在、前回の右クリック状態
+    nowCli, preCli = 0, 0   # 現在、前回の左クリック状態
+    norCli, prrCli = 0, 0   # 現在、前回の右クリック状態
     douCli = 0
     LiTx = []
     LiTy = []
     i, k = 0, 0
     start, c_start = float('inf'), float('inf')
-    # tkinterで引数をgui化
-    cap_device, mode, kando = tk_arg()
-    # Webカメラ入力
-    cap = cv2.VideoCapture(cap_device)
+    cap_device, mode, kando = tk_arg()  # tkinterで引数をgui化
+    cap = cv2.VideoCapture(cap_device)  # Webカメラ入力
     hands = mp_hands.Hands(
         min_detection_confidence=0.7,   # 検出信頼度
         min_tracking_confidence=0.7,    # 追跡信頼度
@@ -93,17 +79,15 @@ def main():
         success, image = cap.read()
         if not success:
             continue
-        if mode == 1:                      # Mouse
-            image = cv2.flip(image, 0)       # 上下反転
-        elif mode == 2:                    # Touch
-            image = cv2.flip(image, 1)       # 左右反転
+        if mode == 1:                   # Mouse
+            image = cv2.flip(image, 0)  # 上下反転
+        elif mode == 2:                 # Touch
+            image = cv2.flip(image, 1)  # 左右反転
         # 画像を水平方向に反転し、BGR画像をRGBに変換
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
-        # 参照渡しのためにイメージを書き込み不可としてマーク
-        image.flags.writeable = False
+        image.flags.writeable = False   # 参照渡しのためにイメージを書き込み不可としてマーク
         results = hands.process(image)
-        # 画像に手のアノテーションを描画
-        image.flags.writeable = True
+        image.flags.writeable = True    # 画像に手のアノテーションを描画
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         image_height, image_width, _ = image.shape
 

@@ -12,7 +12,7 @@ mp_hands = mp.solutions.hands
 def tk_arg():
     root = tk.Tk()
     root.title(u"First Setup")
-    root.geometry("300x350")
+    root.geometry("280x280")
     Val1 = tk.IntVar()
     Val2 = tk.IntVar()
     Val3 = tk.IntVar()
@@ -28,21 +28,21 @@ def tk_arg():
                        text='Device{}'.format(i)
                        ).grid(row=2, column=i*2)
     St1 = tk.Label(text=u'     ').grid(row=3)
+    # Sensitivity
+    Static4 = tk.Label(text=u'Sensitivity').grid(row=4)
+    s1 = tk.Scale(root, orient='h',
+                  from_=1, to=100, variable=Val4
+                  ).grid(row=5, column=2)
+    St4 = tk.Label(text=u'     ').grid(row=6)
     # Mode
-    Static2 = tk.Label(text=u'Mode').grid(row=4)
+    Static2 = tk.Label(text=u'Mode').grid(row=7)
     for j in range(3):
         tk.Radiobutton(root,
                        value=j,
                        variable=Val2,
                        text=Mode[j]
-                       ).grid(row=5, column=j*2)
-    St2 = tk.Label(text=u'     ').grid(row=6)
-    # Sensitivity
-    Static4 = tk.Label(text=u'Sensitivity').grid(row=7)
-    s1 = tk.Scale(root, orient='h',
-                  from_=1, to=100, variable=Val4
-                  ).grid(row=8, column=2)
-    St4 = tk.Label(text=u'     ').grid(row=9)
+                       ).grid(row=8, column=j*2)
+    St2 = tk.Label(text=u'     ').grid(row=9)
     # continue
     Button = tk.Button(text="continue", command=root.quit).grid(
         row=10, column=2)
@@ -131,11 +131,13 @@ def main():
             # カメラ座標をマウス移動量に変換
             dx = kando * (sum(LiTx)/ran - preX)
             dy = kando * (sum(LiTy)/ran - preY)
-
+            
             # フラグ
             # click状態
             if absCli < dis:
                 nowCli = 1          # nowCli:左クリック状態(1:click  0:non click)
+                cv2.circle(image, (int(hand_landmarks.landmark[4].x * image_width), int(
+                    hand_landmarks.landmark[4].y * image_height)), 35, (0, 250, 250), thickness=5, lineType=cv2.LINE_8, shift=0)
             elif absCli >= dis:
                 nowCli = 0
             if np.abs(dx) > 5 and np.abs(dy) > 5:
@@ -149,6 +151,8 @@ def main():
                 end = time.perf_counter()
                 if end-start > 1:
                     norCli = 1
+                    cv2.circle(image, (int(hand_landmarks.landmark[4].x * image_width), int(
+                    hand_landmarks.landmark[4].y * image_height)), 35, (0, 0, 250), thickness=5, lineType=cv2.LINE_8, shift=0)
             else:
                 norCli = 0
             # print("np.abs(dx)", np.abs(dx))
@@ -157,7 +161,8 @@ def main():
             # cursor
             if absUgo >= dis:
                 mouse.move(dx, dy)
-                # print(dx, -dy)
+                cv2.circle(image, (int(hand_landmarks.landmark[8].x * image_width), int(
+                    hand_landmarks.landmark[8].y * image_height)), 35, (250, 0, 0), thickness=5, lineType=cv2.LINE_8, shift=0)
             # left click
             if nowCli == 1 and nowCli != preCli:
                 mouse.press(Button.left)

@@ -9,11 +9,32 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 
 # Installation
 ## 1.Run as executable file. 
-- Windows
+Download the binary that matches your OS from the release. Then unzip it and follow the steps below.
+### Windows
+![image](https://user-images.githubusercontent.com/22733958/132952932-a0001c1b-b28b-44be-a7bd-30755ae8ca94.png)  
+Run NonMouse.exe
 
-- Mac
+### Mac  
+<img width="400" alt="スクリーンショット 2021-09-12 午前0 21 58" src="https://user-images.githubusercontent.com/22733958/132952856-21526499-14c0-4548-8b9d-17235373bfd0.png">  
 
-- Linux
+Run NonMouse, then the following screen will appear, click OK.
+<img width="372" alt="スクリーンショット 2021-09-11 午後11 56 39" src="https://user-images.githubusercontent.com/22733958/132952245-36befc8c-d751-4665-980e-a2fd2d5c2424.png">
+
+Next, go to System Preferences, go to "Security and Privacy," open the "General" section, and click "Open As..." at the bottom.
+<img width="780" alt="スクリーンショット 2021-09-11 午後11 56 56" src="https://user-images.githubusercontent.com/22733958/132952272-0850fcd2-498a-45dd-a046-257742ff2adb.png">
+
+When the following screen appears, click "Open".
+<img width="372" alt="スクリーンショット 2021-09-11 午後11 57 08" src="https://user-images.githubusercontent.com/22733958/132952293-72de3d98-4164-425e-a479-d2b423d4e428.png">
+
+This still doesn't allow the app to access the camera and mouse cursor, so I went to System Preferences and under "Privacy" in "Security and Privacy", in the "Accessibility" and "Camera" sections, I added a terminal as shown below.
+
+<img width="780" alt="スクリーンショット 2021-09-12 午前0 02 20" src="https://user-images.githubusercontent.com/22733958/132952303-60625f12-ab31-4480-a0f9-31e5bb302333.png">
+<img width="780" alt="スクリーンショット 2021-09-12 午前0 02 31" src="https://user-images.githubusercontent.com/22733958/132952309-e400f479-c082-456f-a82c-bd71f5ba15a9.png">  
+The first step is to follow the instructions above, and the next is just a click away.
+
+### Linux
+![Screenshot from 2021-09-12 00-36-46](https://user-images.githubusercontent.com/22733958/132953337-cf808fd8-0bf6-4cbc-9b9f-fb80268bd060.png)  
+Run NonMouse in the folder. However, at the moment, it only gives about 10 fps, so I recommend running it as python.
 ## 2.Run as python
 Run the following script.
 Only the installation of mediapipe is different for each OS. If you have trouble, see the [official site](https://google.github.io/mediapipe/getting_started/install.html). The mac and linux instructions are shown below.   

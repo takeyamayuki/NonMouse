@@ -2,4 +2,3 @@ mediapipe==0.8.5
 numpy==1.20.3
 opencv-python==4.5.2.54
 pynput==1.6.8
-PyAutoGUI==0.9.53

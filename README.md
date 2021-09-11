@@ -59,25 +59,34 @@ From the continuation of the installation, run the following script.
 ```sh
 $ python3 app.py
 ```
-When you run it, you will see the following screen.
+When you run it, you will see the following screen.  
+In the following screen, you will first set the camera, sensitivity, and mode.
 
-<img width="412" alt="スクリーンショット 2021-09-04 午後7 03 24" src="https://user-images.githubusercontent.com/22733958/132090867-c705311a-e078-4114-be52-4991cf478da0.png">
+<img width="392" alt="スクリーンショット 2021-09-08 午後8 19 35" src="https://user-images.githubusercontent.com/22733958/132500418-569f03e8-7b18-454e-adf3-a896ed18333c.png">
 
 - Camera  
 Select your camera device. If you have multiple cameras connected, try them in order, starting with the smallest number.  
 
-- Mode  
-There are two modes; Normal mode and Touch mode, Touch mode is under development.  
-
-- Direction  
-If you want to reverse the vertical direction of the webcam, select Invert. For example, if you point the webcam down and the bottom of your hand is opposite to the bottom of the webcam, select Invert. If you are using the front camera of your laptop, select Normal.
-
 - Sensitivity  
 Set the sensitivity. If you set it too high, the mouse cursor will wiggle.
 
+- Mode  
+There are Gesture, Mouse, and Touch modes.
+    - Gesture    
+        Point the web camera at yourself or use the built-in camera of your laptop.  
+        Make NonMouse hand movements like a gesture toward the camera.
+        <img width="1392" alt="スクリーンショット 2021-09-04 午後7 28 46" src="https://user-images.githubusercontent.com/22733958/132091539-c897226a-9d60-4344-88a1-cb87d7ab64b4.png">
+
+    - Mouse    
+        Point the web camera at your hand.  
+        Make NonMouse hand movements with your hand.  
+        <img width="1392" alt="スクリーンショット 2021-09-08 午後8 12 39" src="https://user-images.githubusercontent.com/22733958/132499605-17ec6cfb-6638-43bc-a3a7-6fb19f7b2428.png">
+    - Touch: under development  
+        Point the web camera at the display.  
+        When you select this option, you will first be prompted to select the four corners of the display, and if you follow the instructions, the tip of your index finger will be recognized as the absolute position on the display.
+
 When you are done with the settings, click continue. Then you can use NonMouse with the settings you selected.
 
-<img width="1392" alt="スクリーンショット 2021-09-04 午後7 28 46" src="https://user-images.githubusercontent.com/22733958/132091539-c897226a-9d60-4344-88a1-cb87d7ab64b4.png">
 
 ### Hand Movements
 - cursor
@@ -94,3 +103,4 @@ When you are done with the settings, click continue. Then you can use NonMouse w
 ### Stop a program
 Press Ctrl+C, when a terminal window is active.     
 Press Esc, when an application window is active.    
+The window will not disappear even if you press the "X" button on the window.

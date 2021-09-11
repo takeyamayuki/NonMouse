@@ -10,11 +10,23 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 # インストール
 実行可能形式ファイルをリリースしました。
 ## 1.実行可能形式ファイルとして実行
-- Windows
+### Windows
 
-- Mac
+### Mac
+<img width="410" alt="スクリーンショット 2021-09-11 午後11 45 35" src="https://user-images.githubusercontent.com/22733958/132951664-d442bc2f-dad9-4f85-880f-1277ef5a3ec1.png">
+を実行。すると、以下の画面が出るので、OKをクリック
+<img width="372" alt="スクリーンショット 2021-09-11 午後11 56 39" src="https://user-images.githubusercontent.com/22733958/132952245-36befc8c-d751-4665-980e-a2fd2d5c2424.png">
+次に、システム環境設定から「セキリュティとプライバシー」の「一般」の項目を開いて、一番下の「このまま開く」をクリック
+<img width="780" alt="スクリーンショット 2021-09-11 午後11 56 56" src="https://user-images.githubusercontent.com/22733958/132952272-0850fcd2-498a-45dd-a046-257742ff2adb.png">
+以下の画面が出るので、「開く」をクリック
+<img width="372" alt="スクリーンショット 2021-09-11 午後11 57 08" src="https://user-images.githubusercontent.com/22733958/132952293-72de3d98-4164-425e-a479-d2b423d4e428.png">
 
-- Linux
+これでも、アプリがカメラとマウスカーソルにアクセスできないので、システム環境設定から「セキリュティとプライバシー」の「プライバシー」で、「アクセシビリティ」と「カメラ」の項目において、以下のようにターミナルを追加。
+<img width="780" alt="スクリーンショット 2021-09-12 午前0 02 20" src="https://user-images.githubusercontent.com/22733958/132952303-60625f12-ab31-4480-a0f9-31e5bb302333.png">
+<img width="780" alt="スクリーンショット 2021-09-12 午前0 02 31" src="https://user-images.githubusercontent.com/22733958/132952309-e400f479-c082-456f-a82c-bd71f5ba15a9.png">
+最初に、以上の手順を踏めば次からはクリックだけで実行できます。
+
+### Linux
 
 ## 2.pythonファイルとして実行
 以下のスクリプトを実行します。

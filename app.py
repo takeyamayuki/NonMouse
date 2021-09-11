@@ -4,9 +4,11 @@ import numpy as np
 import time
 import tkinter as tk
 from pynput.mouse import Button, Controller
+#from collections import deque
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
+#click_points = deque(maxlen=4)
 
 
 def tk_arg():
@@ -55,7 +57,15 @@ def tk_arg():
     return cap_device, mode, kando
 
 
-def main():              
+# def mouse_callback(event, x, y, flags, param):
+#     global click_points
+#     if param == 2:
+#         if event == cv2.EVENT_LBUTTONDOWN:
+#             click_points.append([x, y])
+
+
+def main():
+    #global click_points
     dis = 0.7               # くっつける距離の定義
     preX, preY = 0, 0
     nowCli, preCli = 0, 0   # 現在、前回の左クリック状態
@@ -64,24 +74,30 @@ def main():
     LiTx = []
     LiTy = []
     i, k = 0, 0
-    cap_width=1280
-    cap_height=720
+    cap_width = 1280
+    cap_height = 720
+    # crop_width = 480  # 16:9
+    # crop_height = 270
     start, c_start = float('inf'), float('inf')
-    cap_device, mode, kando = tk_arg()  # tkinterで引数をgui化
-    cap = cv2.VideoCapture(cap_device)  # Webカメラ入力
+    cap_device, mode, kando = tk_arg()              # tkinterで引数をgui化
+    # callback関数定義
+    window_name = 'NonMouse'
+    cv2.namedWindow(window_name)
+    #param = mode
+    #cv2.setMouseCallback(window_name, mouse_callback, param)
+    # Webカメラ入力, 設定
+    cap = cv2.VideoCapture(cap_device)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, cap_height)
-    cfps=str(int(cap.get(cv2.CAP_PROP_FPS)))
-    if cfps == '60':
-        ran=6              # スムージング量（小さい:カーソルが小刻みに動く 大きい:遅延が大）
-    else:
-        ran=3
+    cfps = int(cap.get(cv2.CAP_PROP_FPS))
+    #click_points = deque(maxlen=4)
+    ran = int(cfps/10)                  # スムージング量（小さい:カーソルが小刻みに動く 大きい:遅延が大）
     hands = mp_hands.Hands(
         min_detection_confidence=0.7,   # 検出信頼度
         min_tracking_confidence=0.7,    # 追跡信頼度
         max_num_hands=1                 # 最大検出数
     )
-    print(ran)
+
     # メインループ
     while cap.isOpened():
         p_s = time.perf_counter()
@@ -96,12 +112,39 @@ def main():
         # 画像を水平方向に反転し、BGR画像をRGBに変換
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
         image.flags.writeable = False   # 参照渡しのためにイメージを書き込み不可としてマーク
-        results = hands.process(image)
+        results = hands.process(image)  # 処理
         image.flags.writeable = True    # 画像に手のアノテーションを描画
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         image_height, image_width, _ = image.shape
-
+        # width, height = autopy.screen.size()
+        # # 切り出し
+        # if len(click_points) == 4:
+        #     # 射影変換
+        #     pts1 = np.float32([
+        #         click_points[0],
+        #         click_points[1],
+        #         click_points[2],
+        #         click_points[3],
+        #     ])
+        #     pts2 = np.float32([
+        #         [0, 0],
+        #         [crop_width, 0],
+        #         [crop_width, crop_height],
+        #         [0, crop_height],
+        #     ])
+        #     M = cv2.getPerspectiveTransform(pts1, pts2)
+        #     extract_image = cv2.warpPerspective(image, M,
+        #                                         (crop_width, crop_height))
+        # 切り抜き描画
+        # for click_point in click_points:
+        #     cv2.circle(
+        #         image, (click_point[0], click_point[1]), 5, (0, 255, 0), -1)
+        # if len(click_points) >= 2:
+        #     cv2.drawContours(
+        #         image, [np.array(click_points)], -1, (0, 255, 0), 2)
+        
         if results.multi_hand_landmarks:
+            # 手の骨格描画
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
@@ -132,16 +175,15 @@ def main():
             # print("absCli:",absCli)
 
             # 人差し指の先端をカーソルに対応 && ３つ平均でスムージング
-            # 末尾に追加
-            LiTx.append(hand_landmarks.landmark[8].x)
+            LiTx.append(hand_landmarks.landmark[8].x)   # 末尾に追加
             LiTy.append(hand_landmarks.landmark[8].y)
-            if len(LiTx) > ran:
-                LiTx.pop(0)         # 先頭を削除
+            if len(LiTx) > ran:                         # ranを超えたら
+                LiTx.pop(0)                             # 先頭を削除
                 LiTy.pop(0)
-            # カメラ座標をマウス移動量に変換        平均化：image_width掛ける前に平均化するべきでは？ 
+            # カメラ座標をマウス移動量に変換
             dx = kando * (sum(LiTx)/ran - preX) * image_width
             dy = kando * (sum(LiTy)/ran - preY) * image_height
-            
+
             # フラグ
             # click状態
             if absCli < dis:
@@ -150,11 +192,10 @@ def main():
                     hand_landmarks.landmark[8].y * image_height)), 20, (0, 250, 250), thickness=5, lineType=cv2.LINE_8, shift=0)
             elif absCli >= dis:
                 nowCli = 0
-            if np.abs(dx) > 5 and np.abs(dy) > 5:
+            if np.abs(dx) > 3 and np.abs(dy) > 3:
                 k = 0                           # 「動いている」ときk=0
             # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
-            # 「動いていない」ときでクリックされたとき
-            if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
+            if nowCli == 1 and np.abs(dx) < 3 and np.abs(dy) < 3:   # 「動いていない」ときでクリックされたとき
                 if k == 0:          # k:クリック状態&&カーソルを動かしてない。113, 140行目でk=0にする
                     start = time.perf_counter()
                     k += 1
@@ -162,7 +203,7 @@ def main():
                 if end-start > 1:
                     norCli = 1
                     cv2.circle(image, (int(hand_landmarks.landmark[8].x * image_width), int(
-                    hand_landmarks.landmark[8].y * image_height)), 20, (0, 0, 250), thickness=5, lineType=cv2.LINE_8, shift=0)
+                        hand_landmarks.landmark[8].y * image_height)), 20, (0, 0, 250), thickness=5, lineType=cv2.LINE_8, shift=0)
             else:
                 norCli = 0
             # print("np.abs(dx)", np.abs(dx))
@@ -206,12 +247,11 @@ def main():
 
         p_e = time.perf_counter()
         fps = str(int(1/(float(p_e)-float(p_s))))
-        cv2.putText(image, "camFPS:"+cfps,
+        cv2.putText(image, "camFPS:"+str(cfps),
                     (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         cv2.putText(image, "FPS:"+fps, (20, 80),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-
-        cv2.imshow('NonMouse', image)
+        cv2.imshow(window_name, image)
         if cv2.waitKey(5) & 0xFF == 27:
             break
     cap.release()

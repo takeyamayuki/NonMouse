@@ -5,3 +5,4 @@ venv/
 app.spec
 dist-mac/
 dist-win/
+dist-linux/

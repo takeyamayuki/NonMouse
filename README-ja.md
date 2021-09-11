@@ -24,11 +24,14 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 <img width="372" alt="スクリーンショット 2021-09-11 午後11 57 08" src="https://user-images.githubusercontent.com/22733958/132952293-72de3d98-4164-425e-a479-d2b423d4e428.png">
 
 これでも、アプリがカメラとマウスカーソルにアクセスできないので、システム環境設定から「セキリュティとプライバシー」の「プライバシー」で、「アクセシビリティ」と「カメラ」の項目において、以下のようにターミナルを追加。
+
 <img width="780" alt="スクリーンショット 2021-09-12 午前0 02 20" src="https://user-images.githubusercontent.com/22733958/132952303-60625f12-ab31-4480-a0f9-31e5bb302333.png">
 <img width="780" alt="スクリーンショット 2021-09-12 午前0 02 31" src="https://user-images.githubusercontent.com/22733958/132952309-e400f479-c082-456f-a82c-bd71f5ba15a9.png">  
 最初に、以上の手順を踏めば次からはクリックだけで実行できます。
 
 ### Linux
+![Screenshot from 2021-09-12 00-36-46](https://user-images.githubusercontent.com/22733958/132953337-cf808fd8-0bf6-4cbc-9b9f-fb80268bd060.png)  
+フォルダー内のNonMouseを実行。ただ、いまのところ、10fps程度しか出ないので、pythonとして実行することをおすすめします。
 
 ## 2.pythonファイルとして実行
 以下のスクリプトを実行します。

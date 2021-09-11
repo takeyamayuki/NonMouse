@@ -17,34 +17,33 @@ def tk_arg():
     root.geometry("280x280")
     Val1 = tk.IntVar()
     Val2 = tk.IntVar()
-    Val3 = tk.IntVar()
     Val4 = tk.IntVar()
     Val4.set(30)                            # デフォルトマウス感度
     Mode = ['Gesture', 'Mouse', 'Touch']
-    # Camera
-    Static1 = tk.Label(text=u'Camera').grid(row=1)
-    for i in range(3):
-        tk.Radiobutton(root,
-                       value=i,
-                       variable=Val1,
-                       text='Device{}'.format(i)
-                       ).grid(row=2, column=i*2)
-    St1 = tk.Label(text=u'     ').grid(row=3)
-    # Sensitivity
-    Static4 = tk.Label(text=u'Sensitivity').grid(row=4)
-    s1 = tk.Scale(root, orient='h',
-                  from_=1, to=100, variable=Val4
-                  ).grid(row=5, column=2)
-    St4 = tk.Label(text=u'     ').grid(row=6)
     # Mode
-    Static2 = tk.Label(text=u'Mode').grid(row=7)
+    Static2 = tk.Label(text=u'Mode').grid(row=1)
     for j in range(3):
         tk.Radiobutton(root,
                        value=j,
                        variable=Val2,
                        text=Mode[j]
-                       ).grid(row=8, column=j*2)
-    St2 = tk.Label(text=u'     ').grid(row=9)
+                       ).grid(row=2, column=j*2)
+    St2 = tk.Label(text=u'     ').grid(row=3)
+    # Camera
+    Static1 = tk.Label(text=u'Camera').grid(row=4)
+    for i in range(3):
+        tk.Radiobutton(root,
+                       value=i,
+                       variable=Val1,
+                       text='Device{}'.format(i)
+                       ).grid(row=5, column=i*2)
+    St1 = tk.Label(text=u'     ').grid(row=6)
+    # Sensitivity
+    Static4 = tk.Label(text=u'Sensitivity').grid(row=7)
+    s1 = tk.Scale(root, orient='h',
+                  from_=1, to=100, variable=Val4
+                  ).grid(row=8, column=2)
+    St4 = tk.Label(text=u'     ').grid(row=9)
     # continue
     Button = tk.Button(text="continue", command=root.quit).grid(
         row=10, column=2)

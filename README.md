@@ -8,7 +8,7 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 
 
 # Installation
-## 1.Run a executable file. 
+## 1.Run as executable file. 
 - Windows
 
 - Mac

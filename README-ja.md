@@ -9,14 +9,14 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 
 # インストール
 実行可能形式ファイルをリリースしました。
-## 1.実行可能形式ファイルを実行
+## 1.実行可能形式ファイルとして実行
 - Windows
 
 - Mac
 
 - Linux
 
-## 2.pythonファイルを実行
+## 2.pythonファイルとして実行
 以下のスクリプトを実行します。
 mediapipeのインストールだけ、OS毎に異なります。困ったら、[公式サイト](https://google.github.io/mediapipe/getting_started/install.html)を見てください。macとlinuxのやり方は、以下に示します。  
 mac

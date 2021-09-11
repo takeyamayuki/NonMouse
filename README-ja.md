@@ -6,7 +6,6 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 
 ![github_e](https://user-images.githubusercontent.com/22733958/129839012-82915bcf-10a5-49d1-8e03-e4f0def7b778.gif)  
 
-
 # インストール
 実行可能形式ファイルをリリースしました。
 ## 1.実行可能形式ファイルとして実行
@@ -30,7 +29,7 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 最初に、以上の手順を踏めば次からはクリックだけで実行できます。
 
 ### Linux
-![Screenshot from 2021-09-12 00-36-46](https://user-images.githubusercontent.com/22733958/132953337-cf808fd8-0bf6-4cbc-9b9f-fb80268bd060.png)  
+<img width="700" alt="スクリーンショット 2021-09-12 午前0 02 20" src="https://user-images.githubusercontent.com/22733958/132953337-cf808fd8-0bf6-4cbc-9b9f-fb80268bd060.png">   
 フォルダー内のNonMouseを実行。ただ、いまのところ、10fps程度しか出ないので、pythonとして実行することをおすすめします。
 
 ## 2.pythonファイルとして実行

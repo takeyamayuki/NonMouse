@@ -6,3 +6,4 @@ app.spec
 dist-mac/
 dist-win/
 dist-linux/
+.eggs/

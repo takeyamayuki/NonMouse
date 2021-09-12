@@ -33,9 +33,10 @@ Run NonMouse.exe
     
     The first step is to follow the instructions above, and the next is just a click away.  
 
-- **Linux**
-![Screenshot from 2021-09-12 00-36-46](https://user-images.githubusercontent.com/22733958/132953337-cf808fd8-0bf6-4cbc-9b9f-fb80268bd060.png)  
-Run NonMouse in the folder. However, at the moment, it only gives about 10 fps, so I recommend running it as python.
+- **Linux**  
+
+    ![Screenshot from 2021-09-12 00-36-46](https://user-images.githubusercontent.com/22733958/132953337-cf808fd8-0bf6-4cbc-9b9f-fb80268bd060.png)  
+    Run NonMouse in the folder. However, at the moment, it only gives about 10 fps, so I recommend running it as python.
 
 ## 2.Run as python
 Run the following script.

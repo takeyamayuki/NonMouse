@@ -57,6 +57,7 @@ $ python3 app.py
 ```sh
 $ python3 app.py
 ```
+もしくは、[wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E)の通りに実行可能ファイルを実行。
 
 実行すると、以下の画面が出ます。  
 以下の画面でまずはカメラ、感度、モードの設定をします。

@@ -59,6 +59,8 @@ From the continuation of the installation, run the following script.
 ```sh
 $ python3 app.py
 ```
+Alternatively, follow the [wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS) to run the executable file.
+
 When you run it, you will see the following screen.  
 In the following screen, you will first set the camera, sensitivity, and mode.
 

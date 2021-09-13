@@ -7,3 +7,4 @@ dist-mac/
 dist-win/
 dist-linux/
 .eggs/
+setup.py

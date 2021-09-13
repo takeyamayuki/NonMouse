@@ -4,11 +4,9 @@ import numpy as np
 import time
 import tkinter as tk
 from pynput.mouse import Button, Controller
-#from collections import deque
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
-#click_points = deque(maxlen=4)
 
 
 def tk_arg():
@@ -56,41 +54,38 @@ def tk_arg():
     return cap_device, mode, kando
 
 
-# def mouse_callback(event, x, y, flags, param):
-#     global click_points
-#     if param == 2:
-#         if event == cv2.EVENT_LBUTTONDOWN:
-#             click_points.append([x, y])
+def draw_circle(image, x, y, roudness, color):
+    cv2.circle(image, (int(x), int(y)), roudness, color,
+               thickness=5, lineType=cv2.LINE_8, shift=0)
+
+
+def calculate_distance_landmark(l1, l2):
+    a = np.array([l1.x, l1.y])-np.array([l2.x, l2.y])
+    distance = np.linalg.norm(a)
+    return distance
 
 
 def main():
-    #global click_points
     dis = 0.7               # くっつける距離の定義
-    preX, preY = 0, 0
-    nowCli, preCli = 0, 0   # 現在、前回の左クリック状態
-    norCli, prrCli = 0, 0   # 現在、前回の右クリック状態
-    douCli = 0
+    # 現在、前回の左クリック状態 / 現在、前回の右クリック状態 / ダブルクリック状態
+    preX = preY = nowCli = preCli = norCli = prrCli = douCli = i = k = 0
     LiTx = []
     LiTy = []
-    i, k = 0, 0
     cap_width = 1280
     cap_height = 720
-    # crop_width = 480  # 16:9
-    # crop_height = 270
     start, c_start = float('inf'), float('inf')
-    cap_device, mode, kando = tk_arg()              # tkinterで引数をgui化
-    # callback関数定義
+    # tkinterで引数をもらってくる
+    cap_device, mode, kando = tk_arg()
+    # window定義
     window_name = 'NonMouse'
     cv2.namedWindow(window_name)
-    #param = mode
-    #cv2.setMouseCallback(window_name, mouse_callback, param)
     # Webカメラ入力, 設定
     cap = cv2.VideoCapture(cap_device)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, cap_height)
     cfps = int(cap.get(cv2.CAP_PROP_FPS))
-    #click_points = deque(maxlen=4)
-    ran = int(cfps/10)                  # スムージング量（小さい:カーソルが小刻みに動く 大きい:遅延が大）
+    # スムージング量（小さい:カーソルが小刻みに動く 大きい:遅延が大）
+    ran = int(cfps/10)
     hands = mp_hands.Hands(
         min_detection_confidence=0.7,   # 検出信頼度
         min_tracking_confidence=0.7,    # 追跡信頼度
@@ -115,33 +110,7 @@ def main():
         image.flags.writeable = True    # 画像に手のアノテーションを描画
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         image_height, image_width, _ = image.shape
-        # width, height = autopy.screen.size()
-        # # 切り出し
-        # if len(click_points) == 4:
-        #     # 射影変換
-        #     pts1 = np.float32([
-        #         click_points[0],
-        #         click_points[1],
-        #         click_points[2],
-        #         click_points[3],
-        #     ])
-        #     pts2 = np.float32([
-        #         [0, 0],
-        #         [crop_width, 0],
-        #         [crop_width, crop_height],
-        #         [0, crop_height],
-        #     ])
-        #     M = cv2.getPerspectiveTransform(pts1, pts2)
-        #     extract_image = cv2.warpPerspective(image, M,
-        #                                         (crop_width, crop_height))
-        # 切り抜き描画
-        # for click_point in click_points:
-        #     cv2.circle(
-        #         image, (click_point[0], click_point[1]), 5, (0, 255, 0), -1)
-        # if len(click_points) >= 2:
-        #     cv2.drawContours(
-        #         image, [np.array(click_points)], -1, (0, 255, 0), 2)
-        
+
         if results.multi_hand_landmarks:
             # 手の骨格描画
             for hand_landmarks in results.multi_hand_landmarks:
@@ -158,20 +127,15 @@ def main():
                 i = +1
 
             # 指相対座標の基準距離、以後mediapipeから得られた距離をこの値で割る
-            Kij = (hand_landmarks.landmark[0].x - hand_landmarks.landmark[1].x,
-                   hand_landmarks.landmark[0].y - hand_landmarks.landmark[1].y)
-            absKij = np.linalg.norm(Kij)
-            # print('hand_landmarks:', hand_landmarks.landmark[8].x)
+            absKij = calculate_distance_landmark(
+                hand_landmarks.landmark[0], hand_landmarks.landmark[1])
+            # print(hand_landmarks.landmark[0])
             # 人差し指の先端と中指の先端間のユークリッド距離
-            Ugo = (hand_landmarks.landmark[8].x - hand_landmarks.landmark[12].x,
-                   hand_landmarks.landmark[8].y - hand_landmarks.landmark[12].y)
-            absUgo = np.linalg.norm(Ugo)/absKij
-            # print("absUgo:",absUgo)
+            absUgo = calculate_distance_landmark(
+                hand_landmarks.landmark[8], hand_landmarks.landmark[12]) / absKij
             # 人差し指の第２関節と親指の先端間のユークリッド距離
-            Cli = (hand_landmarks.landmark[6].x - hand_landmarks.landmark[4].x,
-                   hand_landmarks.landmark[6].y - hand_landmarks.landmark[4].y)
-            absCli = np.linalg.norm(Cli)/absKij
-            # print("absCli:",absCli)
+            absCli = calculate_distance_landmark(
+                hand_landmarks.landmark[4], hand_landmarks.landmark[6]) / absKij
 
             # 人差し指の先端をカーソルに対応 && ３つ平均でスムージング
             LiTx.append(hand_landmarks.landmark[8].x)   # 末尾に追加
@@ -187,22 +151,23 @@ def main():
             # click状態
             if absCli < dis:
                 nowCli = 1          # nowCli:左クリック状態(1:click  0:non click)
-                cv2.circle(image, (int(hand_landmarks.landmark[8].x * image_width), int(
-                    hand_landmarks.landmark[8].y * image_height)), 20, (0, 250, 250), thickness=5, lineType=cv2.LINE_8, shift=0)
+                draw_circle(image, hand_landmarks.landmark[8].x * image_width,
+                            hand_landmarks.landmark[8].y * image_height, 20, (0, 250, 250))
             elif absCli >= dis:
                 nowCli = 0
             if np.abs(dx) > 3 and np.abs(dy) > 3:
                 k = 0                           # 「動いている」ときk=0
             # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
-            if nowCli == 1 and np.abs(dx) < 3 and np.abs(dy) < 3:   # 「動いていない」ときでクリックされたとき
+            # 「動いていない」ときでクリックされたとき
+            if nowCli == 1 and np.abs(dx) < 3 and np.abs(dy) < 3:
                 if k == 0:          # k:クリック状態&&カーソルを動かしてない。113, 140行目でk=0にする
                     start = time.perf_counter()
                     k += 1
                 end = time.perf_counter()
                 if end-start > 1:
                     norCli = 1
-                    cv2.circle(image, (int(hand_landmarks.landmark[8].x * image_width), int(
-                        hand_landmarks.landmark[8].y * image_height)), 20, (0, 0, 250), thickness=5, lineType=cv2.LINE_8, shift=0)
+                    draw_circle(image, hand_landmarks.landmark[8].x * image_width,
+                                hand_landmarks.landmark[8].y * image_height, 20, (0, 0, 250))
             else:
                 norCli = 0
             # print("np.abs(dx)", np.abs(dx))
@@ -211,8 +176,8 @@ def main():
             # cursor
             if absUgo >= dis:
                 mouse.move(dx, dy)
-                cv2.circle(image, (int(hand_landmarks.landmark[8].x * image_width), int(
-                    hand_landmarks.landmark[8].y * image_height)), 8, (250, 0, 0), thickness=5, lineType=cv2.LINE_8, shift=0)
+                draw_circle(image, hand_landmarks.landmark[8].x * image_width,
+                            hand_landmarks.landmark[8].y * image_height, 8, (250, 0, 0))
             # left click
             if nowCli == 1 and nowCli != preCli:
                 mouse.press(Button.left)

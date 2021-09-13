@@ -8,10 +8,12 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 
 
 # Installation
-## 1.Run as executable file. 
+## 1. Run as executable file. 
 Download the zip file that matches your environment from the latest release. 
+<img width="1164" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/133051501-ab0c6a1c-2676-479a-a3d9-aad9ac57f9b5.png">
 
-## 2.Run as python
+
+## 2. Run as python
 Run the following script.
 Only the installation of mediapipe is different for each OS. If you have trouble, see the [official site](https://google.github.io/mediapipe/getting_started/install.html). The mac and linux instructions are shown below.   
 

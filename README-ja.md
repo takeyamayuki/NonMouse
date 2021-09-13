@@ -9,7 +9,7 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 # インストール
 実行可能形式ファイルをリリースしました。
 ## 1.実行可能形式ファイルとして実行
-こちらの[wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS)を参照してください。
+こちらの[wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E)を参照してください。
 
 ## 2.pythonファイルとして実行
 以下のスクリプトを実行します。

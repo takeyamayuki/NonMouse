@@ -7,9 +7,8 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 ![github_e](https://user-images.githubusercontent.com/22733958/129839012-82915bcf-10a5-49d1-8e03-e4f0def7b778.gif)  
 
 # インストール
-実行可能形式ファイルをリリースしました。
 ## 1.実行可能形式ファイルとして実行
-こちらの[wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E)を参照してください。
+最新のリリースから自分の環境に合ったZIPファイルをダウンロードしてください。
 
 ## 2.pythonファイルとして実行
 以下のスクリプトを実行します。
@@ -46,14 +45,12 @@ $ sudo apt-get install -y \
 $ git clone https://github.com/takeyamayuki/NonMouse
 $ cd NonMouse
 $ pip install -r requirements.txt
-# 実行
-$ python3 app.py
 ```
 ※ macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティの項目にターミナルやVScodeなど、実行する場所を追加する必要があります。
 
 # 使い方
 ## 実行
-- [wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E)の通りに実行可能ファイルを実行
+- [GitHub wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E)の通りに実行可能ファイルを実行
 
 - もしくは、インストールの続きから、以下のスクリプトを実行
    ```sh

@@ -9,7 +9,7 @@ The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M
 
 # Installation
 ## 1.Run as executable file. 
-See the wiki [here](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS)
+Download the zip file that matches your environment from the latest release. 
 
 ## 2.Run as python
 Run the following script.
@@ -47,8 +47,6 @@ Common part + run
 $ git clone https://github.com/takeyamayuki/NonMouse
 $ cd NonMouse
 $ pip install -r requirements.txt
-# run
-$ python3 app.py
 ```
 
 ※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility section in System Preferences.
@@ -56,7 +54,7 @@ $ python3 app.py
 # Usage
 ### Run
 
-- Follow the [wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS) to run the executable file.
+- Follow the [GitHub wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS) to run the executable file.
 
 - Or, run the following script, from the continuation of the installation.
     ```sh

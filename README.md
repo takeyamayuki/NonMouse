@@ -1,8 +1,10 @@
 # NonMouse
 日本語のREADMEは[こちら](README-ja.md)  
 
-This is a Python script that uses a web camera to capture your hand, making it appear as if there is a mouse without any substance.     
-The operation status is also available on [Youtube](https://youtu.be/ufvOJUTCF8M)   
+This is an application that allows you to use your hand itself as a mouse.  
+The program uses a web camera to recognize your hand and control the mouse cursor.  
+
+The video is available on [Youtube](https://youtu.be/ufvOJUTCF8M)   
 
 ![github_e](https://user-images.githubusercontent.com/22733958/129838897-86da6861-b3a5-4e14-98fe-400a27c894d7.gif)
 

@@ -7,10 +7,12 @@ Webカメラで自分の手元を写すことで、あたかも実体のない�
 ![github_e](https://user-images.githubusercontent.com/22733958/129839012-82915bcf-10a5-49d1-8e03-e4f0def7b778.gif)  
 
 # インストール
-## 1.実行可能形式ファイルとして実行
+## 1. 実行可能形式ファイルとして実行
 最新のリリースから自分の環境に合ったZIPファイルをダウンロードしてください。
+<img width="1164" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/133051109-28f82312-5090-4431-a743-954a9c8cfe3c.png">
 
-## 2.pythonファイルとして実行
+
+## 2. pythonファイルとして実行
 以下のスクリプトを実行します。
 mediapipeのインストールだけ、OS毎に異なります。困ったら、[公式サイト](https://google.github.io/mediapipe/getting_started/install.html)を見てください。macとlinuxのやり方は、以下に示します。  
 mac

@@ -1,5 +1,5 @@
 # NonMouse
-![GitHub](https://img.shields.io/github/license/takeyamayuki/nonmouse) ![zenn](https://img.shields.io/badge/zenn--stars-91-blue) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeyamayuki/nonmouse) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/takeyamayuki/nonmouse)
+![GitHub](https://img.shields.io/github/license/takeyamayuki/nonmouse) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeyamayuki/nonmouse) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/takeyamayuki/nonmouse) ![zenn](https://img.shields.io/badge/Zenn%20Likes-91-blue) 
 
 日本語のREADMEは[こちら](README-ja.md)  
 

@@ -11,7 +11,7 @@ mp_hands = mp.solutions.hands
 
 def tk_arg():
     root = tk.Tk()
-    root.title(u"First Setup")
+    root.title("First Setup")
     root.geometry("280x280")
     Val1 = tk.IntVar()
     Val2 = tk.IntVar()
@@ -19,29 +19,29 @@ def tk_arg():
     Val4.set(30)                            # デフォルトマウス感度
     Mode = ['Gesture', 'Mouse', 'Touch']
     # Mode
-    Static2 = tk.Label(text=u'Mode').grid(row=1)
+    Static2 = tk.Label(text='Mode').grid(row=1)
     for j in range(3):
         tk.Radiobutton(root,
                        value=j,
                        variable=Val2,
                        text=Mode[j]
                        ).grid(row=2, column=j*2)
-    St2 = tk.Label(text=u'     ').grid(row=3)
+    St2 = tk.Label(text='     ').grid(row=3)
     # Camera
-    Static1 = tk.Label(text=u'Camera').grid(row=4)
+    Static1 = tk.Label(text='Camera').grid(row=4)
     for i in range(3):
         tk.Radiobutton(root,
                        value=i,
                        variable=Val1,
                        text='Device{}'.format(i)
                        ).grid(row=5, column=i*2)
-    St1 = tk.Label(text=u'     ').grid(row=6)
+    St1 = tk.Label(text='     ').grid(row=6)
     # Sensitivity
-    Static4 = tk.Label(text=u'Sensitivity').grid(row=7)
+    Static4 = tk.Label(text='Sensitivity').grid(row=7)
     s1 = tk.Scale(root, orient='h',
                   from_=1, to=100, variable=Val4
                   ).grid(row=8, column=2)
-    St4 = tk.Label(text=u'     ').grid(row=9)
+    St4 = tk.Label(text='     ').grid(row=9)
     # continue
     Button = tk.Button(text="continue", command=root.quit).grid(
         row=10, column=2)
@@ -59,9 +59,9 @@ def draw_circle(image, x, y, roudness, color):
                thickness=5, lineType=cv2.LINE_8, shift=0)
 
 
-def calculate_distance_landmark(l1, l2):
-    a = np.array([l1.x, l1.y])-np.array([l2.x, l2.y])
-    distance = np.linalg.norm(a)
+def calculate_distance(l1, l2):
+    v = np.array([l1.x, l1.y])-np.array([l2.x, l2.y])
+    distance = np.linalg.norm(v)
     return distance
 
 
@@ -127,14 +127,14 @@ def main():
                 i = +1
 
             # 指相対座標の基準距離、以後mediapipeから得られた距離をこの値で割る
-            absKij = calculate_distance_landmark(
+            absKij = calculate_distance(
                 hand_landmarks.landmark[0], hand_landmarks.landmark[1])
             # print(hand_landmarks.landmark[0])
             # 人差し指の先端と中指の先端間のユークリッド距離
-            absUgo = calculate_distance_landmark(
+            absUgo = calculate_distance(
                 hand_landmarks.landmark[8], hand_landmarks.landmark[12]) / absKij
             # 人差し指の第２関節と親指の先端間のユークリッド距離
-            absCli = calculate_distance_landmark(
+            absCli = calculate_distance(
                 hand_landmarks.landmark[4], hand_landmarks.landmark[6]) / absKij
 
             # 人差し指の先端をカーソルに対応 && ３つ平均でスムージング

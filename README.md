@@ -1,4 +1,6 @@
 # NonMouse
+![GitHub](https://img.shields.io/github/license/takeyamayuki/nonmouse) ![zenn](https://img.shields.io/badge/zenn--stars-91-blue) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeyamayuki/nonmouse) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/takeyamayuki/nonmouse)
+
 日本語のREADMEは[こちら](README-ja.md)  
 
 This is an application that allows you to use your hand itself as a mouse.  

@@ -100,7 +100,7 @@ def main():
             continue
         if mode == 1:                   # Mouse
             image = cv2.flip(image, 0)  # 上下反転
-        elif mode == 2:                 # Touch
+        if mode == 2:                 # Touch
             image = cv2.flip(image, 1)  # 左右反転
 
         # 画像を水平方向に反転し、BGR画像をRGBに変換
@@ -110,7 +110,7 @@ def main():
         image.flags.writeable = True    # 画像に手のアノテーションを描画
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         image_height, image_width, _ = image.shape
-        
+
         if results.multi_hand_landmarks:
             # 手の骨格描画
             for hand_landmarks in results.multi_hand_landmarks:
@@ -216,9 +216,13 @@ def main():
                     (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         cv2.putText(image, "FPS:"+fps, (20, 80),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-        dst = cv2.resize(image, dsize=None, fx=0.5, fy=0.5)         # HDの1/2で表示
+        dst = cv2.resize(image, dsize=None, fx=0.4, fy=0.4)         # HDの1/2で表示
         cv2.imshow(window_name, dst)
-        if cv2.waitKey(5) & 0xFF == 27:
+        if cv2.waitKey(1) & 0xFF == 27:
+            break
+        # key = cv2.waitKey(1)
+        # prop_val = cv2.getWindowProperty('dst', cv2.WND_PROP_ASPECT_RATIO)
+        if cv2.getWindowProperty("dst", cv2.WND_PROP_VISIBLE) == 0:
             break
     cap.release()
 

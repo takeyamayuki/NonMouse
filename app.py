@@ -87,8 +87,8 @@ def main():
     # スムージング量（小さい:カーソルが小刻みに動く 大きい:遅延が大）
     ran = int(cfps/10)
     hands = mp_hands.Hands(
-        min_detection_confidence=0.7,   # 検出信頼度
-        min_tracking_confidence=0.7,    # 追跡信頼度
+        min_detection_confidence=0.8,   # 検出信頼度
+        min_tracking_confidence=0.8,    # 追跡信頼度
         max_num_hands=1                 # 最大検出数
     )
 
@@ -110,13 +110,14 @@ def main():
         image.flags.writeable = True    # 画像に手のアノテーションを描画
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         image_height, image_width, _ = image.shape
-
+        
         if results.multi_hand_landmarks:
             # 手の骨格描画
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
+            # print(hand_landmarks.landmark[0])
             # preX, preY, LiTx, LiTyの初期値に現在のマウス位置を代入 1回だけ実行
             if i == 0:
                 preX = hand_landmarks.landmark[8].x
@@ -215,7 +216,8 @@ def main():
                     (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         cv2.putText(image, "FPS:"+fps, (20, 80),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-        cv2.imshow(window_name, image)
+        dst = cv2.resize(image, dsize=None, fx=0.5, fy=0.5)         # HDの1/2で表示
+        cv2.imshow(window_name, dst)
         if cv2.waitKey(5) & 0xFF == 27:
             break
     cap.release()

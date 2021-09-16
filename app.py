@@ -43,7 +43,7 @@ def tk_arg():
                   ).grid(row=8, column=2)
     St4 = tk.Label(text='     ').grid(row=9)
     # continue
-    Button = tk.Button(text="continue", command=root.quit).grid(
+    Button = tk.Button(text="continue", command=root.destroy).grid(
         row=10, column=2)
     # 待機
     root.mainloop()
@@ -71,6 +71,7 @@ def main():
     preX = preY = nowCli = preCli = norCli = prrCli = douCli = i = k = 0
     LiTx = []
     LiTy = []
+    nowUgo = 1
     cap_width = 1280
     cap_height = 720
     start, c_start = float('inf'), float('inf')
@@ -175,7 +176,7 @@ def main():
 
             # 動かす
             # cursor
-            if absUgo >= dis:
+            if absUgo >= dis and nowUgo == 1:
                 mouse.move(dx, dy)
                 draw_circle(image, hand_landmarks.landmark[8].x * image_width,
                             hand_landmarks.landmark[8].y * image_height, 8, (250, 0, 0))
@@ -204,6 +205,11 @@ def main():
             # scroll
             if hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y > -0.06:
                 mouse.scroll(0, -dy/6)     # スクロール感度:1/6にする
+                draw_circle(image, hand_landmarks.landmark[8].x * image_width,
+                            hand_landmarks.landmark[8].y * image_height, 20, (0, 0, 0))
+                nowUgo = 0
+            else:
+                nowUgo = 1
 
             preX = sum(LiTx)/ran
             preY = sum(LiTy)/ran
@@ -218,11 +224,7 @@ def main():
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         dst = cv2.resize(image, dsize=None, fx=0.4, fy=0.4)         # HDの1/2で表示
         cv2.imshow(window_name, dst)
-        if cv2.waitKey(1) & 0xFF == 27:
-            break
-        # key = cv2.waitKey(1)
-        # prop_val = cv2.getWindowProperty('dst', cv2.WND_PROP_ASPECT_RATIO)
-        if cv2.getWindowProperty("dst", cv2.WND_PROP_VISIBLE) == 0:
+        if (cv2.waitKey(1) & 0xFF == 27) or (cv2.getWindowProperty("dst", cv2.WND_PROP_VISIBLE) == 0):
             break
     cap.release()
 

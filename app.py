@@ -101,7 +101,7 @@ def main():
             continue
         if mode == 1:                   # Mouse
             image = cv2.flip(image, 0)  # 上下反転
-        if mode == 2:                 # Touch
+        elif mode == 2:                 # Touch
             image = cv2.flip(image, 1)  # 左右反転
 
         # 画像を水平方向に反転し、BGR画像をRGBに変換
@@ -204,7 +204,7 @@ def main():
                 # print("right click")
             # scroll
             if hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y > -0.06:
-                mouse.scroll(0, -dy/6)     # スクロール感度:1/6にする
+                mouse.scroll(0, -dy/50)     # スクロール感度:1/6にする
                 draw_circle(image, hand_landmarks.landmark[8].x * image_width,
                             hand_landmarks.landmark[8].y * image_height, 20, (0, 0, 0))
                 nowUgo = 0
@@ -224,7 +224,7 @@ def main():
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         dst = cv2.resize(image, dsize=None, fx=0.4, fy=0.4)         # HDの1/2で表示
         cv2.imshow(window_name, dst)
-        if (cv2.waitKey(1) & 0xFF == 27) or (cv2.getWindowProperty("dst", cv2.WND_PROP_VISIBLE) == 0):
+        if (cv2.waitKey(1) & 0xFF == 27) or (cv2.getWindowProperty(window_name, cv2.WND_PROP_VISIBLE) == 0):
             break
     cap.release()
 

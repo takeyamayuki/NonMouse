@@ -8,3 +8,4 @@ dist-win/
 dist-linux/
 .eggs/
 setup.py
+app-mac.spec

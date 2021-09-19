@@ -8,7 +8,8 @@ from pynput.mouse import Button, Controller
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
-hotkey='ctrl+alt'
+hotkey = 'ctrl+alt'
+
 
 def tk_arg():
     root = tk.Tk()
@@ -76,7 +77,7 @@ def main(cap_device, mode, kando):
     cap_width = 1280
     cap_height = 720
     start, c_start = float('inf'), float('inf')
-    c_text=1
+    c_text = 1
     # tkinterで引数をもらってくる
     # cap_device, mode, kando = tk_arg()
     # window定義
@@ -201,7 +202,7 @@ def main(cap_device, mode, kando):
                         douCli = 0
                 # right click
                 if norCli == 1 and norCli != prrCli:
-                    #mouse.release(Button.left)                  # 何故か必要
+                    # mouse.release(Button.left)                  # 何故か必要
                     mouse.press(Button.right)
                     mouse.release(Button.right)
                     # print("right click")
@@ -218,19 +219,21 @@ def main(cap_device, mode, kando):
                 preY = sum(LiTy)/ran
                 preCli = nowCli
                 prrCli = norCli
-                c_text=0
+                c_text = 0
             else:
-                c_text=1
+                c_text = 1
+                i = 0
         p_e = time.perf_counter()
         fps = str(int(1/(float(p_e)-float(p_s))))
-        cv2.putText(image, "camFPS:"+str(cfps), (20, 40), 
+        cv2.putText(image, "camFPS:"+str(cfps), (20, 40),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         cv2.putText(image, "FPS:"+fps, (20, 80),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-        if c_text==1:
+        if c_text == 1:
             cv2.putText(image, "Push Ctrl+Alt", (800, 60),
                         cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
-        dst = cv2.resize(image, dsize=None, fx=0.4, fy=0.4)         # HDの0.4倍で表示
+        dst = cv2.resize(image, dsize=None, fx=0.4,
+                         fy=0.4)         # HDの0.4倍で表示
         cv2.imshow(window_name, dst)
         if (cv2.waitKey(1) & 0xFF == 27) or (cv2.getWindowProperty(window_name, cv2.WND_PROP_VISIBLE) == 0):
             break

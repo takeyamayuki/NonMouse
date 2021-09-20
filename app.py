@@ -120,6 +120,8 @@ def main(cap_device, mode, kando):
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+            
+            # 手の向きでモードを変える
 
             if keyboard.is_pressed(hotkey):
                 # print(hand_landmarks.landmark[0])
@@ -135,7 +137,6 @@ def main(cap_device, mode, kando):
                 # 指相対座標の基準距離、以後mediapipeから得られた距離をこの値で割る
                 absKij = calculate_distance(
                     hand_landmarks.landmark[0], hand_landmarks.landmark[1])
-                # print(hand_landmarks.landmark[0])
                 # 人差し指の先端と中指の先端間のユークリッド距離
                 absUgo = calculate_distance(
                     hand_landmarks.landmark[8], hand_landmarks.landmark[12]) / absKij
@@ -198,7 +199,7 @@ def main(cap_device, mode, kando):
                         douCli += 1
                     c_end = time.perf_counter()
                     if 10*(c_end-c_start) > 5 and douCli == 1:  # 0.5秒以内にもう一回クリックしたらダブルクリック
-                        # mouse.click(Button.left, 2)             # double click
+                        mouse.click(Button.left, 2)             # double click
                         douCli = 0
                 # right click
                 if norCli == 1 and norCli != prrCli:

@@ -14,21 +14,10 @@ hotkey = 'ctrl+alt'
 def tk_arg():
     root = tk.Tk()
     root.title("First Setup")
-    root.geometry("280x280")
+    root.geometry("260x200")
     Val1 = tk.IntVar()
-    Val2 = tk.IntVar()
     Val4 = tk.IntVar()
     Val4.set(30)                            # デフォルトマウス感度
-    Mode = ['Gesture', 'Mouse', 'Touch']
-    # Mode
-    Static2 = tk.Label(text='Mode').grid(row=1)
-    for j in range(3):
-        tk.Radiobutton(root,
-                       value=j,
-                       variable=Val2,
-                       text=Mode[j]
-                       ).grid(row=2, column=j*2)
-    St2 = tk.Label(text='     ').grid(row=3)
     # Camera
     Static1 = tk.Label(text='Camera').grid(row=4)
     for i in range(3):
@@ -51,9 +40,8 @@ def tk_arg():
     root.mainloop()
     # 出力
     cap_device = Val1.get()       # 0,1,2
-    mode = Val2.get()             # 0:Gesture 1:Mouse 2:Touch
     kando = Val4.get()/10         # 1~10
-    return cap_device, mode, kando
+    return cap_device, kando
 
 
 def draw_circle(image, x, y, roudness, color):
@@ -67,10 +55,10 @@ def calculate_distance(l1, l2):
     return distance
 
 
-def main(cap_device, mode, kando):
+def main(cap_device, kando):
     dis = 0.7               # くっつける距離の定義
     # 現在、前回の左クリック状態 / 現在、前回の右クリック状態 / ダブルクリック状態
-    preX = preY = nowCli = preCli = norCli = prrCli = douCli = i = k = 0
+    preX = preY = nowCli = preCli = norCli = prrCli = douCli = i = k = m = 0
     LiTx = []
     LiTy = []
     nowUgo = 1
@@ -95,7 +83,7 @@ def main(cap_device, mode, kando):
         min_tracking_confidence=0.8,    # 追跡信頼度
         max_num_hands=1                 # 最大検出数
     )
-
+    mode = 0
     # メインループ
     while cap.isOpened():
         p_s = time.perf_counter()
@@ -120,16 +108,50 @@ def main(cap_device, mode, kando):
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-            
-            # 手の向きでモードを変える
 
+            # 手の向きでモードを変える
+            nowLandX = hand_landmarks.landmark[4].x - \
+                hand_landmarks.landmark[20].x
+            nowLandY = hand_landmarks.landmark[12].y - \
+                hand_landmarks.landmark[0].y
+            if m == 0:
+                preLandX = nowLandX
+                preLandY = nowLandY
+                m = 1
+            if mode == 0:
+                if nowLandX > 0 and np.sign(nowLandX) != np.sign(preLandX):
+                    mode = 2  # 左右反転
+                if nowLandY > 0 and np.sign(nowLandY) != np.sign(preLandY):
+                    mode = 1  # 上下反転
+                if nowLandY < 0 and nowLandX < 0 and \
+                        (np.sign(nowLandY) != np.sign(preLandY) or np.sign(nowLandX) != np.sign(preLandX)):
+                    mode = 0
+            elif mode == 1:
+                if nowLandX > 0 and np.sign(nowLandX) != np.sign(preLandX):
+                    mode = 2  # 左右反転
+                if nowLandY < 0 and np.sign(nowLandY) != np.sign(preLandY):
+                    mode = 1  # 上下反転
+                if nowLandY > 0 and nowLandX < 0 and \
+                        (np.sign(nowLandY) != np.sign(preLandY) or np.sign(nowLandX) != np.sign(preLandX)):
+                    mode = 0
+            elif mode == 2:
+                if nowLandX < 0 and np.sign(nowLandX) != np.sign(preLandX):
+                    mode = 2  # 左右反転
+                if nowLandY > 0 and np.sign(nowLandY) != np.sign(preLandY):
+                    mode = 1  # 上下反転
+                if nowLandY < 0 and nowLandX > 0 and \
+                        (np.sign(nowLandY) != np.sign(preLandY) or np.sign(nowLandX) != np.sign(preLandX)):
+                    mode = 0
+            preLandX = nowLandX
+            preLandY = nowLandY
+            
             if keyboard.is_pressed(hotkey):
                 # print(hand_landmarks.landmark[0])
                 # preX, preY, LiTx, LiTyの初期値に現在のマウス位置を代入 1回だけ実行
                 if i == 0:
                     preX = hand_landmarks.landmark[8].x
                     preY = hand_landmarks.landmark[8].y
-                    for j in range(ran):
+                    for j in range(ran):                # range(ran)の分だけ繰り返す
                         LiTx.append(hand_landmarks.landmark[8].x)
                         LiTy.append(hand_landmarks.landmark[8].y)
                     i = +1
@@ -220,19 +242,19 @@ def main(cap_device, mode, kando):
                 preY = sum(LiTy)/ran
                 preCli = nowCli
                 prrCli = norCli
-                c_text = 0
+                c_text = 0              # push alt+ctrlなし
             else:
-                c_text = 1
-                i = 0
-        p_e = time.perf_counter()
-        fps = str(int(1/(float(p_e)-float(p_s))))
-        cv2.putText(image, "camFPS:"+str(cfps), (20, 40),
-                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-        cv2.putText(image, "FPS:"+fps, (20, 80),
-                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
+                c_text = 1              # push alt+ctrlあり
+                #i = 0
         if c_text == 1:
             cv2.putText(image, "Push Ctrl+Alt", (800, 60),
-                        cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
+                        cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
+        cv2.putText(image, "cameraFPS:"+str(cfps), (20, 40),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
+        p_e = time.perf_counter()
+        fps = str(int(1/(float(p_e)-float(p_s))))
+        cv2.putText(image, "FPS:"+fps, (20, 80),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         dst = cv2.resize(image, dsize=None, fx=0.4,
                          fy=0.4)         # HDの0.4倍で表示
         cv2.imshow(window_name, dst)
@@ -242,5 +264,5 @@ def main(cap_device, mode, kando):
 
 
 if __name__ == "__main__":
-    cap_device, mode, kando = tk_arg()
-    main(cap_device, mode, kando)
+    cap_device, kando = tk_arg()
+    main(cap_device, kando)

@@ -12,7 +12,7 @@ mp_hands = mp.solutions.hands
 def tk_arg():
     root = tk.Tk()
     root.title("First Setup")
-    root.geometry("260x200")
+    root.geometry("280x220")
     Val1 = tk.IntVar()
     Val4 = tk.IntVar()
     Val4.set(30)                            # デフォルトマウス感度

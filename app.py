@@ -118,6 +118,12 @@ def main(cap_device, kando):
                 preLandX = nowLandX
                 preLandY = nowLandY
                 m = 1
+                if nowLandX > 0:
+                    mode = 2  # 左右反転
+                if nowLandY > 0:
+                    mode = 1  # 上下反転
+                if nowLandY < 0 and nowLandX < 0:
+                    mode = 0
             if mode == 0:
                 if nowLandX > 0 and np.sign(nowLandX) != np.sign(preLandX):
                     mode = 2  # 左右反転

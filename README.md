@@ -103,7 +103,7 @@ Set the sensitivity. If set too high, the mouse cursor will shake slightly.
 
 When you are done with the settings, click continue. The camera image will then be displayed, and you can use NonMouse with the settings you selected.
 
-## 4. Hands Movements
+## 4. Hand Movements
 
 | Activate | Cursor | Left Click | Right Click | Scroll |
 | :---: | :---: |:---: |:---: |:---: |

@@ -69,7 +69,7 @@ def main(cap_device, kando):
     # Webカメラ入力, 設定
     cap = cv2.VideoCapture(cap_device)
     cfps = int(cap.get(cv2.CAP_PROP_FPS))
-    print(cfps)
+    #print(cfps)
     if cfps < 30:
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_width)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, cap_height)

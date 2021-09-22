@@ -70,26 +70,32 @@ $ pip install -r requirements.txt
 ## 設定
 実行すると、以下の画面が出ます。この画面でカメラ、感度の設定をします。
 
-![image](https://user-images.githubusercontent.com/22733958/133983075-48f5c72a-a3a8-4d1d-bd0b-d29b01d255ca.png)
+   ![image](https://user-images.githubusercontent.com/22733958/133983075-48f5c72a-a3a8-4d1d-bd0b-d29b01d255ca.png)
 
 - Camera  
-カメラデバイスを選択してください。複数カメラが接続されている場合は、小さい番号から、順番に試してみてください。なるべく画質の良いカメラを使うことを推奨します。  
+カメラデバイスを選択してください。複数カメラが接続されている場合は、小さい番号から、順番に試してみてください。
+
+   なるべく画質の良いカメラを使うことを推奨します。  
 
    置き方は以下の3通りを想定しています。
 
-   - ノートパソコンの内蔵カメラ  
-      手のひらをカメラに向ける
+   - 自分に向ける
+      - ノートパソコンの内蔵カメラやwebカメラを自分に向ける  
+      - 手のひらをカメラに向ける
+      - 俯瞰
+         
    - 自分の手元に向ける  
-      webカメラの向き  
-      <img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134124093-51c85b18-3d90-4935-8daa-a78761d1aaed.jpg">  
-      手の甲を向ける  
+      - webカメラの向き  
+         <img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134124093-51c85b18-3d90-4935-8daa-a78761d1aaed.jpg">  
+      - 手の甲をカメラに向ける
+      - 俯瞰
+           
    - ディスプレイに向ける  
-      webカメラの向き  
-      <img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg">  
-      手の甲を向ける  
-
-   それぞれのカメラの置き方に対して、以下のように手を動かしてください。
-   画像追加
+      - webカメラの向き  
+         <img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg">  
+      - 手の甲をカメラに向ける
+      - 俯瞰
+          
 
 - Sensitivity  
 感度を設定します。あまり大きくしすぎると、マウスカーソルが小刻みに揺れます。

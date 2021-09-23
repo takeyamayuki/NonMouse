@@ -58,19 +58,18 @@ $ pip install -r requirements.txt
 ## 1. カメラの設置
  置き方は以下の3通りを想定しています。以下のどれかの置き方をして、右手を出すと自動的にどこに置かれているかを認識します。
 
-- 自分に向ける  
-   この場合に限り、webカメラはノートパソコン内蔵のものを使用できます。もちろん、webカメラを設置しても使えます。      
-   | webカメラの向き | 手のひらをカメラに向ける |
+- 自分に向ける(ノートパソコンの内蔵カメラでも可)   
+   | 設置方法の例 | 手のひらをカメラに向ける |
    | :---: | :---: |
-   | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg"> | ![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
+   | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg">　<img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134465166-3c324aef-0ee6-4dd9-9810-b723e945e748.jpg"> | ![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
 
-- 手元に向ける    
-   | webカメラの向き | 手の甲をカメラに向ける |
+- 手元に向ける  
+   | 設置方法の例 | 手の甲をカメラに向ける |
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134124093-51c85b18-3d90-4935-8daa-a78761d1aaed.jpg"> | ![スクリーンショット 2021-09-23 044243](https://user-images.githubusercontent.com/22733958/134456961-755a2769-1d2d-4cca-8fbd-6b49c7b2c0b1.png) |
 
 - ディスプレイに向ける    
-   | webカメラの向き | 手の甲をカメラに向ける |
+   | 設置方法の例 | 手の甲をカメラに向ける |
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg"> | ![スクリーンショット 2021-09-23 044403](https://user-images.githubusercontent.com/22733958/134456968-aaf3660d-9ee2-45b8-b65a-9590a6aec4fe.png) |
 

@@ -63,10 +63,10 @@ $ pip install -r requirements.txt
 The following three ways of placing the device are assumed. If you place it in one of the following ways and put out your right hand, it will automatically recognize where it is placed.
 
 - Point it at yourself (you can use your laptop's built-in camera).   
-   | Example of installation methods | Point the palm of your hand at the camera. |
+   | Example of installation methods|Point the palm of your hand at the camera|
    | :---: | :---: |
-   | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg">　|![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
-   |<img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134465166-3c324aef-0ee6-4dd9-9810-b723e945e748.jpg">||
+   | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg">　
+   <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134465166-3c324aef-0ee6-4dd9-9810-b723e945e748.jpg"> | ![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
 - Point it at your hand.  
    | Example of installation methods | Point the back of your hand at the camera. |
    | :---: | :---: |

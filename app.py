@@ -8,7 +8,7 @@ from pynput.mouse import Button, Controller
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
-hotkey = 'ctrl+alt'
+hotkey = 'alt'
 
 
 def tk_arg():

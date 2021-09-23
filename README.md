@@ -10,6 +10,7 @@ The video is available on [Youtube](https://youtu.be/ufvOJUTCF8M)
 
 ![github_e](https://user-images.githubusercontent.com/22733958/129838897-86da6861-b3a5-4e14-98fe-400a27c894d7.gif)
 
+Global hotkeys allow you to move the mouse cursor even when the program is inactive, but only on windows. linux and mac do not support this feature.
 
 # Installation
 ## 1. Run as executable file. 
@@ -55,51 +56,63 @@ $ cd NonMouse
 $ pip install -r requirements.txt
 ```
 
-※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility section in System Preferences.
+※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility and Cammera section in System Preferences.
 
 # Usage
-### Run
+## 1. Install the camera
+The following three ways of placing the device are assumed. If you place it in one of the following ways and put out your right hand, it will automatically recognize where it is placed.
 
-- Follow the [GitHub wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS) to run the executable file.
+- Point it at yourself (you can use your laptop's built-in camera).   
+   | Examples of installation methods | Point the palm of your hand at the camera. |
+   | :---: | :---: |
+   | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg">　<img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134465166-3c324aef-0ee6-4dd9-9810-b723e945e748.jpg"> | ![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
 
-- Or, run the following script, from the continuation of the installation.
-    ```sh
-    $ python3 app.py
-    ``` 
+- Point it at your hand.  
+   | Examples of installation methods | Point the back of your hand at the camera. |
+   | :---: | :---: |
+   | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134124093-51c85b18-3d90-4935-8daa-a78761d1aaed.jpg"> | ![スクリーンショット 2021-09-23 044243](https://user-images.githubusercontent.com/22733958/134456961-755a2769-1d2d-4cca-8fbd-6b49c7b2c0b1.png) |
 
-When you run it, you will see the following screen.  
-In the following screen, you will first set the camera, sensitivity, and mode.
+- Point it at the display.    
+   | Examples of installation methods | Point the back of your hand at the camera. |
+   | :---: | :---: |
+   | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg"> | ![スクリーンショット 2021-09-23 044403](https://user-images.githubusercontent.com/22733958/134456968-aaf3660d-9ee2-45b8-b65a-9590a6aec4fe.png) |
 
-<img width="392" alt="スクリーンショット 2021-09-11 午後0 04 57" src="https://user-images.githubusercontent.com/22733958/132934634-581a47f7-7539-47f3-9dfd-272b383981b3.png">
+## 2. Run
+- Run the executable as described in the [GitHub wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E).
 
-- Mode  
-There are Gesture, Mouse, and Touch modes.
-    - Gesture    
-        - Point the web camera at yourself or use the built-in camera of your laptop.  
-        - Make NonMouse hand movements like a gesture toward the camera.  
+- Or, from the continuation of the installation, run the following script
+   ```sh
+   $ python3 app.py
+   ```
+   
+   For mac and linux, please run app-s.py without global hotkeys (it always works).
+   ```sh
+   $ python3 app-s.py
+   ```
 
-        <img width="1392" alt="スクリーンショット 2021-09-11 午後0 25 43" src="https://user-images.githubusercontent.com/22733958/132934740-25641174-eefe-4b93-8bac-34c339a45b64.png">
+## 3. Settings
+When you run the program, the following screen will appear. On this screen, you can set the camera and sensitivity.
 
-    - Mouse    
-        - Point the web camera at your hand.  
-        - Make NonMouse [hand movements](#HandMovements) with your hand.  
-        
-        <img width="1392" alt="スクリーンショット 2021-09-11 午後0 28 23" src="https://user-images.githubusercontent.com/22733958/132934790-e870d88e-42de-4789-b200-ff54ce427cbc.png">
-    - Touch  
-        - Point the web camera at the display.
-        - You can move the cursor as if you were touching it by doing [hand movements](#HandMovements) on the display.
-
-        <img width="1392" alt="スクリーンショット 2021-09-11 午後0 01 17" src="https://user-images.githubusercontent.com/22733958/132934076-b65d4013-4f28-4376-b56c-349754a56501.png">
+![image](https://user-images.githubusercontent.com/22733958/133983075-48f5c72a-a3a8-4d1d-bd0b-d29b01d255ca.png)
 
 - Camera  
-Select your camera device. If you have multiple cameras connected, try them in order, starting with the smallest number.  
-
+Select a camera device. If multiple cameras are connected, try them in order, starting with the smallest number.
+          
 - Sensitivity  
-Set the sensitivity. If you set it too high, the mouse cursor will wiggle.
+Set the sensitivity. If set too high, the mouse cursor will shake slightly.
 
-When you are done with the settings, click continue. Then you can use NonMouse with the settings you selected.
+When you are done with the settings, click continue. The camera image will then be displayed, and you can use NonMouse with the settings you selected.
 
-### Hand Movements
+## 4. Hands Movements
+
+| Activate | Cursor | Left Click | Right Click | Scroll |
+| :---: | :---: |:---: |:---: |:---: |
+|![](https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif) | ![](https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif)| ![](https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif)| ![](https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif) | ![](https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif) |
+
+Only the right hand is supported.  
+The following hand movements are enabled only when you hold down Alt. They can be used even if no window is active. (This feature is only available on windows).
+On mac, linux, the cursor is always moving. 
+
 - cursor
     * Mouse cursor: tip of index finger → A blue circle will appear at the tip of your index finger. 
     * Stop mouse cursor: Attach the tip of your index finger to the tip of your middle finger. → The blue circle disappears.
@@ -107,14 +120,13 @@ When you are done with the settings, click continue. Then you can use NonMouse w
     * Left click: Attach the fingertips of your thumb to the second joint of your index finger → A yellow circle will appear on the tip of your index finger.
     * Left click release: Release the thumb fingertip and the second joint of the index finger. → The yellow circle disappears.
     * Double click: Left click twice within 0.5 seconds.
-- etc
-    * Right click: Hold the click state for 1 second without moving the cursor. → A red circle will appear at the tip of your index finger.
-    * Scrolling: Scroll with your index finger while rotating your index finger 90° to the side.
+- other
+    * Right click: Hold the click state for 1.5 second without moving the cursor. → A red circle will appear at the tip of your index finger.
+    * Scroll: Scroll with the index finger with the index finger folded → a black circle will appear. 
 
 † Use it with a bright light at hand.
 † Keep your hand as straight as possible to the camera.
-### Stop a program
-Press Ctrl+C, when a terminal window is active.     
-Press Esc, when an application window is active.  
 
-† The window will not disappear even if you press the "X" button on the window.
+## 5. Stop the application
+Press Ctrl+C, when a terminal window is active.     
+Press close button(Valid only on windows, linux) or Esc key, when an application window is active.   

@@ -15,8 +15,6 @@ Global hotkeys allow you to move the mouse cursor even when the program is inact
 # Installation
 ## 1. Run as executable file. 
 Download the zip file that matches your environment from the latest release. 
-<img width="1164" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/133051501-ab0c6a1c-2676-479a-a3d9-aad9ac57f9b5.png">
-
 
 ## 2. Run as python
 Run the following script.

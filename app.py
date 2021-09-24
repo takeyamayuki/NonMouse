@@ -248,9 +248,9 @@ def main(cap_device, kando):
                 preY = sum(LiTy)/ran
                 preCli = nowCli
                 prrCli = norCli
-                c_text = 0              # push alt+ctrlなし
+                c_text = 0              # push hotkeyなし
             else:
-                c_text = 1              # push alt+ctrlあり
+                c_text = 1              # push hotkeyあり
                 #i = 0
         if c_text == 1:
             cv2.putText(image, "Push Alt", (20, 450),

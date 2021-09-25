@@ -18,41 +18,13 @@ Download the zip file that matches your environment from the latest release.
 
 ## 2. Run as python
 Run the following script.
-Only the installation of mediapipe is different for each OS. If you have trouble, see the [official site](https://google.github.io/mediapipe/getting_started/install.html). The mac and linux instructions are shown below.   
 
-mac
 ```sh
-# install mediapipe
-$ brew install bazelisk 
-$ git clone https://github.com/google/mediapipe.git 
-$ cd mediapipe 
-$ brew install opencv@3 
-$ brew uninstall --ignore-dependencies glog 
-```
-linux
-```sh
-# install mediapipe
-$ sudo apt install nodejs 
-$ sudo apt install npm 
-$ sudo npm install -g @bazel/bazelisk 
-$ cd $HOME
-$ git clone https://github.com/google/mediapipe.git 
-$ cd mediapipe 
-$ sudo apt-get install -y \ 
-    libopencv-core-dev \ 
-    libopencv-highgui-dev \ 
-    libopencv-calib3d-dev \ 
-    libopencv-features2d-dev \ 
-    libopencv-imgproc-dev \ 
-    libopencv-video-dev 
-```
-Common part + run
-```sh
-# install other packages 
 $ git clone https://github.com/takeyamayuki/NonMouse
 $ cd NonMouse
 $ pip install -r requirements.txt
 ```
+If you have trouble installing mediapipe, please visit the [official website].  
 
 ※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility and Cammera section in System Preferences.
 

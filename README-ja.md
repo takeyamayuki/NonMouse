@@ -16,40 +16,13 @@
 
 ## 2. pythonファイルとして実行
 以下のスクリプトを実行します。
-mediapipeのインストールだけ、OS毎に異なります。困ったら、[公式サイト](https://google.github.io/mediapipe/getting_started/install.html)を見てください。macとlinuxのやり方は、以下に示します。  
-mac
 ```sh
-# mediapipeのインストール
-$ brew install bazelisk 
-$ git clone https://github.com/google/mediapipe.git 
-$ cd mediapipe 
-$ brew install opencv@3 
-$ brew uninstall --ignore-dependencies glog 
-```
-linux
-```sh
-# mediapipeのインストール
-$ sudo apt install nodejs 
-$ sudo apt install npm 
-$ sudo npm install -g @bazel/bazelisk 
-$ cd $HOME
-$ git clone https://github.com/google/mediapipe.git 
-$ cd mediapipe 
-$ sudo apt-get install -y \ 
-   libopencv-core-dev \ 
-   libopencv-highgui-dev \ 
-   libopencv-calib3d-dev \ 
-   libopencv-features2d-dev \ 
-   libopencv-imgproc-dev \ 
-   libopencv-video-dev 
-```
-共通部分
-```sh
-# その他パッケージインストール 
 $ git clone https://github.com/takeyamayuki/NonMouse
 $ cd NonMouse
 $ pip install -r requirements.txt
 ```
+mediapipeのインストールで困ったら[公式サイト](https://google.github.io/mediapipe/getting_started/install.html)を見てください。
+
 ※ macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティとカメラの項目にターミナルやVScodeなど、実行する場所を追加する必要があります。
 
 # 使い方

@@ -97,6 +97,6 @@ On mac, linux, the cursor is always moving.
 † Use it with a bright light at hand.
 † Keep your hand as straight as possible to the camera.
 
-## 5. Stop the application
+## 5. Quit
 Press Ctrl+C, when a terminal window is active.     
 Press close button(Valid only on windows, linux) or Esc key, when an application window is active.   

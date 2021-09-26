@@ -24,7 +24,7 @@ $ git clone https://github.com/takeyamayuki/NonMouse
 $ cd NonMouse
 $ pip install -r requirements.txt
 ```
-If you have trouble installing mediapipe, please visit the [official website].  
+If you have trouble installing mediapipe, please visit the [official website](https://google.github.io/mediapipe/getting_started/install.html).  
 
 ※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility and Cammera section in System Preferences.
 

@@ -1,5 +1,5 @@
 import keyboard
-hotkey='option'
+hotkey='F4'
 
 while True:
     keyboard.wait(hotkey)

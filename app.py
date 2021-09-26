@@ -8,7 +8,7 @@ from pynput.mouse import Button, Controller
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
-hotkey = 'alt'
+hotkey = 'F4'
 
 
 def tk_arg():
@@ -253,7 +253,7 @@ def main(cap_device, kando):
                 c_text = 1              # push hotkeyあり
                 #i = 0
         if c_text == 1:
-            cv2.putText(image, "Push Alt", (20, 450),
+            cv2.putText(image, f"Push {hotkey}", (20, 450),
                         cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
         cv2.putText(image, "cameraFPS:"+str(cfps), (20, 40),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)

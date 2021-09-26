@@ -10,11 +10,11 @@
 グローバルホットキーにより、プログラムが非アクティブでも、マウスカーソルが動かせるのはwindowsのみです。linux, macはその機能をサポートしていません。
 
 # インストール
-## 1. 実行可能形式ファイルとして実行
+## 📁 実行可能形式ファイルとして実行
 最新のリリースから自分の環境に合ったZIPファイルをダウンロードしてください。
 
-
-## 2. pythonファイルとして実行
+もしくは、
+## 🐍 pythonファイルとして実行
 以下のスクリプトを実行します。
 ```sh
 $ git clone https://github.com/takeyamayuki/NonMouse
@@ -26,13 +26,13 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 ※ macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティとカメラの項目にターミナルやVScodeなど、実行する場所を追加する必要があります。
 
 # 使い方
-## 1. カメラの設置
+## 📷 カメラの設置
  置き方は以下の3通りを想定しています。以下のどれかの置き方をして、右手を出すと自動的にどこに置かれているかを認識します。
 
 - 自分に向ける(ノートパソコンの内蔵カメラでも可)   
    | 設置方法の例 | 手のひらをカメラに向ける |
    | :---: | :---: |
-   | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg">　<img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134465166-3c324aef-0ee6-4dd9-9810-b723e945e748.jpg"> | ![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
+   | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg"> <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134465166-3c324aef-0ee6-4dd9-9810-b723e945e748.jpg"> | ![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
 
 - 手元に向ける  
    | 設置方法の例 | 手の甲をカメラに向ける |
@@ -44,7 +44,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg"> | ![スクリーンショット 2021-09-23 044403](https://user-images.githubusercontent.com/22733958/134456968-aaf3660d-9ee2-45b8-b65a-9590a6aec4fe.png) |
 
-## 2. 実行
+## 🚀 実行
 - [GitHub wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E)の通りに実行可能ファイルを実行
 
 - もしくは、インストールの続きから、以下のスクリプトを実行
@@ -57,7 +57,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
    $ python3 app-s.py
    ```
 
-## 3. 設定
+## 💻 設定
 実行すると、以下の画面が出ます。この画面でカメラ、感度の設定をします。
 
 ![image](https://user-images.githubusercontent.com/22733958/133983075-48f5c72a-a3a8-4d1d-bd0b-d29b01d255ca.png)
@@ -70,7 +70,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 
 設定が終わったら、continueをクリックしてください。すると、カメラの映像が映し出され、選択した設定でNonMouseが使えるようになります。
 
-## 4. 手の動き
+## 👆 手の動き
 
 | アクティブ化 | カーソル | 左クリック | 右クリック | スクロール |
 | :---: | :---: |:---: |:---: |:---: |
@@ -94,6 +94,6 @@ mac, linuxでは、常にカーソルが動く状態です。
 † 手元を明るくして使ってください。  
 † カメラに対して、なるべく手をまっすぐ向けてください。
 
-## 5. 終了
+## 🔚 終了
 ターミナルウィンドウがアクティブのとき、Ctrl+C  
 アプリケーションウィンドウがアクティブのときは、閉じるボタン(windows, linuxのみ)かEscを押してください。

@@ -13,10 +13,11 @@ The video is available on [Youtube](https://youtu.be/ufvOJUTCF8M)
 Global hotkeys allow you to move the mouse cursor even when the program is inactive, but only on windows. linux and mac do not support this feature.
 
 # Installation
-## 1. Run as executable file. 
+## 📁 Run as executable file. 
 Download the zip file that matches your environment from the latest release. 
 
-## 2. Run as python
+OR
+## 🐍 Run as python
 Run the following script.
 
 ```sh
@@ -29,13 +30,13 @@ If you have trouble installing mediapipe, please visit the [official website](ht
 ※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility and Cammera section in System Preferences.
 
 # Usage
-## 1. Install the camera
+## 📷 Install the camera
 The following three ways of placing the device are assumed. If you place it in one of the following ways and put out your right hand, it will automatically recognize where it is placed.
 
 - Point it at yourself (you can use your laptop's built-in camera).   
    | Example of installation methods|Point the palm of your hand at the camera|
    | :---: | :---: |
-   | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg">　
+   | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg"> 
    <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134465166-3c324aef-0ee6-4dd9-9810-b723e945e748.jpg"> | ![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
 - Point it at your hand.  
    | Example of installation methods | Point the back of your hand at the camera. |
@@ -47,10 +48,10 @@ The following three ways of placing the device are assumed. If you place it in o
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg"> | ![スクリーンショット 2021-09-23 044403](https://user-images.githubusercontent.com/22733958/134456968-aaf3660d-9ee2-45b8-b65a-9590a6aec4fe.png) |
 
-## 2. Run
+## 🚀 Run
 - Run the executable as described in the [GitHub wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E).
 
-- Or, from the continuation of the installation, run the following script
+- Or from the continuation of the installation, run the following script
    ```sh
    $ python3 app.py
    ```
@@ -60,7 +61,7 @@ The following three ways of placing the device are assumed. If you place it in o
    $ python3 app-s.py
    ```
 
-## 3. Settings
+## 💻 Settings
 When you run the program, the following screen will appear. On this screen, you can set the camera and sensitivity.
 
 ![image](https://user-images.githubusercontent.com/22733958/133983075-48f5c72a-a3a8-4d1d-bd0b-d29b01d255ca.png)
@@ -73,7 +74,7 @@ Set the sensitivity. If set too high, the mouse cursor will shake slightly.
 
 When you are done with the settings, click continue. The camera image will then be displayed, and you can use NonMouse with the settings you selected.
 
-## 4. Hand Movements
+## 👆 Hand Movements
 
 | Activate | Cursor | Left Click | Right Click | Scroll |
 | :---: | :---: |:---: |:---: |:---: |
@@ -94,9 +95,9 @@ On mac, linux, the cursor is always moving.
     * Right click: Hold the click state for 1.5 second without moving the cursor. → A red circle will appear at the tip of your index finger.
     * Scroll: Scroll with the index finger with the index finger folded → a black circle will appear. 
 
-† Use it with a bright light at hand.
+† Use it with a bright light at hand.  
 † Keep your hand as straight as possible to the camera.
 
-## 5. Quit
+## 🔚 Quit
 Press Ctrl+C, when a terminal window is active.     
 Press close button(Valid only on windows, linux) or Esc key, when an application window is active.   

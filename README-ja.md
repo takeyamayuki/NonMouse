@@ -47,7 +47,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 ## 🚀 実行
 - [GitHub wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E)の通りに実行可能ファイルを実行
 
-- もしくは、インストールの続きから、以下のスクリプトを実行(windows, linuxのみ)
+- もしくは、インストールの続きから、以下のスクリプトを実行(windows, macのみ)
    ```sh
    $ python3 app.py
    ```

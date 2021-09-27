@@ -47,12 +47,12 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 ## 🚀 実行
 - [GitHub wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E)の通りに実行可能ファイルを実行
 
-- もしくは、インストールの続きから、以下のスクリプトを実行
+- もしくは、インストールの続きから、以下のスクリプトを実行(windows, linuxのみ)
    ```sh
    $ python3 app.py
    ```
    
-   mac,linuxの場合は、グローバルホットキーなし（常に動く）のapp-s.pyを起動してください。
+   linuxの場合は、グローバルホットキーなし（常に動く）のapp-s.pyを起動してください。
    ```sh
    $ python3 app-s.py
    ```
@@ -77,8 +77,8 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 |![](https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif) | ![](https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif)| ![](https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif)| ![](https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif) | ![](https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif) |
 
 右手のみサポートしています。  
-以下の手の動きが、Altを押している時だけ有効になります。ウィンドウがアクティブになっていなくても使えます。(この機能はwindowsのみ使えます)
-mac, linuxでは、常にカーソルが動く状態です。  
+以下の手の動きが、F4を押している時だけ有効になります。ウィンドウがアクティブになっていなくても使えます。この機能はwindows, macのみ使えます。  
+(linuxでは、この機能が制限されたapp-s.pyを使用してください。これはlinuxにおいてkeyboardライブラリがsudoで動かないことに起因します。動かせた人がいたら報告してほしいです。)
 
 * カーソル  
    * マウスカーソル: 人差し指の先端 → 青色の円が人差し指の先端に表示される  

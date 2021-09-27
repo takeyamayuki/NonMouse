@@ -10,7 +10,7 @@ The video is available on [Youtube](https://youtu.be/ufvOJUTCF8M)
 
 ![github_e](https://user-images.githubusercontent.com/22733958/129838897-86da6861-b3a5-4e14-98fe-400a27c894d7.gif)
 
-Global hotkeys allow you to move the mouse cursor even when the program is inactive, but only on windows. linux and mac do not support this feature.
+Global hotkey allows you to move the mouse cursor even when the program is inactive, but only on windows and mac. This feature is not available on linux.
 
 # Installation
 ## 📁 Run as executable file. 

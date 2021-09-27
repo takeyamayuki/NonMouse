@@ -1,12 +1,20 @@
-dist/
-build/
+# personal environment dependent
 __pycache__/
 venv/
+
+# pyinstaller 
+dist/
+build/
 app.spec
 dist-mac/
 dist-win/
 dist-linux/
-.eggs/
-setup.py
 app-mac.spec
 app-s.spec
+
+# py2exe
+.eggs/
+setup.py
+
+# pip
+site-packages

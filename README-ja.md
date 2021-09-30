@@ -1,23 +1,21 @@
 # NonMouse
 
 これは、手そのものをマウスとして使うことができるアプリケーションです。  
-このプログラムは、webカメラで手を認識して、マウスカーソルを操作します。  
+このプログラムは、webカメラで手を認識して、マウスカーソルを操作します。 
 
-動作状況は[Youtube](https://youtu.be/ufvOJUTCF8M)にも公開しています。  
+動作状況は[Youtube](https://youtu.be/ufvOJUTCF8M)にも公開しています。
 
-![github_e](https://user-images.githubusercontent.com/22733958/129839012-82915bcf-10a5-49d1-8e03-e4f0def7b778.gif)  
+![NonMouse2-アニメーションイメージ（小）](https://user-images.githubusercontent.com/22733958/135473409-9ddf2fc5-4722-4e55-8eef-64476635c10d.gif)
 
-グローバルホットキーにより、プログラムが非アクティブでも、マウスカーソルが動かせるのはwindows,macのみです。linuxではこの機能をサポートしていません。
+![github_e](https://user-images.githubusercontent.com/22733958/129839012-82915bcf-10a5-49d1-8e03-e4f0def7b778.gif)    
 
 # 特徴
 - 全く新しいマウス: ソフトウェアのアプローチによるマウスです。手を認識してマウスを動かします
 - アプリケーションが非アクティブな状態でも、グローバルホットキーによりNonMouseを呼び出すことができる
+- タイピングとの相性が良い  
+- webカメラをディスプレイに向けることで、タッチディスプレイっぽくもできる
 - 場所を選ばず、姿勢が自由
 - 最新のリリースからダウンロードするだけで使える(windows, macのみ)
-- タイピングとの相性が良い  
-   ![MVI_1723_2-アニメーションイメージ（小）](https://user-images.githubusercontent.com/22733958/135468074-b228c073-a93b-415c-9f8e-bcf133f4ed1f.gif)
-- webカメラをディスプレイに向けることで、タッチディスプレイっぽくもできる
-   ![MVI_1726_2G-アニメーションイメージ（小）](https://user-images.githubusercontent.com/22733958/135469636-03813080-c51e-4ccd-8ae1-387aef43abf6.gif)
 
 # インストール
 ## 📁 実行可能形式ファイルとして実行

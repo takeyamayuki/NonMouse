@@ -12,6 +12,16 @@ The video is available on [Youtube](https://youtu.be/ufvOJUTCF8M)
 
 Global hotkey allows you to move the mouse cursor even when the program is inactive, but only on windows and mac. This feature is not available on linux.
 
+# Feature
+- Entirely new mouse: a mouse with a software approach. It recognizes your hand and moves the mouse.
+- NonMouse can be invoked by the global hotkey even when this application is inactive.
+- You can use the mouse wherever you want.
+- Just download from the latest release (windows, mac only)
+- Works well with typing    
+   ![MVI_1723_2-アニメーションイメージ（小）](https://user-images.githubusercontent.com/22733958/135468074-b228c073-a93b-415c-9f8e-bcf133f4ed1f.gif)
+- By pointing the web camera at the display, you can make it look like a touch display.   
+   ![MVI_1726_2G-アニメーションイメージ（小）](https://user-images.githubusercontent.com/22733958/135469636-03813080-c51e-4ccd-8ae1-387aef43abf6.gif)
+
 # Installation
 ## 📁 Run as executable file. 
 Download the zip file that matches your environment from the latest release. 

@@ -1,5 +1,5 @@
 # NonMouse
-![GitHub](https://img.shields.io/github/license/takeyamayuki/nonmouse) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeyamayuki/nonmouse) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/takeyamayuki/nonmouse) ![zenn](https://img.shields.io/badge/Zenn%20Likes-91-blue) 
+![GitHub](https://img.shields.io/github/license/takeyamayuki/nonmouse) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeyamayuki/nonmouse) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/takeyamayuki/nonmouse) ![zenn](https://img.shields.io/badge/Zenn%20Likes-93-blue) 
 
 日本語のREADMEは[こちら](README-ja.md)  
 
@@ -8,19 +8,17 @@ The program uses a web camera to recognize your hand and control the mouse curso
 
 The video is available on [Youtube](https://youtu.be/ufvOJUTCF8M)   
 
-![github_e](https://user-images.githubusercontent.com/22733958/129838897-86da6861-b3a5-4e14-98fe-400a27c894d7.gif)
+<img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/135473409-9ddf2fc5-4722-4e55-8eef-64476635c10d.gif">
 
-Global hotkey allows you to move the mouse cursor even when the program is inactive, but only on windows and mac. This feature is not available on linux.
+<img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/129838897-86da6861-b3a5-4e14-98fe-400a27c894d7.gif">
 
 # Feature
-- Entirely new mouse: a mouse with a software approach. It recognizes your hand and moves the mouse.
+- Entirely new mouse: a mouse with a software approach. It recognizes your hand and works as a mouse.
 - NonMouse can be invoked by the global hotkey even when this application is inactive.
-- You can use the mouse wherever you want.
-- Just download from the latest release (windows, mac only)
 - Works well with typing    
-   ![MVI_1723_2-アニメーションイメージ（小）](https://user-images.githubusercontent.com/22733958/135468074-b228c073-a93b-415c-9f8e-bcf133f4ed1f.gif)
-- By pointing the web camera at the display, you can make it look like a touch display.   
-   ![MVI_1726_2G-アニメーションイメージ（小）](https://user-images.githubusercontent.com/22733958/135469636-03813080-c51e-4ccd-8ae1-387aef43abf6.gif)
+- You can make it look like a touch display, by pointing the web camera at the display. 
+- You can use the mouse wherever you want.
+- Just download from the latest release (windows, mac only)  
 
 # Installation
 ## 📁 Run as executable file. 

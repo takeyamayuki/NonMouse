@@ -5,9 +5,9 @@
 
 動作状況は[Youtube](https://youtu.be/ufvOJUTCF8M)にも公開しています。
 
-![NonMouse2-アニメーションイメージ（小）](https://user-images.githubusercontent.com/22733958/135473409-9ddf2fc5-4722-4e55-8eef-64476635c10d.gif)
+<img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/135473409-9ddf2fc5-4722-4e55-8eef-64476635c10d.gif">
 
-![github_e](https://user-images.githubusercontent.com/22733958/129839012-82915bcf-10a5-49d1-8e03-e4f0def7b778.gif)    
+<img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/129838897-86da6861-b3a5-4e14-98fe-400a27c894d7.gif">   
 
 # 特徴
 - 全く新しいマウス: ソフトウェアのアプローチによるマウスです。手を認識してマウスを動かします

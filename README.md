@@ -21,7 +21,7 @@ The video is available on [Youtube](https://youtu.be/ufvOJUTCF8M)
 - Just download from the latest release (windows, mac only)  
 
 # Installation
-## 📁 Run as executable file. 
+## 📁 Run as executable file 
 Download the zip file that matches your environment from the latest release. 
 
 OR
@@ -35,23 +35,23 @@ $ pip install -r requirements.txt
 ```
 If you have trouble installing mediapipe, please visit the [official website](https://google.github.io/mediapipe/getting_started/install.html).  
 
-※ For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility and Cammera section in System Preferences.
+† For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility and Cammera section in System Preferences.
 
 # Usage
-## 📷 Install the camera
+## 📷 Install a camera
 The following three ways of placing the device are assumed. If you place it in one of the following ways and put out your right hand, it will automatically recognize where it is placed.
 
-- Point it at yourself (you can use your laptop's built-in camera).   
+- Normal: Point it at yourself (you can use your laptop's built-in camera).   
    | Example of installation methods|Point the palm of your hand at the camera|
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg"> 
    <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134465166-3c324aef-0ee6-4dd9-9810-b723e945e748.jpg"> | ![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
-- Point it at your hand.  
+- Over Hand: Point it at your hand.  
    | Example of installation methods | Point the back of your hand at the camera. |
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134124093-51c85b18-3d90-4935-8daa-a78761d1aaed.jpg"> | ![スクリーンショット 2021-09-23 044243](https://user-images.githubusercontent.com/22733958/134456961-755a2769-1d2d-4cca-8fbd-6b49c7b2c0b1.png) |
 
-- Point it at the display.    
+- Behind You: Point it at the display.    
    | Example of installation methods | Point the back of your hand at the camera. |
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg"> | ![スクリーンショット 2021-09-23 044403](https://user-images.githubusercontent.com/22733958/134456968-aaf3660d-9ee2-45b8-b65a-9590a6aec4fe.png) |
@@ -59,9 +59,17 @@ The following three ways of placing the device are assumed. If you place it in o
 ## 🚀 Run
 - Run the executable as described in the [GitHub wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E).
 
--  Run the following script from the continuation of the installation.(windows and mac supported)
+   OR
+-  Run the following script from the continuation of the installation.
+
+   For windows
    ```sh
    $ python3 app.py
+   ```
+
+   For MacOS, you need execute permission.
+   ```sh
+   $ sudo python3 app.py
    ```
    
    For linux, please run app-s.py without global hotkeys (it always works).
@@ -76,7 +84,10 @@ When you run the program, the following screen will appear. On this screen, you 
 
 - Camera  
 Select a camera device. If multiple cameras are connected, try them in order, starting with the smallest number.
-          
+
+- How to place  
+Select the location where you placed the camera. Place the camera in one of the following positions: Normal, Over Hand, or Behind You in "📷 Install a Camera".
+
 - Sensitivity  
 Set the sensitivity. If set too high, the mouse cursor will shake slightly.
 
@@ -88,9 +99,9 @@ When you are done with the settings, click continue. The camera image will then 
 | :---: | :---: |:---: |:---: |:---: |
 |![](https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif) | ![](https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif)| ![](https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif)| ![](https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif) | ![](https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif) |
 
-Only the right hand is supported.  
+ 
 The following hand movements are enabled only when you hold down F4. They can be used even if no window is active.This feature is only available on windows and mac.  
-(On linux, use app-s.py which has this feature restricted. This is due to the fact that the keyboard library does not work with sudo on linux. If anyone can get it to work, please report back at issue:)
+(On linux, use app-s.py which has this feature restricted. This is due to the fact that the [keyboard library](https://github.com/boppreh/keyboard) does not work with sudo on linux. If anyone can get it to work, please report back at issue:)
 
 - cursor
     * Mouse cursor: tip of index finger → A blue circle will appear at the tip of your index finger. 

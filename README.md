@@ -80,7 +80,7 @@ The following three ways of placing the device are assumed. If you place it in o
 ## 💻 Settings
 When you run the program, the following screen will appear. On this screen, you can set the camera and sensitivity.
 
-![image](https://user-images.githubusercontent.com/22733958/133983075-48f5c72a-a3a8-4d1d-bd0b-d29b01d255ca.png)
+![スクリーンショット 2021-10-04 205924](https://user-images.githubusercontent.com/22733958/135847704-97ae9d54-9572-4f47-beb6-a7bfe8bbaeaf.png)
 
 - Camera  
 Select a camera device. If multiple cameras are connected, try them in order, starting with the smallest number.

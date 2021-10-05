@@ -18,7 +18,7 @@ hotkey = 'F4'
 def tk_arg():
     root = tk.Tk()
     root.title("First Setup")
-    root.geometry("300x260")
+    root.geometry("380x360")
     Val1 = tk.IntVar()
     Val2 = tk.IntVar()
     Val4 = tk.IntVar()

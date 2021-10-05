@@ -127,7 +127,7 @@ def main(cap_device, mode, kando):
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
             # グローバルホットキーが押されているとき ##################################################
-            if keyboard.is_pressed(hotkey) or platform.system() == 'Linux':
+            if keyboard.is_pressed(hotkey):
                 # print(hand_landmarks.landmark[0])
                 # preX, preY, LiTx, LiTyの初期値に現在のマウス位置を代入 1回だけ実行
                 if i == 0:

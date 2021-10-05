@@ -7,6 +7,7 @@ import numpy as np
 import time
 import keyboard
 import tkinter as tk
+import platform
 from pynput.mouse import Button, Controller
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
@@ -17,7 +18,7 @@ hotkey = 'F4'
 def tk_arg():
     root = tk.Tk()
     root.title("First Setup")
-    root.geometry("300x300")
+    root.geometry("380x360")
     Val1 = tk.IntVar()
     Val2 = tk.IntVar()
     Val4 = tk.IntVar()

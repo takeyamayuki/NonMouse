@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import cv2
 import mediapipe as mp
 import numpy as np
@@ -12,34 +15,46 @@ mp_hands = mp.solutions.hands
 def tk_arg():
     root = tk.Tk()
     root.title("First Setup")
-    root.geometry("280x220")
+    root.geometry("300x260")
     Val1 = tk.IntVar()
+    Val2 = tk.IntVar()
     Val4 = tk.IntVar()
-    Val4.set(30)                            # デフォルトマウス感度
-    # Camera
-    Static1 = tk.Label(text='Camera').grid(row=4)
+    Val4.set(30)                        # デフォルトマウス感度
+    place = ['Normal', 'Over Hand', 'Behind You']
+    # Camera #########################################################################
+    Static1 = tk.Label(text='Camera').grid(row=1)
     for i in range(3):
         tk.Radiobutton(root,
                        value=i,
                        variable=Val1,
-                       text='Device{}'.format(i)
+                       text=f'Device{i}'
+                       ).grid(row=2, column=i*2)
+    St1 = tk.Label(text='     ').grid(row=3)
+    # Place #########################################################################
+    Static1 = tk.Label(text='How to place').grid(row=4)
+    for i in range(3):
+        tk.Radiobutton(root,
+                       value=i,
+                       variable=Val2,
+                       text=f'{place[i]}'
                        ).grid(row=5, column=i*2)
     St1 = tk.Label(text='     ').grid(row=6)
-    # Sensitivity
+    # Sensitivity ###################################################################
     Static4 = tk.Label(text='Sensitivity').grid(row=7)
     s1 = tk.Scale(root, orient='h',
                   from_=1, to=100, variable=Val4
                   ).grid(row=8, column=2)
     St4 = tk.Label(text='     ').grid(row=9)
-    # continue
+    # continue 
     Button = tk.Button(text="continue", command=root.destroy).grid(
         row=10, column=2)
     # 待機
     root.mainloop()
     # 出力
-    cap_device = Val1.get()       # 0,1,2
-    kando = Val4.get()/10         # 1~10
-    return cap_device, kando
+    cap_device = Val1.get()             # 0,1,2
+    mode = Val2.get()                     # 0:youself 1:
+    kando = Val4.get()/10               # 1~10
+    return cap_device, mode, kando
 
 
 def draw_circle(image, x, y, roudness, color):
@@ -53,23 +68,25 @@ def calculate_distance(l1, l2):
     return distance
 
 
-def main(cap_device, kando):
-    dis = 0.7               # くっつける距離の定義
-    # 現在、前回の左クリック状態 / 現在、前回の右クリック状態 / ダブルクリック状態
-    preX = preY = nowCli = preCli = norCli = prrCli = douCli = i = k = m = 0
+def main(cap_device, mode, kando):
+    dis = 0.7                           # くっつける距離の定義
+    preX, preY = 0, 0
+    nowCli, preCli = 0, 0               # 現在、前回の左クリック状態
+    norCli, prrCli = 0, 0               # 現在、前回の右クリック状態
+    douCli = 0                          # ダブルクリック状態
+    i, k, m = 0, 0, 0
     LiTx = []
     LiTy = []
     nowUgo = 1
     cap_width = 1280
     cap_height = 720
     start, c_start = float('inf'), float('inf')
-    # window定義
+    c_text = 1
+    # Webカメラ入力, 設定
     window_name = 'NonMouse'
     cv2.namedWindow(window_name)
-    # Webカメラ入力, 設定
     cap = cv2.VideoCapture(cap_device)
     cfps = int(cap.get(cv2.CAP_PROP_FPS))
-    #print(cfps)
     if cfps < 30:
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_width)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, cap_height)
@@ -81,8 +98,7 @@ def main(cap_device, kando):
         min_tracking_confidence=0.8,    # 追跡信頼度
         max_num_hands=1                 # 最大検出数
     )
-    mode = 0
-    # メインループ
+    # メインループ ###############################################################################
     while cap.isOpened():
         p_s = time.perf_counter()
         success, image = cap.read()
@@ -96,7 +112,7 @@ def main(cap_device, kando):
         # 画像を水平方向に反転し、BGR画像をRGBに変換
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
         image.flags.writeable = False   # 参照渡しのためにイメージを書き込み不可としてマーク
-        results = hands.process(image)  # 処理
+        results = hands.process(image)  # mediapipeの処理
         image.flags.writeable = True    # 画像に手のアノテーションを描画
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         image_height, image_width, _ = image.shape
@@ -107,54 +123,14 @@ def main(cap_device, kando):
                 mp_drawing.draw_landmarks(
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-            # 手の向きでモードを変える
-            nowLandX = hand_landmarks.landmark[4].x - \
-                hand_landmarks.landmark[20].x
-            nowLandY = hand_landmarks.landmark[12].y - \
-                hand_landmarks.landmark[0].y
-            if m == 0:
-                preLandX = nowLandX
-                preLandY = nowLandY
-                m = 1
-                if nowLandX > 0:
-                    mode = 2  # 左右反転
-                if nowLandY > 0:
-                    mode = 1  # 上下反転
-                if nowLandY < 0 and nowLandX < 0:
-                    mode = 0
-            if mode == 0:
-                if nowLandX > 0 and np.sign(nowLandX) != np.sign(preLandX):
-                    mode = 2  # 左右反転
-                if nowLandY > 0 and np.sign(nowLandY) != np.sign(preLandY):
-                    mode = 1  # 上下反転
-                if nowLandY < 0 and nowLandX < 0 and \
-                        (np.sign(nowLandY) != np.sign(preLandY) or np.sign(nowLandX) != np.sign(preLandX)):
-                    mode = 0
-            elif mode == 1:
-                if nowLandX > 0 and np.sign(nowLandX) != np.sign(preLandX):
-                    mode = 2  # 左右反転
-                if nowLandY < 0 and np.sign(nowLandY) != np.sign(preLandY):
-                    mode = 1  # 上下反転
-                if nowLandY > 0 and nowLandX < 0 and \
-                        (np.sign(nowLandY) != np.sign(preLandY) or np.sign(nowLandX) != np.sign(preLandX)):
-                    mode = 0
-            elif mode == 2:
-                if nowLandX < 0 and np.sign(nowLandX) != np.sign(preLandX):
-                    mode = 2  # 左右反転
-                if nowLandY > 0 and np.sign(nowLandY) != np.sign(preLandY):
-                    mode = 1  # 上下反転
-                if nowLandY < 0 and nowLandX > 0 and \
-                        (np.sign(nowLandY) != np.sign(preLandY) or np.sign(nowLandX) != np.sign(preLandX)):
-                    mode = 0
-            preLandX = nowLandX
-            preLandY = nowLandY
-
-            # print(hand_landmarks.landmark[0])
-            # preX, preY, LiTx, LiTyの初期値に現在のマウス位置を代入 1回だけ実行
+            # グローバルホットキーが押されているとき ##################################################
+            # if keyboard.is_pressed(hotkey):
+                # print(hand_landmarks.landmark[0])
+                # preX, preY, LiTx, LiTyの初期値に現在のマウス位置を代入 1回だけ実行
             if i == 0:
                 preX = hand_landmarks.landmark[8].x
                 preY = hand_landmarks.landmark[8].y
-                for j in range(ran):
+                for j in range(ran):                # range(ran)の分だけ繰り返す
                     LiTx.append(hand_landmarks.landmark[8].x)
                     LiTy.append(hand_landmarks.landmark[8].y)
                 i = +1
@@ -162,7 +138,6 @@ def main(cap_device, kando):
             # 指相対座標の基準距離、以後mediapipeから得られた距離をこの値で割る
             absKij = calculate_distance(
                 hand_landmarks.landmark[0], hand_landmarks.landmark[1])
-            # print(hand_landmarks.landmark[0])
             # 人差し指の先端と中指の先端間のユークリッド距離
             absUgo = calculate_distance(
                 hand_landmarks.landmark[8], hand_landmarks.landmark[12]) / absKij
@@ -180,7 +155,7 @@ def main(cap_device, kando):
             dx = kando * (sum(LiTx)/ran - preX) * image_width
             dy = kando * (sum(LiTy)/ran - preY) * image_height
 
-            # フラグ
+            # フラグ #########################################################################
             # click状態
             if absCli < dis:
                 nowCli = 1          # nowCli:左クリック状態(1:click  0:non click)
@@ -188,11 +163,11 @@ def main(cap_device, kando):
                             hand_landmarks.landmark[8].y * image_height, 20, (0, 250, 250))
             elif absCli >= dis:
                 nowCli = 0
-            if np.abs(dx) > 5 and np.abs(dy) > 5:
+            if np.abs(dx) > 3 and np.abs(dy) > 3:
                 k = 0                           # 「動いている」ときk=0
             # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
             # 「動いていない」ときでクリックされたとき
-            if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
+            if nowCli == 1 and np.abs(dx) < 3 and np.abs(dy) < 3:
                 if k == 0:          # k:クリック状態&&カーソルを動かしてない。113, 140行目でk=0にする
                     start = time.perf_counter()
                     k += 1
@@ -205,7 +180,7 @@ def main(cap_device, kando):
                 norCli = 0
             # print("np.abs(dx)", np.abs(dx))
 
-            # 動かす
+            # 動かす###########################################################################
             # cursor
             if absUgo >= dis and nowUgo == 1:
                 mouse.move(dx, dy)
@@ -235,7 +210,7 @@ def main(cap_device, kando):
                 # print("right click")
             # scroll
             if hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y > -0.06:
-                mouse.scroll(0, -dy/8)     # スクロール感度:1/6にする
+                mouse.scroll(0, -dy/50)     # スクロール感度:1/6にする
                 draw_circle(image, hand_landmarks.landmark[8].x * image_width,
                             hand_landmarks.landmark[8].y * image_height, 20, (0, 0, 0))
                 nowUgo = 0
@@ -246,11 +221,19 @@ def main(cap_device, kando):
             preY = sum(LiTy)/ran
             preCli = nowCli
             prrCli = norCli
-
+            c_text = 0              # push hotkeyなし
+            # else:
+            #     c_text = 1              # push hotkeyあり
+                #i = 0
+        
+        # 表示 #################################################################################
+        # if c_text == 1:
+        #     cv2.putText(image, f"Push {hotkey}", (20, 450),
+        #                 cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
+        cv2.putText(image, "cameraFPS:"+str(cfps), (20, 40),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         p_e = time.perf_counter()
         fps = str(int(1/(float(p_e)-float(p_s))))
-        cv2.putText(image, "camFPS:"+str(cfps), (20, 40),
-                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         cv2.putText(image, "FPS:"+fps, (20, 80),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         dst = cv2.resize(image, dsize=None, fx=0.4,
@@ -262,5 +245,5 @@ def main(cap_device, kando):
 
 
 if __name__ == "__main__":
-    cap_device, kando = tk_arg()
-    main(cap_device, kando)
+    cap_device, mode, kando = tk_arg()
+    main(cap_device, mode, kando)

@@ -7,6 +7,7 @@ import numpy as np
 import time
 import keyboard
 import tkinter as tk
+import platform
 from pynput.mouse import Button, Controller
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
@@ -47,7 +48,7 @@ def tk_arg():
                   from_=1, to=100, variable=Val4
                   ).grid(row=8, column=2)
     St4 = tk.Label(text='     ').grid(row=9)
-    # continue 
+    # continue
     Button = tk.Button(text="continue", command=root.destroy).grid(
         row=10, column=2)
     # 待機
@@ -126,7 +127,7 @@ def main(cap_device, mode, kando):
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
             # グローバルホットキーが押されているとき ##################################################
-            if keyboard.is_pressed(hotkey):
+            if keyboard.is_pressed(hotkey) or platform.system() == 'Linux':
                 # print(hand_landmarks.landmark[0])
                 # preX, preY, LiTx, LiTyの初期値に現在のマウス位置を代入 1回だけ実行
                 if i == 0:
@@ -227,7 +228,7 @@ def main(cap_device, mode, kando):
             else:
                 c_text = 1              # push hotkeyあり
                 #i = 0
-        
+
         # 表示 #################################################################################
         if c_text == 1:
             cv2.putText(image, f"Push {hotkey}", (20, 450),

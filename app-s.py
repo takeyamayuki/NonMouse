@@ -15,7 +15,7 @@ mp_hands = mp.solutions.hands
 def tk_arg():
     root = tk.Tk()
     root.title("First Setup")
-    root.geometry("380x360")
+    root.geometry("300x300")
     Val1 = tk.IntVar()
     Val2 = tk.IntVar()
     Val4 = tk.IntVar()

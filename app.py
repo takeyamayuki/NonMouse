@@ -7,7 +7,6 @@ import numpy as np
 import time
 import keyboard
 import tkinter as tk
-import platform
 from pynput.mouse import Button, Controller
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils

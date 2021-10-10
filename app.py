@@ -12,12 +12,14 @@ mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 hotkey = 'F4'
-
+screenRes = (0,0)
 
 def tk_arg():
+    global screenRes
     root = tk.Tk()
     root.title("First Setup")
     root.geometry("300x260")
+    screenRes = (root.winfo_screenwidth(),root.winfo_screenheight()) # ディスプレイ解像度取得
     Val1 = tk.IntVar()
     Val2 = tk.IntVar()
     Val4 = tk.IntVar()
@@ -94,7 +96,7 @@ def main(cap_device, mode, kando):
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, cap_height)
         cfps = int(cap.get(cv2.CAP_PROP_FPS))
     # スムージング量（小さい:カーソルが小刻みに動く 大きい:遅延が大）
-    ran = int(cfps/10)
+    ran = max(int(cfps/10),1)
     hands = mp_hands.Hands(
         min_detection_confidence=0.8,   # 検出信頼度
         min_tracking_confidence=0.8,    # 追跡信頼度
@@ -154,8 +156,17 @@ def main(cap_device, mode, kando):
                     LiTx.pop(0)                             # 先頭を削除
                     LiTy.pop(0)
                 # カメラ座標をマウス移動量に変換
+                posx,posy=mouse.position
                 dx = kando * (sum(LiTx)/ran - preX) * image_width
                 dy = kando * (sum(LiTy)/ran - preY) * image_height
+                if posx+dx<0: # カーソルがディスプレイから出て戻ってこなくなる問題の防止
+                    dx = -posx
+                elif posx+dx>screenRes[0]:
+                    dx = screenRes[0]-posx
+                if posy+dy<0:
+                    dy = -posy
+                elif posy+dy>screenRes[1]:
+                    dy = screenRes[1]-posy
 
                 # フラグ #########################################################################
                 # click状態

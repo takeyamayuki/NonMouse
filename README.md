@@ -124,15 +124,28 @@ Press close button(Valid only on windows, linux) or Esc key, when an application
 # Build
 † The built binary files can be downloaded from latest realease.
 
-Create a venv environment and perform `pip install`, because the directory specified in `datas` is for an assumed venv environment. 
-In app-mac.spec, change only `pathex` to fit your environment.   
+
+In app-mac.spec and app-win.spec, change `pathex` to fit your environment.   
 Run the following scripts for each OS.  
 
 - windows
+
+   Copy and paste the location obtained by `pip show mediapipe` into `datas`, referring to what is written originally.  
+   Run the following script.
    ```sh
+   $ pip show mediapipe
+   ...
+   Location: c:\users\namik\appdata\local\programs\python\python37\lib\site_packages
+   ...
+   #Copy and paste into the datas in app-win.spec
    $ pyinstaller app-win.spec
-   ```` 
+   ... ````
 - mac
-   ```sh
-   $ pyinstaller app-mac.spec
+
+   Create a venv environment and perform `pip install`, because the directory specified in `datas` is for an assumed venv environment. 
+   ```sh 
+   $ python3 -m venv venv
+   $ . venv/bin/activate
+   (venv)$ pip install -r requirements.txt
+   (venv)$ pyinstaller app-mac.spec
    ```

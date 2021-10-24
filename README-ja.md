@@ -120,15 +120,27 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 # ビルド
 ※ビルド済みバイナリファイルは、latest realeaseからダウンロード可能です。
 
-venv環境を作ってから`pip install`してください。`datas`で指定しているディレクトリはvenv環境前提のため。  
-app-mac.specにおいて`pathex`だけ、自分の環境に合わせて変更してください。  
+app-mac.spec, app-win.specにおいて`pathex`を自分の環境に合わせて変更してください。  
 各OSに合わせて以下のスクリプトを実行。
 
 - windows
+
+   `pip show mediapipe`で得られたLocationを`datas`にもとから書いてあるものを参考にしながらコピペする。  
+   以下のスクリプトを実行。
    ```sh
+   $ pip show mediapipe
+   ...
+   Location: c:\users\namik\appdata\local\programs\python\python37\lib\site-packages
+   ...
+   #app-win.specのdatasへコピペする
    $ pyinstaller app-win.spec
    ```
 - mac
-   ```sh
-   $ pyinstaller app-mac.spec
+
+   venv環境を作ってから`pip install`してください。`datas`で指定しているディレクトリはvenv環境前提のため。  
+   ```sh 
+   $ python3 -m venv venv
+   $ . venv/bin/activate
+   (venv)$ pip install -r requirements.txt
+   (venv)$ pyinstaller app-mac.spec
    ```

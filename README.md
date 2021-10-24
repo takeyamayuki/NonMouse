@@ -120,3 +120,19 @@ The following hand movements are enabled only when you hold down F4. They can be
 ## 🔚 Quit
 Press Ctrl+C, when a terminal window is active.     
 Press close button(Valid only on windows, linux) or Esc key, when an application window is active.   
+
+# Build
+† The built binary files can be downloaded from latest realease.
+
+Create a venv environment and perform `pip install`, because the directory specified in `datas` is for an assumed venv environment. 
+In app-mac.spec, change only `pathex` to fit your environment.   
+Run the following scripts for each OS.  
+
+- windows
+   ```sh
+   $ pyinstaller app-win.spec
+   ```` 
+- mac
+   ```sh
+   $ pyinstaller app-mac.spec
+   ```

@@ -3,3 +3,4 @@ numpy==1.20.3
 opencv-python==4.5.2.54
 pynput==1.6.8
 keyboard==0.13.5
+pyinstaller==4.5.1

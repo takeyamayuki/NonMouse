@@ -9,7 +9,6 @@ app.spec
 dist-mac/
 dist-win/
 dist-linux/
-app-mac.spec
 app-s.spec
 
 # py2exe

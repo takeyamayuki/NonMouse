@@ -24,7 +24,7 @@ def tk_arg():
     Val2 = tk.IntVar()
     Val4 = tk.IntVar()
     Val4.set(30)                        # デフォルトマウス感度
-    place = ['Normal', 'Over Hand', 'Behind You']
+    place = ['Normal', 'Above', 'Behind']
     # Camera #########################################################################
     Static1 = tk.Label(text='Camera').grid(row=1)
     for i in range(3):

@@ -41,18 +41,18 @@ If you have trouble installing mediapipe, please visit the [official website](ht
 ## 📷 Install a camera
 The following three ways of placing the device are assumed.
 
-- `Normal`: Point it at yourself (you can use your laptop's built-in camera).   
-   | Example of installation methods|Point the palm of your hand at the camera|
+- `Normal`: Place a webcam normally and point it at yourself (or use your laptop's built-in camera)   
+   | Examples of installation methods|Point the palm of your hand at the camera|
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg"> 
    <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134465166-3c324aef-0ee6-4dd9-9810-b723e945e748.jpg"> | ![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
-- `Over Hand`: Point it at your hand.  
-   | Example of installation methods | Point the back of your hand at the camera. |
+- `Above`: Place it above your hand and point it towards your hand.  
+   | An example of installation methods | Point the back of your hand at the camera. |
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134124093-51c85b18-3d90-4935-8daa-a78761d1aaed.jpg"> | ![スクリーンショット 2021-09-23 044243](https://user-images.githubusercontent.com/22733958/134456961-755a2769-1d2d-4cca-8fbd-6b49c7b2c0b1.png) |
 
-- `Behind You`: Point it at the display.    
-   | Example of installation methods | Point the back of your hand at the camera. |
+- `Behind`: Place it behind you and point it at the display.    
+   | An example of installation methods | Point the back of your hand at the camera. |
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg"> | ![スクリーンショット 2021-09-23 044403](https://user-images.githubusercontent.com/22733958/134456968-aaf3660d-9ee2-45b8-b65a-9590a6aec4fe.png) |
 
@@ -78,7 +78,7 @@ The following three ways of placing the device are assumed.
    ```
 
 ## 💻 Settings
-When you run the program, the following screen will appear. On this screen, you can set the camera and sensitivity.
+When you run the program, You will see a screen similar to the following. On this screen, you can set the camera and sensitivity.
 
 ![スクリーンショット 2021-10-04 205924](https://user-images.githubusercontent.com/22733958/135847704-97ae9d54-9572-4f47-beb6-a7bfe8bbaeaf.png)
 
@@ -86,7 +86,7 @@ When you run the program, the following screen will appear. On this screen, you 
 Select a camera device. If multiple cameras are connected, try them in order, starting with the smallest number.
 
 - `How to place`  
-Select the location where you placed the camera. Place the camera in one of the following positions: Normal, Over Hand, or Behind You in "📷 Install a Camera".
+Select the location where you placed the camera. Place the camera in one of the following positions: `Normal`, `Above`, `Behind` in [📷 Install a Camera].
 
 - `Sensitivity`  
 Set the sensitivity. If set too high, the mouse cursor will shake slightly.

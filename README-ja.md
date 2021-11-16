@@ -37,17 +37,17 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 ## 📷 カメラの設置
  置き方は以下の3通りを想定しています。
 
-- `Normal`: 自分に向ける(ノートパソコンの内蔵カメラでも可)   
+- `Normal`: 普通にWebカメラを置いて、自分に向ける(ノートパソコンの内蔵カメラでも可)   
    | 設置方法の例 | 手のひらをカメラに向ける |
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg"> <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134465166-3c324aef-0ee6-4dd9-9810-b723e945e748.jpg"> | ![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
 
-- `Over Hand`: 手元に向ける  
+- `Above`: 手の上に設置し、手元に向ける  
    | 設置方法の例 | 手の甲をカメラに向ける |
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134124093-51c85b18-3d90-4935-8daa-a78761d1aaed.jpg"> | ![スクリーンショット 2021-09-23 044243](https://user-images.githubusercontent.com/22733958/134456961-755a2769-1d2d-4cca-8fbd-6b49c7b2c0b1.png) |
 
-- `Behind You`: ディスプレイに向ける    
+- `Behind`: 自分の後ろに設置し、ディスプレイに向ける    
    | 設置方法の例 | 手の甲をカメラに向ける |
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg"> | ![スクリーンショット 2021-09-23 044403](https://user-images.githubusercontent.com/22733958/134456968-aaf3660d-9ee2-45b8-b65a-9590a6aec4fe.png) |
@@ -82,7 +82,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 カメラデバイスを選択してください。複数カメラが接続されている場合は、小さい番号から、順番に試してみてください。
 
 - `How to place`   
-カメラの置き場所を指定してください。「📷 カメラの設置」でのNormal, Over Hand, Behind Youのどれかの置き方をしてください。
+カメラの置き場所を指定してください。「📷 カメラの設置」での`Normal`, `Above`, `Behind`のどれかの置き方をしてください。
 
 - `Sensitivity`  
 感度を設定します。あまり大きくしすぎると、マウスカーソルが小刻みに揺れます。
@@ -96,7 +96,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 |![](https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif) | ![](https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif)| ![](https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif)| ![](https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif) | ![](https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif) |
 
 
-以下の手の動きが、F4を押している時だけ有効になります。ウィンドウがアクティブになっていなくても使えます。この機能はwindows, macのみ使えます。  
+以下の手の動きが、`F4`を押している時だけ有効になります。ウィンドウがアクティブになっていなくても使えます。この機能はwindows, macのみ使えます。  
 (linuxでは、この機能が制限されたapp-s.pyを使用してください。これはlinuxにおいて[keyboardライブラリ](https://github.com/boppreh/keyboard)がsudoで動かないことに起因します。動かせた人がいたら報告してほしいです。)
 
 * カーソル  

@@ -9,21 +9,25 @@ import keyboard
 import tkinter as tk
 from pynput.mouse import Button, Controller
 import os
+from decimal import Decimal
+from fractions import Fraction
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 if os.name == 'nt':
-    hotkey = 'Alt'
-# else:
-#     hotkey = 'Alt'
-screenRes = (0,0)
+    hotkey = 'shift'
+elif os.name == 'posix':
+    hotkey = None           # hotkeyはLinux, macでは無効
+screenRes = (0, 0)
+
 
 def tk_arg():
     global screenRes
     root = tk.Tk()
     root.title("First Setup")
-    root.geometry("300x260")
-    screenRes = (root.winfo_screenwidth(),root.winfo_screenheight()) # ディスプレイ解像度取得
+    root.geometry("300x280")
+    screenRes = (root.winfo_screenwidth(),
+                 root.winfo_screenheight())  # ディスプレイ解像度取得
     Val1 = tk.IntVar()
     Val2 = tk.IntVar()
     Val4 = tk.IntVar()
@@ -138,7 +142,7 @@ def main(cap_device, mode, kando):
                 if i == 0:
                     preX = hand_landmarks.landmark[8].x
                     preY = hand_landmarks.landmark[8].y
-                    for j in range(ran):                # range(ran)の分だけ繰り返す
+                    for _ in range(ran):                # range(ran)の分だけ繰り返す
                         LiTx.append(hand_landmarks.landmark[8].x)
                         LiTy.append(hand_landmarks.landmark[8].y)
                     i = +1
@@ -160,16 +164,25 @@ def main(cap_device, mode, kando):
                     LiTx.pop(0)                             # 先頭を削除
                     LiTy.pop(0)
                 # カメラ座標をマウス移動量に変換
-                posx,posy=mouse.position
-                dx = kando * (sum(LiTx)/ran - preX) * image_width
-                dy = kando * (sum(LiTy)/ran - preY) * image_height
-                if posx+dx<0: # カーソルがディスプレイから出て戻ってこなくなる問題の防止
+                posx, posy = mouse.position
+                nowX = sum(LiTx)/ran
+                nowY = sum(LiTy)/ran
+                if os.name == 'nt':     # Windowsの場合、マウス移動量に0.5を足して補正
+                    dx = kando * (nowX - preX) * image_width+0.5
+                    dy = kando * (nowY - preY) * image_height+0.5
+                elif os.name == 'posix':
+                    dx = kando * (nowX - preX) * image_width
+                    dy = kando * (nowY - preY) * image_height
+                preX = nowX
+                preY = nowY
+                #print(dx, dy)
+                if posx+dx < 0:  # カーソルがディスプレイから出て戻ってこなくなる問題の防止
                     dx = -posx
-                elif posx+dx>screenRes[0]:
+                elif posx+dx > screenRes[0]:
                     dx = screenRes[0]-posx
-                if posy+dy<0:
+                if posy+dy < 0:
                     dy = -posy
-                elif posy+dy>screenRes[1]:
+                elif posy+dy > screenRes[1]:
                     dy = screenRes[1]-posy
 
                 # フラグ #########################################################################
@@ -234,8 +247,6 @@ def main(cap_device, mode, kando):
                 else:
                     nowUgo = 1
 
-                preX = sum(LiTx)/ran
-                preY = sum(LiTy)/ran
                 preCli = nowCli
                 prrCli = norCli
                 c_text = 0              # push hotkeyなし

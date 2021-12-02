@@ -15,7 +15,7 @@ mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 if os.name == 'nt':
-    hotkey = 'shift'
+    hotkey = 'Alt'
 elif os.name == 'posix':
     hotkey = None           # hotkeyはLinux, macでは無効
 screenRes = (0, 0)
@@ -104,7 +104,7 @@ def main(cap_device, mode, kando):
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, cap_height)
         cfps = int(cap.get(cv2.CAP_PROP_FPS))
     # スムージング量（小さい:カーソルが小刻みに動く 大きい:遅延が大）
-    ran = max(int(cfps/10),1)
+    ran = max(int(cfps/10), 1)
     hands = mp_hands.Hands(
         min_detection_confidence=0.8,   # 検出信頼度
         min_tracking_confidence=0.8,    # 追跡信頼度
@@ -167,12 +167,11 @@ def main(cap_device, mode, kando):
                 posx, posy = mouse.position
                 nowX = sum(LiTx)/ran
                 nowY = sum(LiTy)/ran
+                dx = kando * (nowX - preX) * image_width
+                dy = kando * (nowY - preY) * image_height
                 if os.name == 'nt':     # Windowsの場合、マウス移動量に0.5を足して補正
-                    dx = kando * (nowX - preX) * image_width+0.5
-                    dy = kando * (nowY - preY) * image_height+0.5
-                elif os.name == 'posix':
-                    dx = kando * (nowX - preX) * image_width
-                    dy = kando * (nowY - preY) * image_height
+                    dx = dx+0.5
+                    dy = dy+0.5
                 preX = nowX
                 preY = nowY
                 #print(dx, dy)

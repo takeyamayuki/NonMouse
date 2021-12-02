@@ -76,7 +76,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 ## 💻 設定
 実行すると、以下の画面が出ます。この画面でカメラ、感度の設定をします。
 
-![スクリーンショット 2021-10-04 205924](https://user-images.githubusercontent.com/22733958/135847704-97ae9d54-9572-4f47-beb6-a7bfe8bbaeaf.png)
+![スクリーンショット 2021-12-02 154251](https://user-images.githubusercontent.com/22733958/144371606-d6b8cb07-f376-4097-95c3-c6cd7b3141ca.png)
 
 - `Camera`  
 カメラデバイスを選択してください。複数カメラが接続されている場合は、小さい番号から、順番に試してみてください。

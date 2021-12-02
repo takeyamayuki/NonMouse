@@ -8,10 +8,14 @@ import time
 import keyboard
 import tkinter as tk
 from pynput.mouse import Button, Controller
+import os
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
-hotkey = 'F4'
+if os.name == 'nt':
+    hotkey = 'Alt'
+# else:
+#     hotkey = 'Alt'
 screenRes = (0,0)
 
 def tk_arg():

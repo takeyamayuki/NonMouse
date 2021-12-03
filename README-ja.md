@@ -87,7 +87,8 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 
 | アクティブ化 | カーソル | 左クリック | 右クリック | スクロール |
 | :---: | :---: |:---: |:---: |:---: |
-|![](https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif) | ![](https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif)| ![](https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif)| ![](https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif) | ![](https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif) |
+|<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif">| <img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif">|<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif"> |<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif"> | <img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif"> |
+
 
 
 以下の手の動きが、`Alt`(Windows), `Command`(MacOS)を押している時だけ有効になります。

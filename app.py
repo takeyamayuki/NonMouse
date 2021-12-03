@@ -19,6 +19,7 @@ if pf == 'Windows':
 elif pf == 'Darwin':
     hotkey = 'Command'
 elif pf == 'Linux':
+    hotkey = 'xxx'
     _linux = 1          # hotkeyはLinux, macでは無効
 screenRes = (0, 0)
 
@@ -27,7 +28,7 @@ def tk_arg():
     global screenRes
     root = tk.Tk()
     root.title("First Setup")
-    root.geometry("300x280")
+    root.geometry("300x320")
     screenRes = (root.winfo_screenwidth(),
                  root.winfo_screenheight())  # ディスプレイ解像度取得
     Val1 = tk.IntVar()
@@ -80,6 +81,11 @@ def calculate_distance(l1, l2):
     v = np.array([l1.x, l1.y])-np.array([l2.x, l2.y])
     distance = np.linalg.norm(v)
     return distance
+
+def calculate_moving_average(landmark_x, landmark_y):
+
+    
+
 
 
 def main(cap_device, mode, kando):
@@ -139,8 +145,9 @@ def main(cap_device, mode, kando):
 
             if _linux == 1:             # Linuxだったら、常に動かす
                 can = 1
+                c_text=0
             elif _linux == 0:           # Linuxじゃなかったら、keyboardからの入力を受け付ける
-                if keyboard.is_pressed(hotkey):
+                if keyboard.is_pressed(hotkey): # linuxではこの条件文に触れないように
                     can = 1
                 else:                   # 入力がなかったら、動かさない
                     can = 0
@@ -180,7 +187,7 @@ def main(cap_device, mode, kando):
                 nowY = sum(LiTy)/ran
                 dx = kando * (nowX - preX) * image_width
                 dy = kando * (nowY - preY) * image_height
-                if pf == 'Windows':     # Windowsの場合、マウス移動量に0.5を足して補正
+                if pf == 'Windows' or pf=='Linux':     # Windows,linuxの場合、マウス移動量に0.5を足して補正
                     dx = dx+0.5
                     dy = dy+0.5
                 preX = nowX

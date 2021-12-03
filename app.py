@@ -86,7 +86,7 @@ def main(cap_device, mode, kando):
     nowCli, preCli = 0, 0               # 現在、前回の左クリック状態
     norCli, prrCli = 0, 0               # 現在、前回の右クリック状態
     douCli = 0                          # ダブルクリック状態
-    i, k, m = 0, 0, 0
+    i, k, h = 0, 0, 0
     LiTx = []
     LiTy = []
     nowUgo = 1
@@ -192,11 +192,11 @@ def main(cap_device, mode, kando):
                                 hand_landmarks.landmark[8].y * image_height, 20, (0, 250, 250))
                 elif absCli >= dis:
                     nowCli = 0
-                if np.abs(dx) > 3 and np.abs(dy) > 3:
+                if np.abs(dx) > 5 and np.abs(dy) > 5:
                     k = 0                           # 「動いている」ときk=0
                 # 右クリック状態 １秒以上クリック状態&&カーソルを動かさない
                 # 「動いていない」ときでクリックされたとき
-                if nowCli == 1 and np.abs(dx) < 3 and np.abs(dy) < 3:
+                if nowCli == 1 and np.abs(dx) < 5 and np.abs(dy) < 5:
                     if k == 0:          # k:クリック状態&&カーソルを動かしてない。113, 140行目でk=0にする
                         start = time.perf_counter()
                         k += 1
@@ -217,7 +217,10 @@ def main(cap_device, mode, kando):
                                 hand_landmarks.landmark[8].y * image_height, 8, (250, 0, 0))
                 # left click
                 if nowCli == 1 and nowCli != preCli:
-                    mouse.press(Button.left)
+                    if h == 1:                                  # 右クリック終わった直後状態：左クリックしない
+                        h = 0
+                    elif h == 0:                                # 普段の状態
+                        mouse.press(Button.left)
                     # print('Click')
                 # left click release
                 if nowCli == 0 and nowCli != preCli:
@@ -233,13 +236,14 @@ def main(cap_device, mode, kando):
                         douCli = 0
                 # right click
                 if norCli == 1 and norCli != prrCli:
-                    # mouse.release(Button.left)                  # 何故か必要
+                    # mouse.release(Button.left)                # 何故か必要
                     mouse.press(Button.right)
                     mouse.release(Button.right)
+                    h = 1                                       # 右クリック終わった直後状態h=1
                     # print("right click")
                 # scroll
                 if hand_landmarks.landmark[8].y-hand_landmarks.landmark[5].y > -0.06:
-                    mouse.scroll(0, -dy/50)     # スクロール感度:1/6にする
+                    mouse.scroll(0, -dy/50)                     # スクロール感度下げる
                     draw_circle(image, hand_landmarks.landmark[8].x * image_width,
                                 hand_landmarks.landmark[8].y * image_height, 20, (0, 0, 0))
                     nowUgo = 0

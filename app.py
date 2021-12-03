@@ -80,7 +80,12 @@ def calculate_distance(l1, l2):
     distance = np.linalg.norm(v)
     return distance
 
-def calculate_moving_average(landmark):
+def calculate_moving_average(landmark, ran):
+    LiT=0
+    LiT.append(landmark)
+    if len(LiT) > ran:
+        LiT.pop(0)
+    return sum(LiT)/ran
     pass
     
 
@@ -179,7 +184,7 @@ def main(cap_device, mode, kando):
                 if len(LiTx) > ran:                         # ranを超えたら
                     LiTx.pop(0)                             # 先頭を削除
                     LiTy.pop(0)
-                calculate_moving_average(hand_landmarks.landmark[8].x, )
+                calculate_moving_average(hand_landmarks.landmark[8].x, ran)
                 # カメラ座標をマウス移動量に変換
                 posx, posy = mouse.position
                 nowX = sum(LiTx)/ran

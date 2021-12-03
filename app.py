@@ -13,14 +13,12 @@ pf = platform.system()
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
-_linux = 0                # linuxかどうかのフラグ
 if pf == 'Windows':
     hotkey = 'Alt'
 elif pf == 'Darwin':
     hotkey = 'Command'
 elif pf == 'Linux':
-    hotkey = 'xxx'
-    _linux = 1          # hotkeyはLinux, macでは無効
+    hotkey = 'xxx'              # hotkeyはLinuxでは無効   
 screenRes = (0, 0)
 
 
@@ -83,7 +81,7 @@ def calculate_distance(l1, l2):
     return distance
 
 def calculate_moving_average(landmark_x, landmark_y):
-
+    pass
     
 
 
@@ -143,10 +141,10 @@ def main(cap_device, mode, kando):
                 mp_drawing.draw_landmarks(
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-            if _linux == 1:             # Linuxだったら、常に動かす
+            if pf == 'Linux':           # Linuxだったら、常に動かす
                 can = 1
                 c_text=0
-            elif _linux == 0:           # Linuxじゃなかったら、keyboardからの入力を受け付ける
+            else:                       # Linuxじゃなかったら、keyboardからの入力を受け付ける
                 if keyboard.is_pressed(hotkey): # linuxではこの条件文に触れないように
                     can = 1
                 else:                   # 入力がなかったら、動かさない

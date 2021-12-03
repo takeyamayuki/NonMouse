@@ -8,16 +8,18 @@ import time
 import keyboard
 import tkinter as tk
 from pynput.mouse import Button, Controller
-import os
-from decimal import Decimal
-from fractions import Fraction
+import platform
+pf = platform.system()
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
-if os.name == 'nt':
+_linux = 0                # linuxかどうかのフラグ
+if pf == 'Windows':
     hotkey = 'Alt'
-elif os.name == 'posix':
-    hotkey = None           # hotkeyはLinux, macでは無効
+elif pf == 'Darwin':
+    hotkey = 'Command'
+elif pf == 'Linux':
+    _linux = 1          # hotkeyはLinux, macでは無効
 screenRes = (0, 0)
 
 
@@ -135,8 +137,17 @@ def main(cap_device, mode, kando):
                 mp_drawing.draw_landmarks(
                     image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
+            if _linux == 1:             # Linuxだったら、常に動かす
+                can = 1
+            elif _linux == 0:           # Linuxじゃなかったら、keyboardからの入力を受け付ける
+                if keyboard.is_pressed(hotkey):
+                    can = 1
+                else:                   # 入力がなかったら、動かさない
+                    can = 0
+                    c_text = 1          # push hotkeyあり
+                    #i = 0
             # グローバルホットキーが押されているとき ##################################################
-            if keyboard.is_pressed(hotkey):
+            if can == 1:
                 # print(hand_landmarks.landmark[0])
                 # preX, preY, LiTx, LiTyの初期値に現在のマウス位置を代入 1回だけ実行
                 if i == 0:
@@ -169,7 +180,7 @@ def main(cap_device, mode, kando):
                 nowY = sum(LiTy)/ran
                 dx = kando * (nowX - preX) * image_width
                 dy = kando * (nowY - preY) * image_height
-                if os.name == 'nt':     # Windowsの場合、マウス移動量に0.5を足して補正
+                if pf == 'Windows':     # Windowsの場合、マウス移動量に0.5を足して補正
                     dx = dx+0.5
                     dy = dy+0.5
                 preX = nowX
@@ -253,9 +264,6 @@ def main(cap_device, mode, kando):
                 preCli = nowCli
                 prrCli = norCli
                 c_text = 0              # push hotkeyなし
-            else:
-                c_text = 1              # push hotkeyあり
-                #i = 0
 
         # 表示 #################################################################################
         if c_text == 1:

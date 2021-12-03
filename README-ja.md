@@ -96,8 +96,11 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 |![](https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif) | ![](https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif)| ![](https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif)| ![](https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif) | ![](https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif) |
 
 
-以下の手の動きが、`F4`を押している時だけ有効になります。ウィンドウがアクティブになっていなくても使えます。この機能はwindows, macのみ使えます。  
-(linuxでは、この機能が制限されたapp-s.pyを使用してください。これはlinuxにおいて[keyboardライブラリ](https://github.com/boppreh/keyboard)がsudoで動かないことに起因します。動かせた人がいたら報告してほしいです。)
+以下の手の動きが、`Alt`(Windows), `Command`(MacOS)を押している時だけ有効になります。
+()
+ウィンドウがアクティブになっていなくても使えます。この機能はwindows, macのみ使えます。
+  
+(linuxでは、この機能が制限されたapp-s.pyを使用してください。これはlinuxにおいて[keyboard](https://github.com/boppreh/keyboard)が`sudo`で動かないことに起因します。動かせた人がいたら報告してほしいです。)
 
 * カーソル  
    * マウスカーソル: 人差し指の先端 → 青色の円が人差し指の先端に表示される  

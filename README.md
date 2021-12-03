@@ -100,8 +100,8 @@ When you are done with the settings, click continue. The camera image will then 
 |![](https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif) | ![](https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif)| ![](https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif)| ![](https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif) | ![](https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif) |
 
  
-The following hand movements are enabled only when you hold down F4. They can be used even if no window is active.This feature is only available on windows and mac.  
-(On linux, use app-s.py which has this feature restricted. This is due to the fact that the [keyboard library](https://github.com/boppreh/keyboard) does not work with sudo on linux. If anyone can get it to work, please report back at issue:)
+The following hand movements are enabled only when you hold down `Alt`(Windows), `Command`(MacOS). You can use this function even if the window is not active.This feature is only available on windows and mac.  
+(On linux, use app-s.py which has this feature restricted. This is due to the fact that the [keyboard](https://github.com/boppreh/keyboard) does not work with `sudo` on linux. If anyone can get it to work, please report back at issue.)
 
 - cursor
     * Mouse cursor: tip of index finger → A blue circle will appear at the tip of your index finger. 

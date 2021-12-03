@@ -9,15 +9,17 @@ import keyboard
 import tkinter as tk
 from pynput.mouse import Button, Controller
 import os
-from decimal import Decimal
-from fractions import Fraction
+import platform
+pf = platform.system()
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
-if os.name == 'nt':
-    hotkey = 'Alt'
-elif os.name == 'posix':
-    hotkey = None           # hotkeyはLinux, macでは無効
+if pf == 'Windows':
+    hotkey = 'Alt'  
+elif pf == 'Darwin':
+    hotkey = 'Command'
+elif pf == 'Linux':
+    hotkey = None        # hotkeyはLinux, macでは無効
 screenRes = (0, 0)
 
 

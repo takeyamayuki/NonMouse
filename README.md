@@ -62,7 +62,7 @@ The following three ways of placing the device are assumed.
    OR
 -  Run the following script from the continuation of the installation.
 
-   For windows
+   For windows, linux(global hotkey function does not work in linux.)
    ```sh
    $ python3 app.py
    ```
@@ -70,11 +70,6 @@ The following three ways of placing the device are assumed.
    For MacOS, you need execute permission.
    ```sh
    $ sudo python3 app.py
-   ```
-   
-   For linux, please run app-s.py without global hotkeys (it always works).
-   ```sh
-   $ python3 app-s.py
    ```
 
 ## 💻 Settings
@@ -101,7 +96,6 @@ When you are done with the settings, click continue. The camera image will then 
 
  
 The following hand movements are enabled only when you hold down `Alt`(Windows), `Command`(MacOS). You can use this function even if the window is not active.This feature is only available on windows and mac.  
-(On linux, use app-s.py which has this feature restricted. This is due to the fact that the [keyboard](https://github.com/boppreh/keyboard) does not work with `sudo` on linux. If anyone can get it to work, please report back at issue.)
 
 - cursor
     * Mouse cursor: tip of index finger → A blue circle will appear at the tip of your index finger. 

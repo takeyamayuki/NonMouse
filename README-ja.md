@@ -58,7 +58,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
    もしくは、
 - インストールの続きから、以下のスクリプトを実行  
 
-   windowsの場合  
+   windows, linuxの場合(linuxはグローバルホットキー機能が使えません)  
    ```sh
    $ python3 app.py
    ```
@@ -67,12 +67,6 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
    ```sh
    $ sudo python3 app.py
    ```
-   
-   linuxの場合は、グローバルホットキーなし（常に動く）のapp-s.pyを起動してください。
-   ```sh
-   $ python3 app-s.py
-   ```
-
 ## 💻 設定
 実行すると、以下の画面が出ます。この画面でカメラ、感度の設定をします。
 
@@ -99,8 +93,6 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 以下の手の動きが、`Alt`(Windows), `Command`(MacOS)を押している時だけ有効になります。
 ()
 ウィンドウがアクティブになっていなくても使えます。この機能はwindows, macのみ使えます。
-  
-(linuxでは、この機能が制限されたapp-s.pyを使用してください。これはlinuxにおいて[keyboard](https://github.com/boppreh/keyboard)が`sudo`で動かないことに起因します。動かせた人がいたら報告してほしいです。)
 
 * カーソル  
    * マウスカーソル: 人差し指の先端 → 青色の円が人差し指の先端に表示される  

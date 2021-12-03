@@ -91,7 +91,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 
 
 以下の手の動きが、`Alt`(Windows), `Command`(MacOS)を押している時だけ有効になります。
-()
+[ここ](https://github.com/takeyamayuki/NonMouse/blob/578afd6a7206258b68327421f64370c4009dedfd/app.py#L16-L21)を書き換えれば、自分でグローバルホットキーを定義できます。
 ウィンドウがアクティブになっていなくても使えます。この機能はwindows, macのみ使えます。
 
 * カーソル  

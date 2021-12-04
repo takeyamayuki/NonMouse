@@ -4,7 +4,7 @@
 block_cipher = None
 
 
-a = Analysis(['app-mac.py'],
+a = Analysis(['app.py'],
              pathex=['/Users/yukitakeyama/Documents/Python/NonMouse2g'],    # 各々の環境に合わせてPATHを変更してください
              binaries=[('/System/Library/Frameworks/Tcl.framework/Versions/8.5/tclsh8.5', 'tcl')],
              datas=[('venv/lib/python3.7/site-packages/mediapipe/modules', 'mediapipe/modules'),], 

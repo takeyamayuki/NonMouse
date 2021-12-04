@@ -1,5 +1,5 @@
 # NonMouse
-![GitHub](https://img.shields.io/github/license/takeyamayuki/nonmouse) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeyamayuki/nonmouse) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/takeyamayuki/nonmouse) ![zenn](https://img.shields.io/badge/Zenn%20Likes-93-blue) 
+![GitHub](https://img.shields.io/github/license/takeyamayuki/nonmouse) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeyamayuki/nonmouse) ![zenn](https://img.shields.io/badge/Zenn%20Likes-93-blue) 
 
 日本語のREADMEは[こちら](README-ja.md)  
 
@@ -62,7 +62,7 @@ The following three ways of placing the device are assumed.
    OR
 -  Run the following script from the continuation of the installation.
 
-   For windows
+   For windows, linux(global hotkey function does not work in linux.)
    ```sh
    $ python3 app.py
    ```
@@ -71,16 +71,11 @@ The following three ways of placing the device are assumed.
    ```sh
    $ sudo python3 app.py
    ```
-   
-   For linux, please run app-s.py without global hotkeys (it always works).
-   ```sh
-   $ python3 app-s.py
-   ```
 
 ## 💻 Settings
 When you run the program, You will see a screen similar to the following. On this screen, you can set the camera and sensitivity.
 
-![スクリーンショット 2021-10-04 205924](https://user-images.githubusercontent.com/22733958/135847704-97ae9d54-9572-4f47-beb6-a7bfe8bbaeaf.png)
+![スクリーンショット 2021-12-02 154251](https://user-images.githubusercontent.com/22733958/144371606-d6b8cb07-f376-4097-95c3-c6cd7b3141ca.png)
 
 - `Camera`  
 Select a camera device. If multiple cameras are connected, try them in order, starting with the smallest number.
@@ -97,11 +92,10 @@ When you are done with the settings, click continue. The camera image will then 
 
 | Activate | Cursor | Left Click | Right Click | Scroll |
 | :---: | :---: |:---: |:---: |:---: |
-|![](https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif) | ![](https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif)| ![](https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif)| ![](https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif) | ![](https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif) |
+|<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif">| <img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif">|<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif"> |<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif"> | <img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif"> |
 
  
-The following hand movements are enabled only when you hold down F4. They can be used even if no window is active.This feature is only available on windows and mac.  
-(On linux, use app-s.py which has this feature restricted. This is due to the fact that the [keyboard library](https://github.com/boppreh/keyboard) does not work with sudo on linux. If anyone can get it to work, please report back at issue:)
+The following hand movements are enabled only when you hold down `Alt`(Windows), `Command`(MacOS). You can define your own global hotkeys by rewriting [here](https://github.com/takeyamayuki/NonMouse/blob/578afd6a7206258b68327421f64370c4009dedfd/app.py#L16-L21). You can use this function even if the window is not active.This feature is only available on windows and mac.  
 
 - cursor
     * Mouse cursor: tip of index finger → A blue circle will appear at the tip of your index finger. 

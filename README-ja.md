@@ -58,7 +58,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
    もしくは、
 - インストールの続きから、以下のスクリプトを実行  
 
-   windowsの場合  
+   windows, linuxの場合(linuxはグローバルホットキー機能が使えません)  
    ```sh
    $ python3 app.py
    ```
@@ -67,16 +67,10 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
    ```sh
    $ sudo python3 app.py
    ```
-   
-   linuxの場合は、グローバルホットキーなし（常に動く）のapp-s.pyを起動してください。
-   ```sh
-   $ python3 app-s.py
-   ```
-
 ## 💻 設定
 実行すると、以下の画面が出ます。この画面でカメラ、感度の設定をします。
 
-![スクリーンショット 2021-10-04 205924](https://user-images.githubusercontent.com/22733958/135847704-97ae9d54-9572-4f47-beb6-a7bfe8bbaeaf.png)
+![スクリーンショット 2021-12-02 154251](https://user-images.githubusercontent.com/22733958/144371606-d6b8cb07-f376-4097-95c3-c6cd7b3141ca.png)
 
 - `Camera`  
 カメラデバイスを選択してください。複数カメラが接続されている場合は、小さい番号から、順番に試してみてください。
@@ -93,11 +87,13 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 
 | アクティブ化 | カーソル | 左クリック | 右クリック | スクロール |
 | :---: | :---: |:---: |:---: |:---: |
-|![](https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif) | ![](https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif)| ![](https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif)| ![](https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif) | ![](https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif) |
+|<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif">| <img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif">|<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif"> |<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif"> | <img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif"> |
 
 
-以下の手の動きが、`F4`を押している時だけ有効になります。ウィンドウがアクティブになっていなくても使えます。この機能はwindows, macのみ使えます。  
-(linuxでは、この機能が制限されたapp-s.pyを使用してください。これはlinuxにおいて[keyboardライブラリ](https://github.com/boppreh/keyboard)がsudoで動かないことに起因します。動かせた人がいたら報告してほしいです。)
+
+以下の手の動きが、`Alt`(Windows), `Command`(MacOS)を押している時だけ有効になります。
+[ここ](https://github.com/takeyamayuki/NonMouse/blob/578afd6a7206258b68327421f64370c4009dedfd/app.py#L16-L21)を書き換えれば、自分でグローバルホットキーを定義できます。
+ウィンドウがアクティブになっていなくても使えます。この機能はwindows, macのみ使えます。
 
 * カーソル  
    * マウスカーソル: 人差し指の先端 → 青色の円が人差し指の先端に表示される  

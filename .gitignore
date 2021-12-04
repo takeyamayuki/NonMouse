@@ -1,6 +1,7 @@
 # personal environment dependent
 __pycache__/
 venv/
+.vscode
 
 # pyinstaller 
 dist/

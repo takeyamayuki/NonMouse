@@ -109,7 +109,7 @@ def main(cap_device, mode, kando):
     cap_width = 1280
     cap_height = 720
     start, c_start = float('inf'), float('inf')
-    c_text = 1
+    c_text = 0
     # Webカメラ入力, 設定
     window_name = 'NonMouse'
     cv2.namedWindow(window_name)
@@ -157,6 +157,7 @@ def main(cap_device, mode, kando):
             else:                       # Linuxじゃなかったら、keyboardからの入力を受け付ける
                 if keyboard.is_pressed(hotkey):  # linuxではこの条件文に触れないように
                     can = 1
+                    c_text = 0          # push hotkeyなし
                 else:                   # 入力がなかったら、動かさない
                     can = 0
                     c_text = 1          # push hotkeyあり
@@ -286,7 +287,6 @@ def main(cap_device, mode, kando):
 
                 preCli = nowCli
                 prrCli = norCli
-                c_text = 0              # push hotkeyなし
 
         # 表示 #################################################################################
         if c_text == 1:

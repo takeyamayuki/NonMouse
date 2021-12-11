@@ -169,7 +169,7 @@ def main(cap_device, mode, kando):
                 if i == 0:
                     preX = hand_landmarks.landmark[8].x
                     preY = hand_landmarks.landmark[8].y
-                    i = +1
+                    i += 1
 
                 # 以下で使うランドマーク座標の移動平均計算
                 landmark0 = [calculate_moving_average(hand_landmarks.landmark[0].x, ran, list0x), calculate_moving_average(
@@ -193,7 +193,7 @@ def main(cap_device, mode, kando):
                 absCli = calculate_distance(landmark4, landmark6) / absKij
 
                 posx, posy = mouse.position
-                
+
                 # 人差し指の先端をカーソルに対応
                 # カメラ座標をマウス移動量に変換
                 nowX = calculate_moving_average(
@@ -242,7 +242,6 @@ def main(cap_device, mode, kando):
                                     hand_landmarks.landmark[8].y * image_height, 20, (0, 0, 250))
                 else:
                     norCli = 0
-                
 
                 # 動かす###########################################################################
                 # cursor

@@ -85,11 +85,9 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 
 ## 👆 手の動き
 
-| アクティブ化 | カーソル | 左クリック | 右クリック | スクロール |
-| :---: | :---: |:---: |:---: |:---: |
-|<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462214-af90785f-29fb-4230-a2b4-4618ee0b26dd.gif">| <img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462179-6bd5a666-92b4-4c87-a02e-711430dd5180.gif">|<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462244-e2a4e47e-d183-44b9-ace5-b771b063289c.gif"> |<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462268-90a07833-4ecc-4b29-85c6-6925f106cbc2.gif"> | <img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/134462278-a857012e-76a6-4abd-bdc3-53664c8cf643.gif"> |
-
-
+| カーソル止める | 左クリック | 右クリック | スクロール |
+| :---: |:---: |:---: |:---: |
+| <img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/146399363-d90dbef0-0972-46b4-a03b-a76a6c97222f.gif">|<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/146399342-d3ccb518-5950-4c69-aad4-c6fc9ad4a378.gif"> |<img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/146399353-0fb9304d-4f6c-4e5d-890c-0beb1dc921d2.gif"> | <img width="300" alt="aaa" src="https://user-images.githubusercontent.com/22733958/146399372-6551c367-5424-45a1-a963-c475c7ea895a.gif"> |
 
 以下の手の動きが、`Alt`(Windows), `Command`(MacOS)を押している時だけ有効になります。
 [ここ](https://github.com/takeyamayuki/NonMouse/blob/578afd6a7206258b68327421f64370c4009dedfd/app.py#L16-L21)を書き換えれば、自分でグローバルホットキーを定義できます。

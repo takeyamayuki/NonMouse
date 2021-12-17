@@ -34,7 +34,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 † macの場合、システム環境設定からセキリュティとプライバシーのアクセシビリティとカメラの項目にターミナルやVScodeなど、実行する場所を追加する必要があります。
 
 # 使い方
-## 📷 カメラの設置
+## 1. カメラの設置
  置き方は以下の3通りを想定しています。
 
 - `Normal`: 普通にWebカメラを置いて、自分に向ける(ノートパソコンの内蔵カメラでも可)   
@@ -52,7 +52,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg"> | ![スクリーンショット 2021-09-23 044403](https://user-images.githubusercontent.com/22733958/134456968-aaf3660d-9ee2-45b8-b65a-9590a6aec4fe.png) |
 
-## 🚀 実行
+## 2. 実行
 - [GitHub wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E)の通りに実行可能ファイルを実行  
 
    もしくは、
@@ -67,7 +67,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
    ```sh
    $ sudo python3 app.py
    ```
-## 💻 設定
+## 3. 設定
 実行すると、以下の画面が出ます。この画面でカメラ、感度の設定をします。
 
 ![スクリーンショット 2021-12-02 154251](https://user-images.githubusercontent.com/22733958/144371606-d6b8cb07-f376-4097-95c3-c6cd7b3141ca.png)
@@ -83,7 +83,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 
 設定が終わったら、continueをクリックしてください。すると、カメラの映像が映し出され、選択した設定でNonMouseが使えるようになります。
 
-## 👆 手の動き
+## 4. 手の動き
 
 | カーソル止める | 左クリック | 右クリック | スクロール |
 | :---: |:---: |:---: |:---: |
@@ -107,7 +107,7 @@ mediapipeのインストールで困ったら[公式サイト](https://google.gi
 † 手元を明るくして使ってください。  
 † カメラに対して、なるべく手をまっすぐ向けてください。
 
-## 🔚 終了
+## 5. 終了
 ターミナルウィンドウがアクティブのとき、Ctrl+C  
 アプリケーションウィンドウがアクティブのときは、閉じるボタン(windows, linuxのみ)かEscを押してください。
 

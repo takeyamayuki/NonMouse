@@ -38,7 +38,7 @@ If you have trouble installing mediapipe, please visit the [official website](ht
 † For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility and Cammera section in System Preferences.
 
 # Usage
-## 📷 Install a camera
+## 1. Install a camera
 The following three ways of placing the device are assumed.
 
 - `Normal`: Place a webcam normally and point it at yourself (or use your laptop's built-in camera)   
@@ -56,7 +56,7 @@ The following three ways of placing the device are assumed.
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg"> | ![スクリーンショット 2021-09-23 044403](https://user-images.githubusercontent.com/22733958/134456968-aaf3660d-9ee2-45b8-b65a-9590a6aec4fe.png) |
 
-## 🚀 Run
+## 2. Run
 - Run the executable as described in the [GitHub wiki](https://github.com/takeyamayuki/NonMouse/wiki/How-to-run-a--NonMouse-executable-file-in-each-OS#%E6%97%A5%E6%9C%AC%E8%AA%9E).
 
    OR
@@ -72,7 +72,7 @@ The following three ways of placing the device are assumed.
    $ sudo python3 app.py
    ```
 
-## 💻 Settings
+## 3. Settings
 When you run the program, You will see a screen similar to the following. On this screen, you can set the camera and sensitivity.
 
 ![スクリーンショット 2021-12-02 154251](https://user-images.githubusercontent.com/22733958/144371606-d6b8cb07-f376-4097-95c3-c6cd7b3141ca.png)
@@ -88,7 +88,7 @@ Set the sensitivity. If set too high, the mouse cursor will shake slightly.
 
 When you are done with the settings, click continue. The camera image will then be displayed, and you can use NonMouse with the settings you selected.
 
-## 👆 Hand Movements
+## 4. Hand Movements
 
 | stop cursor | left click | right click | scroll |
 | :---: |:---: |:---: |:---: |
@@ -111,7 +111,7 @@ The following hand movements are enabled only when you hold down `Alt`(Windows),
 † Use it with a bright light at hand.  
 † Keep your hand as straight as possible to the camera.
 
-## 🔚 Quit
+## 5. Quit
 Press Ctrl+C, when a terminal window is active.     
 Press close button(Valid only on windows, linux) or Esc key, when an application window is active.   
 

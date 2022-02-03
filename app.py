@@ -26,7 +26,7 @@ def tk_arg():
     global screenRes
     root = tk.Tk()
     root.title("First Setup")
-    root.geometry("300x320")
+    root.geometry("370x320")
     screenRes = (root.winfo_screenwidth(),
                  root.winfo_screenheight())  # ディスプレイ解像度取得
     Val1 = tk.IntVar()

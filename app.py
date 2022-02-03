@@ -36,7 +36,7 @@ def tk_arg():
     place = ['Normal', 'Above', 'Behind']
     # Camera #########################################################################
     Static1 = tk.Label(text='Camera').grid(row=1)
-    for i in range(3):
+    for i in range(4):
         tk.Radiobutton(root,
                        value=i,
                        variable=Val1,
@@ -114,6 +114,7 @@ def main(cap_device, mode, kando):
     window_name = 'NonMouse'
     cv2.namedWindow(window_name)
     cap = cv2.VideoCapture(cap_device)
+    cap.set(cv2.CAP_PROP_FPS, 60)
     cfps = int(cap.get(cv2.CAP_PROP_FPS))
     if cfps < 30:
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_width)

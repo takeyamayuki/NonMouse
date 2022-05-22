@@ -35,7 +35,8 @@ $ pip install -r requirements.txt
 ```
 If you have trouble installing mediapipe, please visit the [official website](https://google.github.io/mediapipe/getting_started/install.html).  
 
-† For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility and Cammera section in System Preferences.
+> **Note**   
+> For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility and Cammera section in System Preferences.
 
 # Usage
 ## 1. Install a camera
@@ -108,8 +109,9 @@ The following hand movements are enabled only when you hold down `Alt`(Windows),
     * Right click: Hold the click state for 1.5 second without moving the cursor. → A red circle will appear at the tip of your index finger.
     * Scroll: Scroll with the index finger with the index finger folded → a black circle will appear. 
 
-† Use it with a bright light at hand.  
-† Keep your hand as straight as possible to the camera.
+> **Note**
+> - Use it with a bright light at hand.  
+> - Keep your hand as straight as possible to the camera.
 
 ## 5. Quit
 Press Ctrl+C, when a terminal window is active.     

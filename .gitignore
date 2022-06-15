@@ -18,3 +18,5 @@ setup.py
 
 # pip
 site-packages
+
+test/

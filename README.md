@@ -1,5 +1,9 @@
 <div align="center">
-   <img src="https://user-images.githubusercontent.com/22733958/183041432-cf6cc6f4-3a6f-4070-91a8-d0a7f7abf59f.JPG" width="800">
+   <img src="https://user-images.githubusercontent.com/22733958/183041432-cf6cc6f4-3a6f-4070-91a8-d0a7f7abf59f.JPG" width="600">
+</div>
+
+<div align="center">
+   Virtual gesture mouse with webcam for easy use with hands on desk  
 </div>
 
 ---

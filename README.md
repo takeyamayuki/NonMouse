@@ -1,4 +1,9 @@
-# NonMouse
+<div align="center">
+   <img src="https://user-images.githubusercontent.com/22733958/183041432-cf6cc6f4-3a6f-4070-91a8-d0a7f7abf59f.JPG" width="800">
+</div>
+
+---
+
 ![GitHub](https://img.shields.io/github/license/takeyamayuki/nonmouse) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeyamayuki/nonmouse) ![zenn](https://img.shields.io/badge/Zenn%20Likes-102-blue) 
 
 <img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/135473409-9ddf2fc5-4722-4e55-8eef-64476635c10d.gif">
@@ -9,9 +14,7 @@
 - No need for anything other than a webcam and host PC
 - Gesture-based HCI has been around for some time, but shooting from above makes the mouse easier to use.
 - NonMouse can be invoked by the global hotkey even when this application is inactive.
-- Works well with typing    
-- You can make it look like a touch display, by pointing the web camera at the display. 
-- You can use the mouse wherever you want.
+- Works well with typing.    
 - Just download from the latest release (windows, mac only)  
 
 # Installation

@@ -1,19 +1,13 @@
 # NonMouse
-![GitHub](https://img.shields.io/github/license/takeyamayuki/nonmouse) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeyamayuki/nonmouse) ![zenn](https://img.shields.io/badge/Zenn%20Likes-93-blue) 
-
-日本語のREADMEは[こちら](README-ja.md)  
-
-This is an application that allows you to use your hand itself as a mouse.  
-The program uses a web camera to recognize your hand and control the mouse cursor.  
-
-The video is available on [Youtube](https://youtu.be/ufvOJUTCF8M)   
+![GitHub](https://img.shields.io/github/license/takeyamayuki/nonmouse) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeyamayuki/nonmouse) ![zenn](https://img.shields.io/badge/Zenn%20Likes-102-blue) 
 
 <img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/135473409-9ddf2fc5-4722-4e55-8eef-64476635c10d.gif">
 
 <img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/129838897-86da6861-b3a5-4e14-98fe-400a27c894d7.gif">
 
 # Feature
-- Entirely new mouse: a mouse with a software approach. It recognizes your hand and works as a mouse.
+- No need for anything other than a webcam and host PC
+- Gesture-based HCI has been around for some time, but shooting from above makes the mouse easier to use.
 - NonMouse can be invoked by the global hotkey even when this application is inactive.
 - Works well with typing    
 - You can make it look like a touch display, by pointing the web camera at the display. 
@@ -22,7 +16,7 @@ The video is available on [Youtube](https://youtu.be/ufvOJUTCF8M)
 
 # Installation
 ## 📁 Run as executable file 
-Download the zip file that matches your environment from the latest release. 
+Download the zip file that matches your environment from the [latest release](https://github.com/takeyamayuki/NonMouse/releases). 
 
 OR
 ## 🐍 Run as python
@@ -43,17 +37,17 @@ If you have trouble installing mediapipe, please visit the [official website](ht
 The following three ways of placing the device are assumed.
 
 - `Normal`: Place a webcam normally and point it at yourself (or use your laptop's built-in camera)   
-   | Examples of installation methods|Point the palm of your hand at the camera|
+   | Examples of installation methods||
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134456824-79c1a447-2b06-4b98-ba28-d06b552606e2.jpg"> 
    <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134465166-3c324aef-0ee6-4dd9-9810-b723e945e748.jpg"> | ![スクリーンショット 2021-09-23 044041](https://user-images.githubusercontent.com/22733958/134456933-0c81812d-c23d-4e52-860e-2a341d5bbe3c.png) |
 - `Above`: Place it above your hand and point it towards your hand.  
-   | An example of installation methods | Point the back of your hand at the camera. |
+   | An example of installation methods |  |
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134124093-51c85b18-3d90-4935-8daa-a78761d1aaed.jpg"> | ![スクリーンショット 2021-09-23 044243](https://user-images.githubusercontent.com/22733958/134456961-755a2769-1d2d-4cca-8fbd-6b49c7b2c0b1.png) |
 
 - `Behind`: Place it behind you and point it at the display.    
-   | An example of installation methods | Point the back of your hand at the camera. |
+   | An example of installation methods |  |
    | :---: | :---: |
    | <img width="300" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/134123691-19eb8a76-8f01-497d-b09b-ea93e72825d5.jpg"> | ![スクリーンショット 2021-09-23 044403](https://user-images.githubusercontent.com/22733958/134456968-aaf3660d-9ee2-45b8-b65a-9590a6aec4fe.png) |
 
@@ -70,7 +64,8 @@ The following three ways of placing the device are assumed.
 
    For MacOS, you need execute permission.
    ```sh
-   $ sudo python3 app.py
+   $ sudo /path/to/python3 app.py
+   # When you invoke python with sudo, the system python is invoked, so you must specify the python you want to run yourself.
    ```
 
 ## 3. Settings
@@ -118,7 +113,8 @@ Press Ctrl+C, when a terminal window is active.
 Press close button(Valid only on windows, linux) or Esc key, when an application window is active.   
 
 # Build
-† The built binary files can be downloaded from latest realease.
+> **Note**  
+> The built binary files can be downloaded from latest realease.
 
 
 In app-mac.spec and app-win.spec, change `pathex` to fit your environment.   

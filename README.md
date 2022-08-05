@@ -6,13 +6,27 @@
    Virtual gesture mouse with webcam for easy use with hands on desk  
 </div>
 
+<p align="center">
+  <a href="https://github.com/takeyamayuki/NonMouse/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/takeyamayuki/nonmouse" />
+  </a>
+  <a href="https://github.com/takeyamayuki/NonMouse/releases">
+    <img src="https://img.shields.io/github/v/release/takeyamayuki/nonmouse" />
+  </a>
+  <a href="https://zenn.dev/ninzin/articles/94b05fdb9edf53">
+    <img src="https://img.shields.io/badge/Zenn%20Likes-102-blue" />
+  </a>  
+</p>
+
 ---
 
-![GitHub](https://img.shields.io/github/license/takeyamayuki/nonmouse) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeyamayuki/nonmouse) ![zenn](https://img.shields.io/badge/Zenn%20Likes-102-blue) 
+<table>
+<tr>
+<td><img src="https://user-images.githubusercontent.com/22733958/135473409-9ddf2fc5-4722-4e55-8eef-64476635c10d.gif" height=200></td>
+<td><img src="https://user-images.githubusercontent.com/22733958/129838897-86da6861-b3a5-4e14-98fe-400a27c894d7.gif" height=200></td>
+</tr>
+</table>
 
-<img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/135473409-9ddf2fc5-4722-4e55-8eef-64476635c10d.gif">
-
-<img width="500" alt="スクリーンショット 2021-09-13 午後5 33 21" src="https://user-images.githubusercontent.com/22733958/129838897-86da6861-b3a5-4e14-98fe-400a27c894d7.gif">
 
 # Feature
 - No need for anything other than a webcam and host PC

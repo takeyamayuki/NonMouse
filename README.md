@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-   Virtual gesture mouse with webcam for easy use with hands on desk  
+   a webcam-based virtual gesture mouse that is easy to use with hands on the desk  
 </div>
 
 <p align="center">
@@ -18,7 +18,7 @@
   </a>  
 </p>
 
----
+--- 
 
 <table>
 <tr>
@@ -29,11 +29,12 @@
 
 
 # Feature
-- No need for anything other than a webcam and host PC
+
+- No need for anything other than a webcam and host PC.
 - Gesture-based HCI has been around for some time, but shooting from above makes the mouse easier to use.
 - NonMouse can be invoked by the global hotkey even when this application is inactive.
 - Works well with typing.    
-- Just download from the latest release (windows, mac only)  
+- Just download from the latest release(windows, mac only).  
 
 # Installation
 ## 📁 Run as executable file 

@@ -69,25 +69,22 @@ def tk_arg():
     kando = Val4.get()/10               # 1~10
     return cap_device, mode, kando
 
-# 円を描く関数 #######################################################################
 
 
 def draw_circle(image, x, y, roudness, color):
+    """draw circle"""
     cv2.circle(image, (int(x), int(y)), roudness, color,
                thickness=5, lineType=cv2.LINE_8, shift=0)
 
-# ユークリッド距離を計算する関数 #####################################################
-
 
 def calculate_distance(l1, l2):
+    """Calculate Euclidean distance"""
     v = np.array([l1[0], l1[1]])-np.array([l2[0], l2[1]])
     distance = np.linalg.norm(v)
     return distance
 
-# 移動平均を求める関数 ################################################################
-
-
 def calculate_moving_average(landmark, ran, LiT):   # (座標、いくつ分の平均か、移動平均を格納するリスト)
+    """Calculate moving averages"""
     while len(LiT) < ran:               # ran個分のデータをLiTに追加（最初だけ）
         LiT.append(landmark)
     LiT.append(landmark)                # LiTの更新（最後に追加）
@@ -105,6 +102,7 @@ def main(cap_device, mode, kando):
     i, k, h = 0, 0, 0
     LiTx, LiTy, list0x, list0y, list1x, list1y, list4x, list4y, list6x, list6y, list8x, list8y, list12x, list12y = [
     ], [], [], [], [], [], [], [], [], [], [], [], [], []   # 移動平均用リスト
+    moving_average=[[0] * 3 for _ in range(3)]
     nowUgo = 1
     cap_width = 1280
     cap_height = 720
@@ -149,8 +147,7 @@ def main(cap_device, mode, kando):
         if results.multi_hand_landmarks:
             # 手の骨格描画
             for hand_landmarks in results.multi_hand_landmarks:
-                mp_drawing.draw_landmarks(
-                    image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+                mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
             if pf == 'Linux':           # Linuxだったら、常に動かす
                 can = 1

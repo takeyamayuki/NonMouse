@@ -9,10 +9,14 @@ import keyboard
 import tkinter as tk
 from pynput.mouse import Button, Controller
 import platform
+
+from nonmouse.utils import draw_circle, calculate_distance, calculate_moving_average
+
 pf = platform.system()
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
+
 if pf == 'Windows':
     hotkey = 'Alt'
 elif pf == 'Darwin':
@@ -70,29 +74,6 @@ def tk_arg():
     return cap_device, mode, kando
 
 
-
-def draw_circle(image, x, y, roudness, color):
-    """draw circle"""
-    cv2.circle(image, (int(x), int(y)), roudness, color,
-               thickness=5, lineType=cv2.LINE_8, shift=0)
-
-
-def calculate_distance(l1, l2):
-    """Calculate Euclidean distance"""
-    v = np.array([l1[0], l1[1]])-np.array([l2[0], l2[1]])
-    distance = np.linalg.norm(v)
-    return distance
-
-def calculate_moving_average(landmark, ran, LiT):   # (座標、いくつ分の平均か、移動平均を格納するリスト)
-    """Calculate moving averages"""
-    while len(LiT) < ran:               # ran個分のデータをLiTに追加（最初だけ）
-        LiT.append(landmark)
-    LiT.append(landmark)                # LiTの更新（最後に追加）
-    if len(LiT) > ran:                  # LiTの更新（最初を削除）
-        LiT.pop(0)
-    return sum(LiT)/ran
-
-
 def main(cap_device, mode, kando):
     dis = 0.7                           # くっつける距離の定義
     preX, preY = 0, 0
@@ -102,7 +83,7 @@ def main(cap_device, mode, kando):
     i, k, h = 0, 0, 0
     LiTx, LiTy, list0x, list0y, list1x, list1y, list4x, list4y, list6x, list6y, list8x, list8y, list12x, list12y = [
     ], [], [], [], [], [], [], [], [], [], [], [], [], []   # 移動平均用リスト
-    moving_average=[[0] * 3 for _ in range(3)]
+    moving_average = [[0] * 3 for _ in range(3)]
     nowUgo = 1
     cap_width = 1280
     cap_height = 720
@@ -147,7 +128,8 @@ def main(cap_device, mode, kando):
         if results.multi_hand_landmarks:
             # 手の骨格描画
             for hand_landmarks in results.multi_hand_landmarks:
-                mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+                mp_drawing.draw_landmarks(
+                    image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
             if pf == 'Linux':           # Linuxだったら、常に動かす
                 can = 1

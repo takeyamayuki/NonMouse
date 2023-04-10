@@ -28,7 +28,7 @@
 </table>
 
 
-# Feature
+# Features
 
 - No need for anything other than a webcam and host PC.
 - Gesture-based HCI has been around for some time, but shooting from above makes the mouse easier to use.
@@ -164,7 +164,7 @@ Run the following scripts for each OS.
    Location: c:\users\namik\appdata\local\programs\python\python37\lib\site_packages
    ...
    #Copy and paste into the datas in app-win.spec
-   $ pyinstaller app-win.spec
+   $ pyinstaller config/win.spec
    ... ````
 - mac
 
@@ -173,5 +173,5 @@ Run the following scripts for each OS.
    $ python3 -m venv venv
    $ . venv/bin/activate
    (venv)$ pip install -r requirements.txt
-   (venv)$ pyinstaller app-mac.spec
+   (venv)$ pyinstaller config/mac.spec
    ```

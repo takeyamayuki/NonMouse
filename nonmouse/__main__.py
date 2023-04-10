@@ -1,102 +1,36 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# NonMouse
+# Author: Yuki Takeyama
+# Date: 2023/04/09
+
 import cv2
-import mediapipe as mp
-import numpy as np
 import time
 import keyboard
-import tkinter as tk
-from pynput.mouse import Button, Controller
 import platform
-pf = platform.system()
+import numpy as np
+import mediapipe as mp
+from pynput.mouse import Button, Controller
+
+from nonmouse.args import *
+from nonmouse.utils import *
+
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
+
+pf = platform.system()
 if pf == 'Windows':
     hotkey = 'Alt'
 elif pf == 'Darwin':
     hotkey = 'Command'
 elif pf == 'Linux':
-    hotkey = 'xxx'              # hotkeyはLinuxでは無効
-screenRes = (0, 0)
+    hotkey = ''              # hotkeyはLinuxでは無効
 
 
-def tk_arg():
-    global screenRes
-    root = tk.Tk()
-    root.title("First Setup")
-    root.geometry("370x320")
-    screenRes = (root.winfo_screenwidth(),
-                 root.winfo_screenheight())  # ディスプレイ解像度取得
-    Val1 = tk.IntVar()
-    Val2 = tk.IntVar()
-    Val4 = tk.IntVar()
-    Val4.set(30)                        # デフォルトマウス感度
-    place = ['Normal', 'Above', 'Behind']
-    # Camera #########################################################################
-    Static1 = tk.Label(text='Camera').grid(row=1)
-    for i in range(4):
-        tk.Radiobutton(root,
-                       value=i,
-                       variable=Val1,
-                       text=f'Device{i}'
-                       ).grid(row=2, column=i*2)
-    St1 = tk.Label(text='     ').grid(row=3)
-    # Place #########################################################################
-    Static1 = tk.Label(text='How to place').grid(row=4)
-    for i in range(3):
-        tk.Radiobutton(root,
-                       value=i,
-                       variable=Val2,
-                       text=f'{place[i]}'
-                       ).grid(row=5, column=i*2)
-    St1 = tk.Label(text='     ').grid(row=6)
-    # Sensitivity ###################################################################
-    Static4 = tk.Label(text='Sensitivity').grid(row=7)
-    s1 = tk.Scale(root, orient='h',
-                  from_=1, to=100, variable=Val4
-                  ).grid(row=8, column=2)
-    St4 = tk.Label(text='     ').grid(row=9)
-    # continue
-    Button = tk.Button(text="continue", command=root.destroy).grid(
-        row=10, column=2)
-    # 待機
-    root.mainloop()
-    # 出力
-    cap_device = Val1.get()             # 0,1,2
-    mode = Val2.get()                     # 0:youself 1:
-    kando = Val4.get()/10               # 1~10
-    return cap_device, mode, kando
-
-# 円を描く関数 #######################################################################
-
-
-def draw_circle(image, x, y, roudness, color):
-    cv2.circle(image, (int(x), int(y)), roudness, color,
-               thickness=5, lineType=cv2.LINE_8, shift=0)
-
-# ユークリッド距離を計算する関数 #####################################################
-
-
-def calculate_distance(l1, l2):
-    v = np.array([l1[0], l1[1]])-np.array([l2[0], l2[1]])
-    distance = np.linalg.norm(v)
-    return distance
-
-# 移動平均を求める関数 ################################################################
-
-
-def calculate_moving_average(landmark, ran, LiT):   # (座標、いくつ分の平均か、移動平均を格納するリスト)
-    while len(LiT) < ran:               # ran個分のデータをLiTに追加（最初だけ）
-        LiT.append(landmark)
-    LiT.append(landmark)                # LiTの更新（最後に追加）
-    if len(LiT) > ran:                  # LiTの更新（最初を削除）
-        LiT.pop(0)
-    return sum(LiT)/ran
-
-
-def main(cap_device, mode, kando):
+def main():
+    cap_device, mode, kando, screenRes = tk_arg()
     dis = 0.7                           # くっつける距離の定義
     preX, preY = 0, 0
     nowCli, preCli = 0, 0               # 現在、前回の左クリック状態
@@ -105,6 +39,7 @@ def main(cap_device, mode, kando):
     i, k, h = 0, 0, 0
     LiTx, LiTy, list0x, list0y, list1x, list1y, list4x, list4y, list6x, list6y, list8x, list8y, list12x, list12y = [
     ], [], [], [], [], [], [], [], [], [], [], [], [], []   # 移動平均用リスト
+    moving_average = [[0] * 3 for _ in range(3)]
     nowUgo = 1
     cap_width = 1280
     cap_height = 720
@@ -307,5 +242,4 @@ def main(cap_device, mode, kando):
 
 
 if __name__ == "__main__":
-    cap_device, mode, kando = tk_arg()
-    main(cap_device, mode, kando)
+    main()

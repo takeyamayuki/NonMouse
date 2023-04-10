@@ -93,12 +93,12 @@ The following three ways of placing the device are assumed.
 
    For windows, linux(global hotkey function does not work in linux.)
    ```sh
-   $ python3 app.py
+   $ python3 -m nonmouse
    ```
 
    For MacOS, you need execute permission.
    ```sh
-   $ sudo /path/to/python3 app.py
+   $ sudo /path/to/python3 -m nonmouse
    # When you invoke python with sudo, the system python is invoked, so you must specify the python you want to run yourself.
    ```
 

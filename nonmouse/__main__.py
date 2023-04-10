@@ -13,8 +13,8 @@ import numpy as np
 import mediapipe as mp
 from pynput.mouse import Button, Controller
 
-from nonmouse.args import tk_arg
-from nonmouse.utils import draw_circle, calculate_distance, calculate_moving_average
+from nonmouse.args import *
+from nonmouse.utils import *
 
 mouse = Controller()
 mp_drawing = mp.solutions.drawing_utils

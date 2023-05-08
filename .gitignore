@@ -12,9 +12,8 @@ dist-win/
 dist-linux/
 app-s.spec
 
-# py2exe
 .eggs/
-setup.py
+*.egg-info/
 
 # pip
 site-packages

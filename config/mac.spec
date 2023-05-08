@@ -4,11 +4,11 @@
 block_cipher = None
 
 
-a = Analysis(['app.py'],
+a = Analysis(['../nonmouse/__main__.py'],
              pathex=['/Users/yukitakeyama/Documents/Python/NonMouse2g'],    # 各々の環境に合わせてPATHを変更してください
-             binaries=[('/System/Library/Frameworks/Tcl.framework/Versions/8.5/tclsh8.5', 'tcl')],
-             datas=[('venv/lib/python3.9/site-packages/mediapipe/modules', 'mediapipe/modules'),], 
-             hiddenimports=['pynput', 'pywinauto', 'tkinter', 'tkinter.filedialog prog', 'pkg_resources.py2_warn', 'pkg_resources.markers'],
+             binaries=[],
+             datas=[('../venv/lib/python3.9/site-packages/mediapipe/modules', 'mediapipe/modules'),], 
+            #  hiddenimports=['pynput', 'pywinauto', 'tkinter', 'tkinter.filedialog prog', 'pkg_resources.py2_warn', 'pkg_resources.markers'],
              hookspath=[],
              hooksconfig={},
              runtime_hooks=[],
@@ -37,4 +37,4 @@ exe = EXE(pyz,
           disable_windowed_traceback=False,
           target_arch=None,
           codesign_identity=None,
-          entitlements_file=None , icon='icon.ico')
+          entitlements_file=None , icon='../images/icon.ico')

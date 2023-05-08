@@ -37,22 +37,17 @@
 - Just download from the latest release(windows, mac only).  
 
 # Installation
-## 📁 Run as executable file 
+## 📁 Executable file 
 Download the zip file that matches your environment from the [latest release](https://github.com/takeyamayuki/NonMouse/releases). 
 
 OR
-## 🐍 Run as python
+## 🐍 PyPI
 Run the following script.
 
 ```sh
-$ git clone https://github.com/takeyamayuki/NonMouse
-$ cd NonMouse
-$ pip install -r requirements.txt
+$ pip install nonmouse
 ```
-If you have trouble installing mediapipe, please visit the [official website](https://google.github.io/mediapipe/getting_started/install.html).  
-
-> **Note**   
-> For mac, you need to add the location where you want to run it, such as Terminal or VScode, to the Security and Privacy Accessibility and Cammera section in System Preferences.
+(If you have trouble installing mediapipe, please visit the [official website](https://google.github.io/mediapipe/getting_started/install.html).)
 
 # Usage
 ## 1. Install a camera
@@ -91,15 +86,14 @@ The following three ways of placing the device are assumed.
    OR
 -  Run the following script from the continuation of the installation.
 
-   For windows, linux(global hotkey function does not work in linux.)
+   For windows and linux(global hotkey function does not work in linux.)
    ```sh
-   $ python3 -m nonmouse
+   $ nonmouse
    ```
 
    For MacOS, you need execute permission.
    ```sh
-   $ sudo /path/to/python3 -m nonmouse
-   # When you invoke python with sudo, the system python is invoked, so you must specify the python you want to run yourself.
+   $ sudo nonmouse
    ```
 
 ## 3. Settings
@@ -163,13 +157,15 @@ Run the following scripts for each OS.
    ...
    Location: c:\users\namik\appdata\local\programs\python\python37\lib\site_packages
    ...
-   #Copy and paste into the datas in app-win.spec
+   #Copy and paste into the datas in win.spec
    $ pyinstaller config/win.spec
    ... ````
 - mac
 
    Create a venv environment and perform `pip install`, because the directory specified in `datas` is for an assumed venv environment. 
    ```sh 
+   $ git clone https://github.com/takeyamayuki/NonMouse.git
+   $ cd NonMouse
    $ python3 -m venv venv
    $ . venv/bin/activate
    (venv)$ pip install -r requirements.txt

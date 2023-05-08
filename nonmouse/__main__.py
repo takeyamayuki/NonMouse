@@ -26,7 +26,7 @@ if pf == 'Windows':
 elif pf == 'Darwin':
     hotkey = 'Command'
 elif pf == 'Linux':
-    hotkey = ''              # hotkeyはLinuxでは無効
+    hotkey = 'XXX'              # hotkeyはLinuxでは無効
 
 
 def main():

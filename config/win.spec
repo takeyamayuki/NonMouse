@@ -4,7 +4,7 @@
 block_cipher = None
 
 
-a = Analysis(['app.py'],
+a = Analysis(['..\\nonmouse\\__main__.py'],
              pathex=['C:\\Users\\namik\\Documents\\NonMouse\\NonMouse'],    #それぞれの環境に応じて、変更してください
              binaries=[],
              datas=[('C:\\users\\namik\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\mediapipe\\modules', 'mediapipe\\modules'),],
@@ -37,4 +37,4 @@ exe = EXE(pyz,
           disable_windowed_traceback=False,
           target_arch=None,
           codesign_identity=None,
-          entitlements_file=None , icon='icon.ico')
+          entitlements_file=None , icon='..\\images\\icon.ico')

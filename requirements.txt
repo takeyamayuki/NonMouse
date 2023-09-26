@@ -14,7 +14,7 @@ opencv-contrib-python==4.6.0.66
 opencv-python==4.5.3.56
 opencv-python-headless==4.6.0.66
 packaging==21.3
-Pillow==9.2.0
+Pillow==10.0.1
 protobuf==3.20.1
 pyinstaller==4.6
 pyinstaller-hooks-contrib==2022.8

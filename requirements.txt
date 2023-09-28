@@ -9,13 +9,13 @@ kiwisolver==1.4.4
 macholib==1.16
 matplotlib==3.5.3
 mediapipe==0.8.10.1
-numpy==1.19.4
+numpy==1.22.2
 opencv-contrib-python==4.6.0.66
 opencv-python==4.5.3.56
 opencv-python-headless==4.6.0.66
 packaging==21.3
-Pillow==9.2.0
-protobuf==3.20.1
+Pillow==10.0.1
+protobuf==3.20.2
 pyinstaller==4.6
 pyinstaller-hooks-contrib==2022.8
 pynput==1.6.8
@@ -152,3 +152,4 @@ pyobjc-framework-WebKit==7.3; sys_platform == 'darwin'
 pyparsing==3.0.9
 python-dateutil==2.8.2
 six==1.16.0
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability

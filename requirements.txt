@@ -16,7 +16,7 @@ opencv-python-headless==4.8.1.78.66
 packaging==21.3
 Pillow==10.0.1
 protobuf==3.20.2
-pyinstaller==4.6
+pyinstaller==5.13.1
 pyinstaller-hooks-contrib==2022.8
 pynput==1.6.8
 pyobjc==7.3; sys_platform == 'darwin'

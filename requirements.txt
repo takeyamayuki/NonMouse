@@ -3,7 +3,7 @@ absl-py==1.2.0
 altgraph==0.17.2
 attrs==22.1.0
 cycler==0.11.0
-fonttools==4.36.0
+fonttools==4.43.0
 keyboard==0.13.5
 kiwisolver==1.4.4
 macholib==1.16

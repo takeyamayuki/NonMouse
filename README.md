@@ -10,17 +10,19 @@
   <a href="https://github.com/takeyamayuki/NonMouse/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/takeyamayuki/nonmouse" />
   </a>
-  <a href="https://github.com/takeyamayuki/NonMouse/releases">
-    <img src="https://img.shields.io/github/v/release/takeyamayuki/nonmouse" />
-  </a>
-  <a href="https://zenn.dev/ninzin/articles/94b05fdb9edf53">
-    <img src="https://img.shields.io/badge/Zenn%20Likes-112-blue" />
-  </a>  
   <a href ="https://pypi.org/project/nonmouse/">
      <img src="https://static.pepy.tech/personalized-badge/nonmouse?period=total&units=international_system&left_color=grey&right_color=green&left_text=PyPI%20downloads" />
    </a>
+  <a href="https://github.com/takeyamayuki/NonMouse/releases">
+    <img src="https://img.shields.io/github/v/release/takeyamayuki/nonmouse" />
+  </a>
+  <a href ="https://github.com/takeyamayuki/NonMouse/releases">
+     <img src="https://img.shields.io/github/downloads/takeyamayuki/NonMouse/total" />
+   </a>
+  <a href="https://zenn.dev/ninzin/articles/94b05fdb9edf53">
+    <img src="https://img.shields.io/badge/Zenn%20Likes-129-blue" />
+  </a>  
 
-  
 </p>
 
 --- 

@@ -15,7 +15,7 @@ opencv-python==4.8.1.78.56
 opencv-python-headless==4.8.1.78.66
 packaging==21.3
 Pillow==10.0.1
-protobuf==3.20.2
+protobuf==4.25.8
 pyinstaller==6.0.0
 pyinstaller-hooks-contrib==2022.8
 pynput==1.6.8

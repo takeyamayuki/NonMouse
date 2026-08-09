@@ -127,7 +127,7 @@ export function Download() {
               <div>
                 <h3 className="text-2xl font-bold mb-3">Early-access supporter license</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Keep the open-source version free while testing whether users will pay for packaged builds, setup guidance, and continued development support.
+                  Support NonMouse and get early-access updates, packaged build convenience, and setup guidance while helping the project stay free and open-source.
                 </p>
                 <p className="text-3xl font-bold mt-4">{supporterPrice}</p>
               </div>

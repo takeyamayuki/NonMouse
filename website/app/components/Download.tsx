@@ -125,7 +125,6 @@ export function Download() {
           <Card className="p-8 border-primary/20 bg-primary/5">
             <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-center">
               <div>
-                <p className="text-sm font-semibold text-primary mb-2">Paid-intent validation</p>
                 <h3 className="text-2xl font-bold mb-3">Early-access supporter license</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Keep the open-source version free while testing whether users will pay for packaged builds, setup guidance, and continued development support.

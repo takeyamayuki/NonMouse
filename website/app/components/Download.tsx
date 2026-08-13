@@ -127,7 +127,8 @@ export function Download() {
               <div>
                 <h3 className="text-2xl font-bold mb-3">Early-access supporter license</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Support NonMouse and get early-access updates, packaged build convenience, and setup guidance while helping the project stay free and open-source.
+                  We are exploring a native rebuild of NonMouse so gesture control can become more accurate, responsive, and comfortable in daily use.
+                  If you want early access to that higher-UX native version as it develops, join as an early-access supporter.
                 </p>
                 <p className="text-3xl font-bold mt-4">{supporterPrice}</p>
               </div>

@@ -9,7 +9,6 @@ import { getPlatformDownloadUrl } from "@/lib/platform-utils";
 import {
   hasValidSupporterPaymentLink,
   supporterPaymentLink,
-  supporterPrice,
   trackMonetizationEvent,
 } from "@/lib/monetization";
 
@@ -125,12 +124,11 @@ export function Download() {
           <Card className="p-8 border-primary/20 bg-primary/5">
             <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-center">
               <div>
-                <h3 className="text-2xl font-bold mb-3">Early-access supporter license</h3>
+                <h3 className="text-2xl font-bold mb-3">Support NonMouse development</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   We are exploring a native rebuild of NonMouse so gesture control can become more accurate, responsive, and comfortable in daily use.
-                  If you want early access to that higher-UX native version as it develops, join as an early-access supporter.
+                  If you want to help keep the project moving, support NonMouse with any amount on Buy Me a Coffee.
                 </p>
-                <p className="text-3xl font-bold mt-4">{supporterPrice}</p>
               </div>
               {hasValidSupporterPaymentLink ? (
                 <a

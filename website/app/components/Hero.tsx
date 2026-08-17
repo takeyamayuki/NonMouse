@@ -9,7 +9,6 @@ import { getPlatformDownloadUrl } from "@/lib/platform-utils";
 import {
   hasValidSupporterPaymentLink,
   supporterPaymentLink,
-  supporterPrice,
   trackMonetizationEvent,
 } from "@/lib/monetization";
 
@@ -143,7 +142,7 @@ export function Hero() {
                   onClick={handleSupportClick}
                 >
                   <Button size="lg" variant="secondary" className="text-lg px-8">
-                    Support Early Access {supporterPrice}
+                    Support NonMouse
                   </Button>
                 </a>
               ) : (

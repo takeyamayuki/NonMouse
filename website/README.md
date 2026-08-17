@@ -19,7 +19,7 @@ npm run dev
 To preview with the optional supporter checkout CTA enabled, set a Buy Me a Coffee link:
 
 ```sh
-NEXT_PUBLIC_BUY_ME_A_COFFEE_LINK=https://buymeacoffee.com/bamboo_dev/e/566812 npm run dev
+NEXT_PUBLIC_BUY_ME_A_COFFEE_LINK=https://buymeacoffee.com/bamboo_dev npm run dev
 ```
 
 The checkout URL must start with `https://buymeacoffee.com/`. If it is missing or invalid, checkout buttons are disabled instead of linking to a broken payment page.

@@ -20,9 +20,10 @@ To preview with the optional supporter checkout CTA enabled, set a Buy Me a Coff
 
 ```sh
 NEXT_PUBLIC_BUY_ME_A_COFFEE_LINK=https://buymeacoffee.com/bamboo_dev npm run dev
+NEXT_PUBLIC_KO_FI_LINK=https://ko-fi.com/bamboo_dev npm run dev
 ```
 
-The checkout URL must start with `https://buymeacoffee.com/`. If it is missing or invalid, checkout buttons are disabled instead of linking to a broken payment page.
+The Buy Me a Coffee URL must start with `https://buymeacoffee.com/`, and the Ko-fi URL must start with `https://ko-fi.com/`. If every support URL is missing or invalid, support buttons are disabled instead of linking to a broken payment page.
 
 ## Build
 

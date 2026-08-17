@@ -7,7 +7,9 @@ import { AppWindow as Windows, Apple, Link as Linux } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getPlatformDownloadUrl } from "@/lib/platform-utils";
 import {
+  hasValidKoFiSupportLink,
   hasValidSupporterPaymentLink,
+  koFiSupportLink,
   supporterPaymentLink,
   trackMonetizationEvent,
 } from "@/lib/monetization";
@@ -64,8 +66,8 @@ export function Download() {
     }
   };
 
-  const handleCheckoutClick = () => {
-    trackMonetizationEvent("checkout_cta_click", { placement: "download_section" });
+  const handleSupportClick = (provider: string) => {
+    trackMonetizationEvent("support_cta_click", { placement: "download_section", provider });
   };
 
   return (
@@ -127,31 +129,46 @@ export function Download() {
                 <h3 className="text-2xl font-bold mb-3">Support NonMouse development</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   We are exploring a native rebuild of NonMouse so gesture control can become more accurate, responsive, and comfortable in daily use.
-                  If you want to help keep the project moving, support NonMouse with any amount on Buy Me a Coffee.
+                  If you want to help keep the project moving, support NonMouse with any amount on Buy Me a Coffee or Ko-fi.
                   Please include your email address or SNS ID in the message/details field so we can contact you when early access becomes available.
                 </p>
               </div>
-              {hasValidSupporterPaymentLink ? (
-                <a
-                  href={supporterPaymentLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleCheckoutClick}
-                >
-                  <Button size="lg" className="w-full md:w-auto">
-                    Proceed to checkout
+              <div className="flex flex-col gap-3">
+                {hasValidSupporterPaymentLink ? (
+                  <a
+                    href={supporterPaymentLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleSupportClick("buy_me_a_coffee")}
+                  >
+                    <Button size="lg" className="w-full md:w-auto">
+                      Support on Buy Me a Coffee
+                    </Button>
+                  </a>
+                ) : null}
+                {hasValidKoFiSupportLink ? (
+                  <a
+                    href={koFiSupportLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleSupportClick("ko_fi")}
+                  >
+                    <Button size="lg" variant="secondary" className="w-full md:w-auto">
+                      Support on Ko-fi
+                    </Button>
+                  </a>
+                ) : null}
+                {!hasValidSupporterPaymentLink && !hasValidKoFiSupportLink ? (
+                  <Button
+                    size="lg"
+                    className="w-full md:w-auto"
+                    disabled
+                    title="Set NEXT_PUBLIC_BUY_ME_A_COFFEE_LINK or NEXT_PUBLIC_KO_FI_LINK to enable support."
+                  >
+                    Support coming soon
                   </Button>
-                </a>
-              ) : (
-                <Button
-                  size="lg"
-                  className="w-full md:w-auto"
-                  disabled
-                  title="Set NEXT_PUBLIC_BUY_ME_A_COFFEE_LINK to enable checkout."
-                >
-                  Checkout coming soon
-                </Button>
-              )}
+                ) : null}
+              </div>
             </div>
           </Card>
         </motion.div>

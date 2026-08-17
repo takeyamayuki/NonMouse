@@ -8,7 +8,6 @@ import { useRef, useEffect, useState } from "react";
 import { getPlatformDownloadUrl } from "@/lib/platform-utils";
 import {
   hasValidSupporterPaymentLink,
-  supporterPaymentLink,
   trackMonetizationEvent,
 } from "@/lib/monetization";
 
@@ -136,13 +135,11 @@ export function Hero() {
               </Button>
               {hasValidSupporterPaymentLink ? (
                 <a
-                  href={supporterPaymentLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#support"
                   onClick={handleSupportClick}
                 >
                   <Button size="lg" variant="secondary" className="text-lg px-8">
-                    Support NonMouse
+                    Buy Me a Coffee
                   </Button>
                 </a>
               ) : (

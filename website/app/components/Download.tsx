@@ -117,11 +117,12 @@ export function Download() {
         </div>
 
         <motion.div
+          id="support"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto mt-12"
+          className="max-w-4xl mx-auto mt-12 scroll-mt-24"
         >
           <Card className="p-8 border-primary/20 bg-primary/5">
             <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-center">

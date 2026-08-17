@@ -128,6 +128,7 @@ export function Download() {
                 <p className="text-muted-foreground leading-relaxed">
                   We are exploring a native rebuild of NonMouse so gesture control can become more accurate, responsive, and comfortable in daily use.
                   If you want to help keep the project moving, support NonMouse with any amount on Buy Me a Coffee.
+                  Please include your email address or SNS ID in the message/details field so we can contact you when early access becomes available.
                 </p>
               </div>
               {hasValidSupporterPaymentLink ? (

@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
           <p className="mb-4">Depending on how you interact with NonMouse, we may receive:</p>
           <ul className="list-disc pl-6 mb-8">
             <li>Basic website analytics, such as page views, referrers, browser/device information, and approximate region</li>
-            <li>Payment-related records provided by Stripe, such as name, email address, purchase amount, payment status, and transaction identifiers</li>
+            <li>Payment-related records provided by Buy Me a Coffee, such as name, email address, purchase amount, payment status, and transaction identifiers</li>
             <li>Messages and contact information you provide when you email us or request support</li>
             <li>Public GitHub activity if you interact with the NonMouse repository</li>
           </ul>
@@ -65,14 +65,14 @@ export default function PrivacyPolicy() {
 
           <h2 className="text-2xl font-semibold mb-4">6. Payments</h2>
           <p className="mb-8">
-            Payments are processed by Stripe. Stripe may collect payment card details, billing information, tax information, and fraud-prevention signals. We do not store full payment card numbers. Stripe's handling of payment information is governed by Stripe's own privacy policy.
+            Payments are processed by Buy Me a Coffee. Buy Me a Coffee may collect payment card details, billing information, tax information, and fraud-prevention signals. We do not store full payment card numbers. Buy Me a Coffee's handling of payment information is governed by Buy Me a Coffee's own privacy policy.
           </p>
 
           <hr className="my-8" />
 
           <h2 className="text-2xl font-semibold mb-4">7. Sharing</h2>
           <p className="mb-8">
-            We do not sell personal information. We may share limited information with service providers such as Stripe, analytics providers, hosting providers, and tools necessary to operate the website, payments, support, and security.
+            We do not sell personal information. We may share limited information with service providers such as Buy Me a Coffee, analytics providers, hosting providers, and tools necessary to operate the website, payments, support, and security.
           </p>
 
           <hr className="my-8" />

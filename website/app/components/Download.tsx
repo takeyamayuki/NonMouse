@@ -7,8 +7,8 @@ import { AppWindow as Windows, Apple, Link as Linux } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getPlatformDownloadUrl } from "@/lib/platform-utils";
 import {
-  hasValidStripePaymentLink,
-  stripePaymentLink,
+  hasValidSupporterPaymentLink,
+  supporterPaymentLink,
   supporterPrice,
   trackMonetizationEvent,
 } from "@/lib/monetization";
@@ -132,9 +132,9 @@ export function Download() {
                 </p>
                 <p className="text-3xl font-bold mt-4">{supporterPrice}</p>
               </div>
-              {hasValidStripePaymentLink ? (
+              {hasValidSupporterPaymentLink ? (
                 <a
-                  href={stripePaymentLink}
+                  href={supporterPaymentLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleCheckoutClick}
@@ -148,7 +148,7 @@ export function Download() {
                   size="lg"
                   className="w-full md:w-auto"
                   disabled
-                  title="Set NEXT_PUBLIC_STRIPE_PAYMENT_LINK to enable checkout."
+                  title="Set NEXT_PUBLIC_BUY_ME_A_COFFEE_LINK to enable checkout."
                 >
                   Checkout coming soon
                 </Button>

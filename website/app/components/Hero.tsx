@@ -7,8 +7,8 @@ import { ArrowRight, Github } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 import { getPlatformDownloadUrl } from "@/lib/platform-utils";
 import {
-  hasValidStripePaymentLink,
-  stripePaymentLink,
+  hasValidSupporterPaymentLink,
+  supporterPaymentLink,
   supporterPrice,
   trackMonetizationEvent,
 } from "@/lib/monetization";
@@ -135,9 +135,9 @@ export function Hero() {
                 Download for {userPlatform}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              {hasValidStripePaymentLink ? (
+              {hasValidSupporterPaymentLink ? (
                 <a
-                  href={stripePaymentLink}
+                  href={supporterPaymentLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleSupportClick}
@@ -152,7 +152,7 @@ export function Hero() {
                   variant="secondary"
                   className="text-lg px-8"
                   disabled
-                  title="Set NEXT_PUBLIC_STRIPE_PAYMENT_LINK to enable this checkout CTA."
+                  title="Set NEXT_PUBLIC_BUY_ME_A_COFFEE_LINK to enable this checkout CTA."
                 >
                   Support CTA coming soon
                 </Button>

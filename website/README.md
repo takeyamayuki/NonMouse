@@ -16,13 +16,13 @@ npm install
 npm run dev
 ```
 
-To preview with the optional supporter checkout CTA enabled, set a Stripe Payment Link:
+To preview with the optional supporter checkout CTA enabled, set a Buy Me a Coffee link:
 
 ```sh
-NEXT_PUBLIC_STRIPE_PAYMENT_LINK=https://buy.stripe.com/... npm run dev
+NEXT_PUBLIC_BUY_ME_A_COFFEE_LINK=https://buymeacoffee.com/bamboo_dev/e/566812 npm run dev
 ```
 
-The checkout URL must start with `https://buy.stripe.com/`. If it is missing or invalid, checkout buttons are disabled instead of linking to a broken payment page.
+The checkout URL must start with `https://buymeacoffee.com/`. If it is missing or invalid, checkout buttons are disabled instead of linking to a broken payment page.
 
 ## Build
 

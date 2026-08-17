@@ -27,7 +27,7 @@ export default function ThankYouPage() {
             <p className="text-sm font-medium text-muted-foreground mb-4">NonMouse Early Access</p>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Thank you for supporting NonMouse.</h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Your early-access supporter purchase helps keep NonMouse moving forward. A receipt and payment details will be sent by Stripe to the email address used at checkout.
+              Your early-access supporter purchase helps keep NonMouse moving forward. A receipt and payment details will be sent by Buy Me a Coffee to the email address used at checkout.
             </p>
 
             <div className="grid gap-4 mb-10">

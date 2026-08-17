@@ -48,7 +48,7 @@ export default function TermsOfService() {
 
           <h2 className="text-2xl font-semibold mb-4">4. Payments and Supporter License</h2>
           <p className="mb-4">
-            Payments for early-access or supporter licenses are processed by Stripe or another listed payment provider. Payment details are handled by the payment provider and are not stored by NonMouse directly.
+            Payments for early-access or supporter licenses are processed by Buy Me a Coffee or another listed payment provider. Payment details are handled by the payment provider and are not stored by NonMouse directly.
           </p>
           <p className="mb-4">
             A supporter purchase is primarily a way to support development and receive any described convenience benefits. It is not a guarantee of a specific future feature, release date, or outcome.

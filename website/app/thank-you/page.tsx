@@ -8,15 +8,24 @@ import { Button } from "@/components/ui/button";
 export default function ThankYouPage() {
   useEffect(() => {
     const gtag = (window as typeof window & {
-      gtag?: (command: "event", eventName: string, params: Record<string, string>) => void;
+      gtag?: (command: "event", eventName: string, params: Record<string, unknown>) => void;
     }).gtag;
 
-    gtag?.("event", "supporter_checkout_success", {
-      event_category: "monetization_validation",
+    const purchaseParams = {
+      event_category: "supporter_purchase",
       payment_link_state: "configured",
-      value: "19",
       currency: "USD",
-    });
+      items: [
+        {
+          item_id: "nonmouse_support",
+          item_name: "NonMouse Support",
+          item_category: "support",
+        },
+      ],
+    };
+
+    gtag?.("event", "purchase", purchaseParams);
+    gtag?.("event", "supporter_purchase", purchaseParams);
   }, []);
 
   return (
@@ -27,7 +36,7 @@ export default function ThankYouPage() {
             <p className="text-sm font-medium text-muted-foreground mb-4">NonMouse Early Access</p>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Thank you for supporting NonMouse.</h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Your early-access supporter purchase helps keep NonMouse moving forward. A receipt and payment details will be sent by Buy Me a Coffee to the email address used at checkout.
+              Your support helps keep NonMouse moving forward. A receipt and payment details will be sent by the payment provider to the email address used at checkout.
             </p>
 
             <div className="grid gap-4 mb-10">

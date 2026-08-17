@@ -140,13 +140,14 @@ export function Download() {
                     href={supporterPaymentLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex w-full md:w-[260px] items-center justify-center gap-3 rounded-xl border border-[#111]/10 bg-[#ffdd00] px-5 py-3 text-base font-bold text-[#111] shadow-[0_8px_0_#c8a900] transition-all hover:-translate-y-0.5 hover:bg-[#ffe44d] hover:shadow-[0_10px_0_#c8a900] active:translate-y-1 active:shadow-[0_4px_0_#c8a900]"
+                    className="inline-flex w-full justify-center transition-opacity hover:opacity-90"
                     onClick={() => handleSupportClick("buy_me_a_coffee")}
                   >
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg shadow-sm transition-transform group-hover:rotate-[-8deg]">
-                      ☕
-                    </span>
-                    <span>Buy Me a Coffee</span>
+                    <img
+                      src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                      alt="Buy Me a Coffee"
+                      className="h-[60px] w-auto"
+                    />
                   </a>
                 ) : null}
                 {hasValidKoFiSupportLink ? (
@@ -154,13 +155,14 @@ export function Download() {
                     href={koFiSupportLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex w-full md:w-[260px] items-center justify-center gap-3 rounded-xl bg-[#13c3ff] px-5 py-3 text-base font-bold text-white shadow-[0_8px_0_#0796c6] transition-all hover:-translate-y-0.5 hover:bg-[#34ccff] hover:shadow-[0_10px_0_#0796c6] active:translate-y-1 active:shadow-[0_4px_0_#0796c6]"
+                    className="inline-flex w-full justify-center transition-opacity hover:opacity-90"
                     onClick={() => handleSupportClick("ko_fi")}
                   >
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg shadow-sm transition-transform group-hover:scale-110">
-                      <span className="text-[#ff5f5f]">♥</span>
-                    </span>
-                    <span>Support on Ko-fi</span>
+                    <img
+                      src="https://storage.ko-fi.com/cdn/kofi2.png?v=3"
+                      alt="Support on Ko-fi"
+                      className="h-[60px] w-auto"
+                    />
                   </a>
                 ) : null}
                 {!hasValidSupporterPaymentLink && !hasValidKoFiSupportLink ? (

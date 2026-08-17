@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { HandMetal } from "lucide-react";
 import Image from "next/image";
-import { getPlatformDownloadUrl } from "@/lib/platform-utils";
+import { detectPlatform, getPlatformDownloadUrl } from "@/lib/platform-utils";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [latestRelease, setLatestRelease] = useState<any>(null);
-  const [userPlatform, setUserPlatform] = useState<string>("Unknown");
+  const [userPlatform, setUserPlatform] = useState<string>("PC");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,14 +20,7 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
 
     // Detect platform and fetch latest release
-    const platform = navigator.platform.toLowerCase();
-    if (platform.includes("win")) {
-      setUserPlatform("Windows");
-    } else if (platform.includes("mac")) {
-      setUserPlatform("macOS");
-    } else if (platform.includes("linux")) {
-      setUserPlatform("Linux");
-    }
+    setUserPlatform(detectPlatform());
 
     fetch("https://api.github.com/repos/takeyamayuki/NonMouse/releases/latest")
       .then((res) => res.json())

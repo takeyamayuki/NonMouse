@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { AppWindow as Windows, Apple, Link as Linux } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getPlatformDownloadUrl } from "@/lib/platform-utils";
+import { detectPlatform, getPlatformDownloadUrl } from "@/lib/platform-utils";
 import {
   hasValidKoFiSupportLink,
   hasValidSupporterPaymentLink,
@@ -34,18 +34,11 @@ const downloads = [
 
 export function Download() {
   const [latestRelease, setLatestRelease] = useState<any>(null);
-  const [userPlatform, setUserPlatform] = useState<string>("Unknown");
+  const [userPlatform, setUserPlatform] = useState<string>("PC");
 
   useEffect(() => {
     // Detect user's platform
-    const platform = navigator.platform.toLowerCase();
-    if (platform.includes("win")) {
-      setUserPlatform("Windows");
-    } else if (platform.includes("mac")) {
-      setUserPlatform("macOS");
-    } else if (platform.includes("linux")) {
-      setUserPlatform("Linux");
-    }
+    setUserPlatform(detectPlatform());
 
     // Fetch latest release from GitHub
     fetch("https://api.github.com/repos/takeyamayuki/NonMouse/releases/latest")

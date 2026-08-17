@@ -159,7 +159,7 @@ export function Download() {
                     onClick={() => handleSupportClick("ko_fi")}
                   >
                     <img
-                      src="https://storage.ko-fi.com/cdn/kofi2.png?v=3"
+                      src="https://storage.ko-fi.com/cdn/brandasset/kofi_button_blue.png"
                       alt="Support on Ko-fi"
                       className="h-[60px] w-auto"
                     />

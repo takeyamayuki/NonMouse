@@ -148,12 +148,14 @@ export function Download() {
                     href={koFiSupportLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex w-full md:w-[260px] items-center justify-center gap-3 rounded-xl bg-[#13c3ff] px-5 py-3 text-base font-bold text-white shadow-[0_8px_0_#0796c6] transition-all hover:-translate-y-0.5 hover:bg-[#34ccff] hover:shadow-[0_10px_0_#0796c6] active:translate-y-1 active:shadow-[0_4px_0_#0796c6]"
+                    className="group inline-flex w-full md:w-[260px] items-center justify-center gap-3 rounded-xl border border-border bg-card px-5 py-3 text-base font-bold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-accent hover:shadow-md active:translate-y-0"
                     onClick={() => handleSupportClick("ko_fi")}
                   >
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg shadow-sm transition-transform group-hover:scale-110">
-                      <span className="text-[#ff5f5f]">♥</span>
-                    </span>
+                    <img
+                      src="https://storage.ko-fi.com/cdn/cup-border.png"
+                      alt="Ko-fi cup icon"
+                      className="h-8 w-auto transition-transform group-hover:scale-110"
+                    />
                     <span>Support on Ko-fi</span>
                   </a>
                 ) : null}

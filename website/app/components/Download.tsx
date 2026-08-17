@@ -127,19 +127,19 @@ export function Download() {
                   Please include your email address or SNS ID in the message/details field so we can contact you when early access becomes available.
                 </p>
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col items-center gap-3">
                 {hasValidSupporterPaymentLink ? (
                   <a
                     href={supporterPaymentLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-full justify-center transition-opacity hover:opacity-90"
+                    className="inline-flex w-full max-w-[360px] justify-center transition-opacity hover:opacity-90"
                     onClick={() => handleSupportClick("buy_me_a_coffee")}
                   >
                     <img
                       src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
                       alt="Buy Me a Coffee"
-                      className="h-[60px] w-auto"
+                      className="h-auto w-full"
                     />
                   </a>
                 ) : null}
@@ -148,13 +148,13 @@ export function Download() {
                     href={koFiSupportLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex w-full md:w-[260px] items-center justify-center gap-3 rounded-xl border border-border bg-card px-5 py-3 text-base font-bold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-accent hover:shadow-md active:translate-y-0"
+                    className="group inline-flex h-[95px] w-full max-w-[360px] items-center justify-center gap-4 rounded-xl border border-border bg-card px-6 py-4 text-xl font-bold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-accent hover:shadow-md active:translate-y-0 md:h-[60px] md:text-base"
                     onClick={() => handleSupportClick("ko_fi")}
                   >
                     <img
                       src="https://storage.ko-fi.com/cdn/cup-border.png"
                       alt="Ko-fi cup icon"
-                      className="h-8 w-auto transition-transform group-hover:scale-110"
+                      className="h-12 w-auto transition-transform group-hover:scale-110 md:h-8"
                     />
                     <span>Support on Ko-fi</span>
                   </a>

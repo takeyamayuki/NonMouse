@@ -148,10 +148,13 @@ export function Download() {
                     href={koFiSupportLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-full md:w-[260px] items-center justify-center gap-3 rounded-xl bg-[#13c3ff] px-5 py-3 text-base font-bold text-white shadow-[0_8px_0_#0796c6] transition-all hover:-translate-y-0.5 hover:bg-[#34ccff] hover:shadow-[0_10px_0_#0796c6] active:translate-y-1 active:shadow-[0_4px_0_#0796c6]"
+                    className="group inline-flex w-full md:w-[260px] items-center justify-center gap-3 rounded-xl bg-[#13c3ff] px-5 py-3 text-base font-bold text-white shadow-[0_8px_0_#0796c6] transition-all hover:-translate-y-0.5 hover:bg-[#34ccff] hover:shadow-[0_10px_0_#0796c6] active:translate-y-1 active:shadow-[0_4px_0_#0796c6]"
                     onClick={() => handleSupportClick("ko_fi")}
                   >
-                    Support on Ko-fi
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg shadow-sm transition-transform group-hover:scale-110">
+                      <span className="text-[#ff5f5f]">♥</span>
+                    </span>
+                    <span>Support on Ko-fi</span>
                   </a>
                 ) : null}
                 {!hasValidSupporterPaymentLink && !hasValidKoFiSupportLink ? (

@@ -148,14 +148,10 @@ export function Download() {
                     href={koFiSupportLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-full justify-center transition-opacity hover:opacity-90"
+                    className="inline-flex w-full md:w-[260px] items-center justify-center gap-3 rounded-xl bg-[#13c3ff] px-5 py-3 text-base font-bold text-white shadow-[0_8px_0_#0796c6] transition-all hover:-translate-y-0.5 hover:bg-[#34ccff] hover:shadow-[0_10px_0_#0796c6] active:translate-y-1 active:shadow-[0_4px_0_#0796c6]"
                     onClick={() => handleSupportClick("ko_fi")}
                   >
-                    <img
-                      src="https://storage.ko-fi.com/cdn/brandasset/kofi_button_blue.png"
-                      alt="Support on Ko-fi"
-                      className="h-[60px] w-auto"
-                    />
+                    Support on Ko-fi
                   </a>
                 ) : null}
                 {!hasValidSupporterPaymentLink && !hasValidKoFiSupportLink ? (

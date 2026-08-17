@@ -139,7 +139,7 @@ export function Hero() {
                   onClick={handleSupportClick}
                 >
                   <Button size="lg" variant="secondary" className="text-lg px-8">
-                    Buy Me a Coffee
+                    Support NonMouse
                   </Button>
                 </a>
               ) : (

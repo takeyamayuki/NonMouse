@@ -1,9 +1,9 @@
 export const supporterPaymentLink =
-  process.env.NEXT_PUBLIC_BUY_ME_A_COFFEE_LINK || "https://buymeacoffee.com/bamboo_dev";
+  process.env.NEXT_PUBLIC_BUY_ME_A_COFFEE_LINK || "https://www.buymeacoffee.com/bamboo_dev";
 
 export const koFiSupportLink = process.env.NEXT_PUBLIC_KO_FI_LINK || "https://ko-fi.com/bamboo_dev";
 
-export const hasValidSupporterPaymentLink = /^https:\/\/buymeacoffee\.com\//.test(supporterPaymentLink);
+export const hasValidSupporterPaymentLink = /^https:\/\/(www\.)?buymeacoffee\.com\//.test(supporterPaymentLink);
 export const hasValidKoFiSupportLink = /^https:\/\/ko-fi\.com\//.test(koFiSupportLink);
 
 export function trackMonetizationEvent(eventName: string, extra: Record<string, string> = {}) {

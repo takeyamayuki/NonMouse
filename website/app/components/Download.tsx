@@ -139,7 +139,7 @@ export function Download() {
                     <img
                       src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
                       alt="Buy Me a Coffee"
-                      className="h-auto w-full"
+                      style={{ height: "60px", width: "217px" }}
                     />
                   </a>
                 ) : null}

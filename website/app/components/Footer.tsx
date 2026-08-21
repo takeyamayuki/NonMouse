@@ -10,12 +10,16 @@ export function Footer() {
               © 2025 NonMouse. All rights reserved.
             </p>
           </div>
-          <div className="flex space-x-4">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+            <a href="/legal" className="hover:text-primary">特商法表記</a>
+            <a href="/privacy" className="hover:text-primary">Privacy</a>
+            <a href="/contact" className="hover:text-primary">Contact</a>
             <a
               href="https://github.com/takeyamayuki/NonMouse"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary"
+              className="hover:text-primary"
+              aria-label="NonMouse on GitHub"
             >
               <Github className="w-5 h-5" />
             </a>

@@ -133,13 +133,13 @@ export function Download() {
                     href={supporterPaymentLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex w-full max-w-[360px] justify-center rounded-xl transition-all hover:-translate-y-0.5 hover:opacity-90 hover:shadow-md active:translate-y-0"
+                    className="group inline-flex w-fit rounded-xl leading-none transition-transform hover:-translate-y-0.5 active:translate-y-0"
                     onClick={() => handleSupportClick("buy_me_a_coffee")}
                   >
                     <img
                       src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
                       alt="Buy Me a Coffee"
-                      className="transition-transform group-hover:scale-[1.02]"
+                      className="block rounded-xl shadow-sm transition-all group-hover:scale-[1.02] group-hover:opacity-90 group-hover:shadow-md"
                       style={{ height: "60px", width: "217px" }}
                     />
                   </a>

@@ -1,6 +1,7 @@
 export default function LegalDisclosure() {
   const rows = [
-    ["Seller / Service Operator", "NonMouse"],
+    ["Product / Public Brand Name", "NonMouse"],
+    ["Seller's Name or Legal Name", "Disclosed without delay upon request from a consumer."],
     ["Responsible Person", "Disclosed without delay upon request from a consumer."],
     ["Address", "Disclosed without delay upon request from a consumer."],
     ["Phone Number", "Disclosed without delay upon request from a consumer."],
@@ -35,8 +36,8 @@ export default function LegalDisclosure() {
       "System requirements are described on the NonMouse website, GitHub repository, distribution page, or relevant sales page.",
     ],
     [
-      "Disclosure of Address, Phone Number, and Responsible Person",
-      "Under Japan's Act on Specified Commercial Transactions, the seller's address, phone number, and responsible person may be omitted from public display if they are disclosed without delay upon a consumer's request. To request disclosure, contact the email address above.",
+      "Disclosure of Seller's Name or Legal Name, Address, Phone Number, and Responsible Person",
+      "NonMouse is the public product/brand name, not a seller name used to replace the legal disclosure items. Under Japan's Act on Specified Commercial Transactions, the seller's name or legal name, address, phone number, and responsible person may be omitted from public display if they are disclosed without delay upon a consumer's request. To request disclosure, contact the email address above.",
     ],
     ["Contact", "Email: kintre.ndy0@gmail.com\nWe usually reply within 3 business days."],
   ];

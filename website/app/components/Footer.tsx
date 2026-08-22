@@ -11,7 +11,7 @@ export function Footer() {
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-            <a href="/legal" className="hover:text-primary">特商法表記</a>
+            <a href="/legal" className="hover:text-primary">Commerce Disclosure</a>
             <a href="/privacy" className="hover:text-primary">Privacy</a>
             <a href="/contact" className="hover:text-primary">Contact</a>
             <a

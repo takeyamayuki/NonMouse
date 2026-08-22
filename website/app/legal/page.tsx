@@ -1,34 +1,58 @@
 export default function LegalDisclosure() {
   const rows = [
-    ["販売業者（名称）", "NonMouse"],
-    ["運営責任者", "請求があった場合、遅滞なく開示します。"],
-    ["所在地", "消費者から請求があった場合、遅滞なく開示します。"],
-    ["電話番号", "消費者から請求があった場合、遅滞なく開示します。"],
-    ["メールアドレス", "kintre.ndy0@gmail.com"],
-    ["販売URL", "https://nonmouse.com/"],
-    ["提供内容", "NonMouse のソフトウェア利用権、早期アクセス、サポーター向けデジタル提供物、または特典なしの任意支援"],
+    ["Seller / Service Operator", "NonMouse"],
+    ["Responsible Person", "Disclosed without delay upon request from a consumer."],
+    ["Address", "Disclosed without delay upon request from a consumer."],
+    ["Phone Number", "Disclosed without delay upon request from a consumer."],
+    ["Email", "kintre.ndy0@gmail.com"],
+    ["Website / Sales URL", "https://nonmouse.com/"],
+    [
+      "Product / Service",
+      "NonMouse software access, early-access builds, supporter digital benefits, setup/support benefits, or voluntary supporter payments without additional benefits.",
+    ],
   ];
 
   const sections = [
-    ["販売価格", "各販売ページ、支援ページ、または決済ページに表示された価格（税込）に従います。"],
-    ["商品代金以外の必要料金", "インターネット接続料、通信料、決済手数料等はお客様の負担となります。決済手数料が発生する場合は、各プラットフォームの表示に従います。"],
-    ["支払方法・支払時期", "Buy Me a Coffee、Ko-fi、クレジットカード等、各プラットフォームが提供する決済方法に従います。購入または支援操作が完了した時点で決済されます。"],
-    ["提供時期", "デジタル商品または早期アクセスは、販売ページに別段の記載がない限り、決済完了後に提供します。特典なしの任意支援については、対価に見合う商品・役務の提供はありません。"],
-    ["返品・キャンセル・返金", "デジタルコンテンツの性質上、購入後の返品・キャンセル・返金は原則としてお受けしていません。ただし、二重決済、提供不能、販売ページの説明と著しく異なる場合は、個別に対応します。返金を希望する場合は、購入日、購入URL、理由を添えてメールでご連絡ください。各プラットフォームの規定の範囲で対応します。"],
-    ["動作環境", "NonMouse の案内ページ、GitHub、配布ページ、または各販売ページに記載された環境に従います。"],
-    ["所在地・電話番号・運営責任者の開示について", "所在地、電話番号および運営責任者は、消費者から請求があった場合、遅滞なく開示します。開示請求は上記メールアドレスまでご連絡ください。"],
-    ["お問い合わせ", "メール: kintre.ndy0@gmail.com\n通常3営業日以内に返信します。"],
+    ["Price", "The price, including applicable taxes where shown, is displayed on each sales, supporter, or checkout page."],
+    [
+      "Additional Fees",
+      "Customers are responsible for internet access, data charges, payment-provider fees, currency-conversion fees, and other costs separately charged by their network, bank, card issuer, or payment platform.",
+    ],
+    [
+      "Payment Method and Timing",
+      "Payments are processed by the payment methods offered by Buy Me a Coffee, Ko-fi, credit-card processors, or any other checkout provider listed at the point of purchase. Payment is charged when the purchase or supporter payment is completed.",
+    ],
+    [
+      "Delivery Timing",
+      "Unless a sales page states otherwise, digital products or early-access benefits are delivered after payment is completed. Voluntary supporter payments without stated benefits do not include a separate product or service in return.",
+    ],
+    [
+      "Returns, Cancellations, and Refunds",
+      "Because NonMouse paid offerings are digital products or supporter payments, returns, cancellations, and refunds are generally not available after purchase. We will review cases such as duplicate payments, inability to deliver the purchased item, or a material difference from the sales-page description. To request review, email us with the purchase date, purchase URL, and reason. Refund handling is subject to the rules and technical capabilities of the relevant payment platform.",
+    ],
+    [
+      "System Requirements",
+      "System requirements are described on the NonMouse website, GitHub repository, distribution page, or relevant sales page.",
+    ],
+    [
+      "Disclosure of Address, Phone Number, and Responsible Person",
+      "Under Japan's Act on Specified Commercial Transactions, the seller's address, phone number, and responsible person may be omitted from public display if they are disclosed without delay upon a consumer's request. To request disclosure, contact the email address above.",
+    ],
+    ["Contact", "Email: kintre.ndy0@gmail.com\nWe usually reply within 3 business days."],
   ];
 
   return (
     <div className="min-h-screen bg-background py-24">
       <div className="container px-4 mx-auto max-w-3xl">
-        <h1 className="text-4xl font-bold mb-6">特定商取引法に基づく表記</h1>
-        <p className="text-muted-foreground mb-10">最終更新: 2026-08-21</p>
+        <h1 className="text-4xl font-bold mb-6">Commerce Disclosure</h1>
+        <p className="text-muted-foreground mb-4">Last updated: 2026-08-22</p>
+        <p className="text-muted-foreground mb-10">
+          This page provides NonMouse's disclosure for paid digital offerings and supporter payments, including information required by Japan's Act on Specified Commercial Transactions (特定商取引法).
+        </p>
 
         <div className="space-y-10 text-base leading-8">
           <section>
-            <h2 className="text-2xl font-semibold mb-6">販売業者</h2>
+            <h2 className="text-2xl font-semibold mb-6">Seller Information</h2>
             <div className="space-y-6">
               {rows.map(([label, value]) => (
                 <div key={label} className="border-b border-border pb-5">

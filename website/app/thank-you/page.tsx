@@ -58,7 +58,7 @@ export default function ThankYouPage() {
                 <p className="text-muted-foreground mb-4">
                   If you need setup help or have questions about your supporter purchase, contact us with the email address used at checkout.
                 </p>
-                <a href="mailto:kintre.ndy0@gmail.com?subject=NonMouse%20Early%20Access%20Support">
+                <a href="mailto:bamboo.develop@gmail.com?subject=NonMouse%20Early%20Access%20Support">
                   <Button variant="secondary">
                     <Mail className="mr-2 h-4 w-4" />
                     Contact support

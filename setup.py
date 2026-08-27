@@ -10,7 +10,7 @@ setup(
     packages=find_packages(),
     description='a webcam-based virtual gesture mouse that is easy to use with hands on the desk',
     author='Yuki TAKEYAMA',
-    author_email='namiki.takeyama@gmail.com',
+    author_email='bamboo.develop@gmail.com',
     url='https://github.com/takeyamayuki/NonMouse',
     license='Apache-2.0',
     install_requires=_requires_from_file('requirements.txt'),

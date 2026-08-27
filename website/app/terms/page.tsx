@@ -92,7 +92,7 @@ export default function TermsOfService() {
 
           <h2 className="text-2xl font-semibold mb-4">9. Contact</h2>
           <p className="mb-4">For questions about these Terms, contact:</p>
-          <p className="mb-8">Email: kintre.ndy0@gmail.com</p>
+          <p className="mb-8">Email: bamboo.develop@gmail.com</p>
         </div>
       </div>
     </div>

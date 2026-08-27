@@ -5,7 +5,7 @@ export default function LegalDisclosure() {
     ["Responsible Person", "Disclosed without delay upon request from a consumer."],
     ["Address", "Disclosed without delay upon request from a consumer."],
     ["Phone Number", "Disclosed without delay upon request from a consumer."],
-    ["Email", "kintre.ndy0@gmail.com"],
+    ["Email", "bamboo.develop@gmail.com"],
     ["Website / Sales URL", "https://nonmouse.com/"],
     [
       "Product / Service",
@@ -39,7 +39,7 @@ export default function LegalDisclosure() {
       "Disclosure of Seller's Name or Legal Name, Address, Phone Number, and Responsible Person",
       "NonMouse is the public product/brand name, not a seller name used to replace the legal disclosure items. Under Japan's Act on Specified Commercial Transactions, the seller's name or legal name, address, phone number, and responsible person may be omitted from public display if they are disclosed without delay upon a consumer's request. To request disclosure, contact the email address above.",
     ],
-    ["Contact", "Email: kintre.ndy0@gmail.com\nWe usually reply within 3 business days."],
+    ["Contact", "Email: bamboo.develop@gmail.com\nWe usually reply within 3 business days."],
   ];
 
   return (

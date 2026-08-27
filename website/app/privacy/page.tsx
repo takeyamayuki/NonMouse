@@ -100,7 +100,7 @@ export default function PrivacyPolicy() {
 
           <h2 className="text-2xl font-semibold mb-4">11. Contact</h2>
           <p className="mb-4">For privacy questions or requests, contact:</p>
-          <p className="mb-8">Email: kintre.ndy0@gmail.com</p>
+          <p className="mb-8">Email: bamboo.develop@gmail.com</p>
         </div>
       </div>
     </div>
